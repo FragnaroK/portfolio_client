@@ -1,0 +1,8 @@
+.imageWrapper {
+    width: 100%;
+    & > img {
+        size: 100%;
+        max-width: 1140px;
+        max-height: 400px;
+    }
+}

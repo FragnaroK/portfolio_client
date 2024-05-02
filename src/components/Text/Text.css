@@ -1,0 +1,9 @@
+.textWrapper {
+    padding: 15px 10px;
+
+    p {
+        margin: 8px 0px;
+        text-align: start;
+        line-height: 22.5px;
+    }
+}

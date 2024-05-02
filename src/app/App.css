@@ -1,0 +1,61 @@
+@import "../constants/const.css";
+
+#app {
+	& > main {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: 50px;
+		margin: 0 auto;
+		padding: 30px 15px 15px 15px;
+		max-width: $max-width;
+
+		& > section {
+			position: relative;
+			padding: 35px 0 30px 0;
+			width: 90%;
+			max-height: $max-width;
+			height: auto;
+
+			
+			&:first-child {
+				min-height: 100svh;
+			}
+
+			&::after {
+				content: "\f063";
+				position: absolute;
+				left: 50%;
+				top: 100%;
+				translate: -50% 0%;
+				color: var(--primary) !important;
+			}
+
+			&:last-child::after {
+				display: none;
+			}
+		}
+	}
+
+	& > footer {
+        position: fixed;
+        bottom: 0;
+		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: fit-content;
+		background-image: linear-gradient(to bottom, transparent, #000000ea);
+
+        .floatingButton {
+            z-index: var(--on-top-index);
+        }
+
+		.goToTopTrigger {
+			transition: opacity .5s ease-in-out, background .2s ease-in-out;
+		}
+ 
+    }
+}

@@ -1,0 +1,59 @@
+.popupWrapper {
+    --popup-speed: .2s ease-in-out !important;
+    --popup-delay: .1s;
+
+    pointer-events: none !important;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+
+    &>div.closeArea {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        width: 100vw;
+        height: 100dvh;
+        opacity: 0;
+        z-index: calc(var(--on-top-index) - 1);
+        transition: opacity var(--popup-speed);
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important; /* for removing the highlight */
+    }
+
+
+    &>dialog.popup {
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        padding: 0;
+        width: 85vw;
+        max-width: 800px;
+        max-height: 80dvh;
+        opacity: 0;
+        scale: 0.9;
+        border: none !important;
+        background: transparent !important;
+        z-index: var(--on-top-index);
+        transition: opacity var(--popup-speed), scale var(--popup-speed);
+
+        &[open] {
+            pointer-events: all;
+            animation: PopUpFadeIn var(--popup-speed) var(--popup-delay) both;
+
+            &~.closeArea {
+                pointer-events: all;
+                cursor: pointer;
+                opacity: .85;
+
+            }
+        }
+    }
+}
+
+@keyframes PopUpFadeIn {
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}

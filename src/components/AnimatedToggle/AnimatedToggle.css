@@ -1,0 +1,51 @@
+.toggleWrapper {
+    display: inline-block;
+    position: relative;
+    size: 100%;
+
+
+    .toggleInitial,
+    .toggleTarget {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    --toggle-boundaries: 200%;
+
+    & > .slide {
+
+        &.show {
+            transform: translate(0, 0) !important;
+        }
+
+        &.vertical {
+            &.fromBottom {
+                transform: translateY(var(--toggle-boundaries));
+            }
+
+            &.fromTop {
+                transform: translateY(calc(var(--toggle-boundaries) * -1));
+            }
+        }
+
+        &.horizontal {
+            &.fromRight {
+                transform: translateX(var(--toggle-boundaries));
+            }
+
+            &.fromLeft {
+                transform: translateX(calc(var(--toggle-boundaries) * -1));
+            }
+        }
+    }
+
+    & > .fade {
+        opacity: 0;
+
+        &.show {
+            opacity: 1 !important;
+        }
+    }
+}

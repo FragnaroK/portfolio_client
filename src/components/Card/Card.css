@@ -1,0 +1,49 @@
+.card {
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+
+    transition: opacity .4s ease-in-out, scale 1.2s ease-in-out;
+
+    & > header {
+
+        & > hr {
+            margin: 4px 0 0 0;
+        }
+
+        & > :is(h2,h4) {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        & > h2 {
+
+        } 
+
+       & > h4 {
+        margin-top: 8px !important;
+        font-weight: normal;
+    }
+    }
+
+    & > main {
+        /* border: 2px solid; */
+        border-radius: 8px;
+        overflow: hidden;
+
+        & > .cardContentWrapper {
+            overflow: auto;
+            size: 100%;
+            padding-bottom:  20px;
+        }
+    }
+
+    & > footer {
+        
+    }
+}

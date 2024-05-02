@@ -1,0 +1,6 @@
+#popupContextWrapper {
+
+    &.popup-visible {
+        overflow: hidden !important;
+    }
+}

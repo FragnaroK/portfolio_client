@@ -1,0 +1,54 @@
+@import "../../../constants/const.css";
+
+#introduction {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1%;
+
+	& .profileSideContent {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		gap: 20px;
+	}
+
+	& .socialMediaGrid {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	@media (min-width: $tablet-breakpoint) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		& .profilePhotoSection {
+			width: 49%;
+			display: flex;
+			justify-content: center;
+		}
+
+		& .profileSideContent {
+			width: 49%;
+			& .titleWrapper {
+				width: 100%;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+			& .socialMediaGrid {
+				width: fit-content;
+				gap: 15px;
+			}
+		}
+
+		& > div {
+			margin: 0 auto;
+			& > .buttonWrapper {
+				scale: 1.5;
+			}
+		}
+	}
+}

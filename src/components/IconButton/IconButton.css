@@ -1,0 +1,94 @@
+.iconButtonWrapper {
+	position: relative;
+	overflow: hidden;
+
+    --target-icon: "Icon";
+    --icon-size: 20px;
+
+	& :is(a, button).btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 15px;
+        size: 100%;
+        max-size: 100px;
+		min-size: 50px;
+		border-radius: 10px;
+		text-decoration: none !important;
+		cursor: pointer;
+        background: none !important;
+        border: none !important;
+		overflow: hidden;
+
+		&:is(:disabled, [aria-disabled="true"]) {
+			background-color: var(--muted) !important;
+			background-image: none !important;
+			pointer-events: none !important;
+			user-select: none !important;
+			filter: grayscale(100%);
+		}
+
+		&::after {
+			content: var(--target-icon);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            size: 150%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+            font-size: calc(var(--icon-size) - 5px);
+            translate: -50% -50%;
+			transform-origin: center;
+			opacity: 0;
+			scale: 0.8;
+			background-color: rgba(0, 0, 0, 0.788);
+            transition: scale .1s ease, opacity .3s ease;
+        }
+
+		&:hover::after {
+			opacity: 1;
+			scale: 1.1;
+		}
+        
+	}
+
+	& a {
+        position: relative;
+        &::after {
+            content: ""
+        }
+    }
+	
+    .buttonIcon {
+        font-size: clamp(2rem, 5vw, 3rem) !important;
+    }
+
+	.iconWrapper {
+		size: 0px !important;
+		left: 50%;
+		/* top: 50%; */
+		translate: -50% -50%;
+	}
+
+	.btn-big {
+		padding: 20px 30px;
+		font-size: large;
+	}
+
+	@keyframes ToggleIcon {
+		0% {
+			translate: 0% 0%;
+		}
+	
+		50% {
+			translate: 0% 100%;
+		}
+	
+		100% {
+			content: var(--target-icon);
+			translate: 0% 0%;
+		}
+	}
+}
+

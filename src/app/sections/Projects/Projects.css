@@ -1,0 +1,10 @@
+#projects {
+
+    .projectsList {
+        padding-bottom: 40svh;
+
+        & > .projectContainer {
+            scroll-snap-align: start;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.chipsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 10px;
+    width: 100%;
+
+
+    .chip {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+}
