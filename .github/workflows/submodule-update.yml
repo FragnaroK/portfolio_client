@@ -39,6 +39,6 @@
             with:
               github_token: ${{ secrets.RELEASE_HUB_SECRET }}
               parent_repository: ${{ env.PARENT_REPOSITORY }}
-              checkout_branch: ${{ env.CHECKOUT_BRANCH}}
+              checkout_branch: ${{ format('(UPDATE) Client > {0}', github.event.head_commit.message) }}
               pr_against_branch: ${{ env.PR_AGAINST_BRANCH }}
               owner: ${{ env.OWNER }}
