@@ -6,7 +6,7 @@
     #############################
     on:
       push:
-        branches-ignore: [master, main]
+        branches-ignore: [master]
       pull_request:
         branches: [master, main]
     
