@@ -76,9 +76,10 @@ const ProjectContainerFooter: FC<ProjectActions> = ({ href, repo }) => (
 const ProjectContainerContent: FC<ProjectContent> = ({ children }) => {
   const parsedMarkdown = useMarkdown(children ?? "");
   const [expanded, setExpanded] = useState<boolean>(false);
+
   return (
     <main >
-     <Card
+      <Card
         className={`collapsable ${expanded ? "expanded" : ""}`}
         animateInView={false}
         inner={{ __html: parsedMarkdown }}
@@ -87,20 +88,20 @@ const ProjectContainerContent: FC<ProjectContent> = ({ children }) => {
         animateInView={false}
         inner={{ __html: parsedMarkdown }}
       />
-      <Toggle 
-          initial={faExpandAlt}
-          target={faCompressAlt}
-          onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-            if (expanded !== e.currentTarget.checked) setExpanded(e.currentTarget.checked);
-          }}
-        >Expand content</Toggle>
+      <Toggle
+        initial={faExpandAlt}
+        target={faCompressAlt}
+        onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+          if (expanded !== e.currentTarget.checked) setExpanded(e.currentTarget.checked);
+        }}
+      >Expand content</Toggle>
     </main>
   )
 }
 
 
 const ProjectContainer: FC<ProjectContainerProps> = ({
-  style, onClick, href, img, repo, tech, title, children, timestamp, ...props
+  style, onClick, href, img, repo, tech, title, children, timestamp, id, ...props
 }) => {
 
   const log = new Logger("ProjectContainer", import.meta.env.VITE_DEBUG_MODE);
@@ -128,6 +129,7 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
         opacity: scrollYProgress
       }}
       ref={projectRef}
+      id={`${id}-project-container-${title}`}
       {...props}
     >
       <ProjectContainerHeader img={img} tech={tech} title={title} timestamp={timestamp} />

@@ -75,7 +75,7 @@ const Projects: FC<ProjectsProps> = () => {
 ## Blockquotes
 
 - > This is a blockquote.
-- > \- Anonymous
+- > - Anonymous
 
 ## Horizontal Rule
 
