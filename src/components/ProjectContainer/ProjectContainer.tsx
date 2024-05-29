@@ -124,12 +124,12 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
     <motion.article
       className="projectContainer"
       onClick={onProjectClickHandler}
+      ref={projectRef}
+      id={`${id}-project-container-${title}`}
       style={{
         ...defStyle,
         opacity: scrollYProgress
       }}
-      ref={projectRef}
-      id={`${id}-project-container-${title}`}
       {...props}
     >
       <ProjectContainerHeader img={img} tech={tech} title={title} timestamp={timestamp} />
