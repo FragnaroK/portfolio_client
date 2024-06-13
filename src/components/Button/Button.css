@@ -13,7 +13,7 @@
         align-items: center;
         gap: 15px;
         padding: 10px 15px ;
-        border-radius: 8px;
+        border-radius: var(--container-radius);
         cursor: pointer;
         text-decoration: none !important;
         overflow: hidden;

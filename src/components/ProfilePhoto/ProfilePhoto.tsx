@@ -24,7 +24,7 @@ const ProfilePhoto: FC<ProfilePhotoProps> = ({ id, className, style, label }) =>
 
 const ProfilePhotoImage: FC<DefaultComponentProps & { img?: string, svg?: ReactNode}> = ({ img, svg }) => {
 	return (
-		<div className='profilePhoto'>
+		<div className="profilePhoto">
 			{img && <img src={img} alt='sample' />}
 			{svg }
 		</div>
@@ -33,7 +33,7 @@ const ProfilePhotoImage: FC<DefaultComponentProps & { img?: string, svg?: ReactN
 
 const ProfilePhotoLabel: FC<DefaultComponentProps> = ({ label = "" }) => {
 	return (
-		<div className='profilePhotoLabel'>
+		<div className="profilePhotoLabel">
 			<p>{label as string}</p>
 		</div>
 	)

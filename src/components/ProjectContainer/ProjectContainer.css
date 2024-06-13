@@ -8,22 +8,22 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 400px;
+	gap: 15px;
 
 	@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh) {
 		position: static !important;
 		display: flex;
 		flex-direction: column;
-		gap: 15px;
 		translate: 0% 0% !important;
+		border-radius: var(--container-radius);
+		padding: 10px 25px;
 	}
 
 	@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
 		position: sticky;
 		top: 10svh;
-		left: 0;
-		overflow-y: auto !important;
-		overflow-x: hidden !important;
-		aspect-ratio: 1.64 / 1;
+		left: 0; 
+		aspect-ratio: 16 / 9;
 		max-width: 1140px;
 	}
 
@@ -33,6 +33,8 @@
 
 	& > header {
 		position: relative;
+		display: flex;
+		flex-direction: column;
 
 		& > .action {
 			position: absolute;
@@ -44,12 +46,14 @@
 
 		& > .chipsWrapper {
 			position: relative;
+			width: fit-content;
 		}
 
 		& > .imageWrapper {
 			border-radius: 14px;
+			aspect-ratio: 16 / 9;
+			
 			& > img {
-				border: 2.5px solid var(--primary);
 				border-radius: 10px;
 				transition: mask-position var(--project-container-transition);
 			}
@@ -112,7 +116,8 @@
 			}
 
 			& > .titleWrapper {
-				padding-left: 30px;
+				margin-left: 30px;
+				width: fit-content;
 				align-items: flex-start;
 			}
 
@@ -164,15 +169,23 @@
 		flex-direction: column;
 		justify-content: center;
 		margin-left: 25px;
-		height: 50%;
+		height: fit-content;
+		max-height: 50%;
 		transition: all 0.3s ease-in-out;
 
 		& > .card {
-			height: 90%;
 			border-radius: 20px;
 			padding: 10px 10px 10px 20px;
 			background-color: var(--card9) !important;
 			transition: scale var(--expand-transition), top var(--expand-transition), translate var(--expand-transition), width var(--expand-transition), height var(--expand-transition), opacity var(--expand-transition);
+		
+			& .cardContent {
+				& ul{
+					list-style-type: disc !important;
+					margin: 10px;
+					padding: 10px;
+				}
+			}
 		}
 
 		@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
@@ -180,7 +193,7 @@
 
 			& > .toggleWrapper {
 				position: absolute;
-				top: 0px;
+				top: -10px;
 				right: 0;
 				scale: 0.8;
 				translate: 0% -70%;
@@ -204,7 +217,6 @@
 					opacity: 1;
 					top: -45%;
 					height: 180%;
-					padding-left: 30px;
 					z-index: var(--on-top-index);
 
 					& ~ .card {
@@ -218,20 +230,20 @@
 					}
 
 					& ~ .toggleWrapper {
-						top: -40%;
+						top: -50%;
+						right: -50%;
 						translate: 0 0;
-						right: -15%;
 					}
 				}
 			}
 		}
 		@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh) {
-			margin-left: 0px;
-			height: clamp(150px, 60vw, 450px);
+			margin-left: 0px !important;
+			/* height: clamp(150px, 60vw, 450px); */
 
 			& > .card {
-				padding: 0 !important;
-				background-color: transparent !important;
+				padding: 10px !important;
+				background-color: var(--background) !important;
 				border: none !important;
 			}
 

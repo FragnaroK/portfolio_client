@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './AboutMe.css';
 import Title from "@Components/Title/Title";
@@ -8,6 +8,8 @@ import { faBitbucket, faBootstrap, faChrome, faConfluence, faCss3, faDocker, faG
 import Flex from '@Components/Flex/Flex';
 import Icon from "@Components/Icon/Icon";
 import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
+import { useUtilsContext } from "@/context/UtilsContext/UtilsContextHook";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 
 interface AboutMeProps extends DefaultComponentProps { }
 const techList = [
@@ -117,11 +119,19 @@ const techList = [
 const AboutMe: FC<AboutMeProps> = () => {
 
   const { database: { snap }} = useFirebaseContext();
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollY } = useScroll();
+  const { setSection } = useUtilsContext();
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest >= ( sectionRef.current?.offsetTop ??   0) ) {
+      setSection("About Me")
+    }
+  })
 
 
   return (
-    <section id="aboutMe">
+    <section id="aboutMe" ref={sectionRef}>
       <Title>About Me</Title>
       <Card
         title="Get to know me"

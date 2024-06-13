@@ -69,6 +69,7 @@
     --ring: hsla(245, 47%, 47%, 1);
     --button-hover-color: var(--accent);
     --success: rgb(32, 127, 29);
+    --container-radius: 8px;
 }
 
 /* ===== Scrollbar CSS ===== */

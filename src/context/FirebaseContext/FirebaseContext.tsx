@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 import { initializeApp } from "firebase/app";
 import { Analytics, getAnalytics } from "firebase/analytics";
-import { DatabaseReference, get, getDatabase, onValue, ref } from "firebase/database";
+import { DatabaseReference, get, getDatabase, ref } from "firebase/database";
 import Logger from 'node-logger-web';
 import { DatabaseSnap } from '@Types/DatabaseTypes';
 
@@ -28,7 +28,7 @@ const useFirebase = () => {
   const log = new Logger("Firebase", import.meta.env.VITE_DEBUG_MODE);
 
   const firebaseConfig = {
-    apiKey: "AIzaSyASObg06sWoA7wV-v7enka0m8ejvcO275s",
+    apiKey: import.meta.env.VITE_DB_API_KEY,
     authDomain: "francocanalejo-fragnarok.firebaseapp.com",
     databaseURL: "https://francocanalejo-fragnarok-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "francocanalejo-fragnarok",

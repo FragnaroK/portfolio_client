@@ -23,6 +23,7 @@ const Title: FC<TitleProps> = ({
     (text: string) => text.split("").map((char, i) =>
       (<span 
         aria-hidden="true"
+        data-aria-inmutable="true"
         key={`letter-${char}-from-string-${text}-at-index-${i}`}
         style={{
           animationDuration: `${i / text.length}s`,

@@ -19,7 +19,6 @@
 			max-height: $max-width;
 			height: auto;
 
-			
 			&:first-child {
 				min-height: 100svh;
 			}
@@ -40,8 +39,8 @@
 	}
 
 	& > footer {
-        position: fixed;
-        bottom: 0;
+		position: fixed;
+		bottom: 0;
 		padding: 20px;
 		display: flex;
 		justify-content: space-between;
@@ -49,13 +48,34 @@
 		height: fit-content;
 		background-image: linear-gradient(to bottom, transparent, #000000ea);
 
-        .floatingButton {
-            z-index: var(--on-top-index);
-        }
+		pointer-events: none;
+		user-select: none;
+
+		& > * {
+			pointer-events: all;
+			user-select: auto;
+		}
+
+		.floatingButton {
+			z-index: var(--on-top-index);
+		}
 
 		.goToTopTrigger {
-			transition: opacity .5s ease-in-out, background .2s ease-in-out;
+			transition: opacity 0.5s ease-in-out, background 0.2s ease-in-out;
 		}
- 
-    }
+	}
+}
+
+.scrollFollowerContainer {
+	position: fixed;
+	top: 25px;
+	left: 15px;
+
+	.scrollFollower {
+		padding: 10px;
+		width: fit-content;
+		border-radius: var(--container-radius);
+		border: 1px solid var(--primary-lighter);
+		background-color: transparent;
+	}
 }

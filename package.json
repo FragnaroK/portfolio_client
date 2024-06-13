@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "tsc && vite build",
+    "dev": "npm i && vite --host",
+    "build": "npm i && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "manage": "node ./scripts/component_manager.js",
-    "preview": "vite preview --host"
+    "preview": "npm i && vite preview --host"
   },
   "postcss": {
     "plugins": {

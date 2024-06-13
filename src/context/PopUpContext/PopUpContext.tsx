@@ -36,6 +36,7 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
     log.d(enable ? "Enabling" : "Disabling");
 
     focusable.forEach((item) => {
+      if (item.getAttribute("data-aria-inmutable") === "true") return;
       item.setAttribute("aria-hidden", `${enable}`);
       item.setAttribute("tabindex", enable ? "-1" : "0");
     })

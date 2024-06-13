@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-// @ts-expect-error none
 import DOMPurify from 'dompurify';
 import * as marked from 'marked';
 

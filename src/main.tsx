@@ -9,13 +9,16 @@ import './context/theme.css'
 import { PopUpContextProvider } from '@/context/PopUpContext/PopUpContext.tsx'
 import { NotificationContextProvider } from '@/context/NotificationContext/NotificationContext.tsx'
 import { FirebaseContextProvider } from './context/FirebaseContext/FirebaseContext';
+import { UtilsContextProvider } from './context/UtilsContext/UtilsContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <PopUpContextProvider>
       <NotificationContextProvider>
         <FirebaseContextProvider>
-          <App />
+          <UtilsContextProvider>
+            <App />
+          </UtilsContextProvider>
         </FirebaseContextProvider>
       </NotificationContextProvider>
     </PopUpContextProvider>

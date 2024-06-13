@@ -57,7 +57,7 @@ const IconButton: FC<IconButtonProps> = ({
   )
 
   return (
-    <div className='iconButtonWrapper' ref={buttonRef}>
+    <div className="iconButtonWrapper" ref={buttonRef}>
       {type !== 'button' ? renderLink : renderButton}
     </div>
   );

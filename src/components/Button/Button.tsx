@@ -94,7 +94,7 @@ const Button: FC<ButtonProps> = ({
   )
 
   return (
-    <div className='buttonWrapper' ref={buttonRef}>
+    <div className="buttonWrapper" ref={buttonRef}>
       {type !== 'button' ? renderLink : renderButton}
     </div>
   );
