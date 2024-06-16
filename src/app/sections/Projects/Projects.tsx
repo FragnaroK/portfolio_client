@@ -43,7 +43,8 @@ const Projects: FC<ProjectsProps> = () => {
               img={project.image}
               repo={project.repo}
               tech={project.tech}
-              style={{ translate: `0% ${55 * i}px` }}
+              // style={{ translate: `0% ${55 * i}px` }}
+              index={i}
             >
               {project.description}
             </ProjectContainer>

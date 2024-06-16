@@ -9,7 +9,6 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth !important;
-
     &::after, &::before {
         font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Regular', 'Font Awesome 5 Brands', 'Font Awesome 6 Free', 'Font Awesome 6 Regular', 'Font Awesome 6 Brands' !important;
         font-weight: 900 !important;
@@ -459,5 +458,14 @@
     to {
         opacity: 0;
         scale: 0.9;
+    }
+}
+
+@keyframes Rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }

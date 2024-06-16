@@ -1,5 +1,6 @@
 @import "../../constants/const.css";
 
+
 .projectContainer {
 	--mobile-content-width: 100%;
 	--desktop-content-width: 65%;
@@ -10,16 +11,18 @@
 	min-height: 400px;
 	gap: 15px;
 
-	@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh) {
+	transform-style: preserve-3d;
+
+	@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
 		position: static !important;
 		display: flex;
 		flex-direction: column;
-		translate: 0% 0% !important;
+		padding: 10px 0px;
 		border-radius: var(--container-radius);
-		padding: 10px 25px;
+		translate: 0% 0% !important;
 	}
 
-	@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
+	@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
 		position: sticky;
 		top: 10svh;
 		left: 0; 
@@ -28,7 +31,7 @@
 	}
 
 	& > * {
-		transition: opacity var(--project-container-transition);
+		transition: opacity var(--project-container-transition), transform var(--project-container-transition);
 	}
 
 	& > header {
@@ -60,7 +63,7 @@
 		}
 
 		& > *:not(.action, .imageWrapper) {
-			transition: opacity var(--project-container-transition);
+			transition: opacity var(--project-container-transition), transform var(--project-container-transition);
 		}
 
 		&:hover {
@@ -83,7 +86,7 @@
 			}
 		}
 
-		@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
 			height: 25%;
 
 			& > .imageWrapper {
@@ -126,7 +129,7 @@
 			}
 		}
 
-		@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh) {
+		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
 			& > .imageWrapper {
 				& img {
 					mask-image: linear-gradient(to bottom, transparent, var(--background) 33.33%);
@@ -148,6 +151,7 @@
 			}
 
 			&:hover > .titleWrapper {
+				transform: translateY(-50%);
 				opacity: 0;
 			}
 
@@ -188,67 +192,18 @@
 			}
 		}
 
-		@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
 			width: var(--desktop-content-width);
 
-			& > .toggleWrapper {
-				position: absolute;
-				top: -10px;
-				right: 0;
-				scale: 0.8;
-				translate: 0% -70%;
-				transition: top var(--expand-transition), translate var(--expand-transition), right var(--expand-transition), bottom var(--expand-transition) ;
-				z-index: calc(var(--on-top-index) + 1);
-			}
-
-			& .card.collapsable {
-				position: absolute;
-				width: 140% !important;
-				background-color: var(--card) !important;
-
-				&:not(.expanded) {
-					top: 0%;
-					opacity: 0 !important;
-					pointer-events: none;
-					user-select: none;
-				}
-
-				&.expanded {
-					opacity: 1;
-					top: -45%;
-					height: 180%;
-					z-index: var(--on-top-index);
-
-					& ~ .card {
-						opacity: 0 !important;
-						scale: 1 2;
-
-						& * {
-							pointer-events: none;
-							user-select: none;
-						}
-					}
-
-					& ~ .toggleWrapper {
-						top: -50%;
-						right: -50%;
-						translate: 0 0;
-					}
-				}
-			}
+			
 		}
-		@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh) {
+		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
 			margin-left: 0px !important;
-			/* height: clamp(150px, 60vw, 450px); */
 
 			& > .card {
 				padding: 10px !important;
 				background-color: var(--background) !important;
 				border: none !important;
-			}
-
-			& > .toggleWrapper, & .card.collapsable {
-				display: none !important;
 			}
 		}
 	}
@@ -256,13 +211,15 @@
 	& > footer {
 		display: flex;
 		justify-content: space-around;
-
 		height: 10%;
-		@media (min-width: $mobile-breakpoint) and (min-height: $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
 			width: var(--desktop-content-width);
 			align-items: center;
 			gap: 20px;
 		}
-		@media (max-width: $mobile-breakpoint) or (max-height: $mobile-breakpoint-vh){}
+		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+			flex-direction: column;
+			gap: 15px;
+		}
 	}
 }

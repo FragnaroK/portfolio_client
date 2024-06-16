@@ -1,7 +1,7 @@
 @import "../constants/const.css";
 
-#app {
-	& > main {
+#app { 
+	& > main { 
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;

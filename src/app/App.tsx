@@ -4,35 +4,11 @@ import AboutMe from '@Sections/AboutMe/AboutMe';
 import Projects from '@Sections/Projects/Projects';
 import Button from '@Components/Button/Button';
 import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { useCallback, useEffect, useState } from 'react';
 import { useUtilsContext } from '@/context/UtilsContext/UtilsContextHook';
 
 function App() {
 
-  const { currentSection } = useUtilsContext();
-  const [isOnTop, setIsOnTop] = useState<boolean>(true);
-
-  const onScroll = useCallback(() => {
-    if (document.documentElement.scrollTop < 150) {
-      setIsOnTop(true);
-    } else {
-      setIsOnTop(false);
-    }
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant'
-    });
-
-    document.addEventListener('scroll', onScroll);
-
-    return () => {
-      document.removeEventListener('scroll', onScroll);
-    }
-  }, [onScroll])
+  const { currentSection, isOnTop } = useUtilsContext();
 
   return (
     <article id="app">

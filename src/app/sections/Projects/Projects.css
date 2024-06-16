@@ -1,7 +1,10 @@
-#projects {
+@import "../../../constants/const.css";
 
+#projects {
     .projectsList {
-        padding-bottom: 40svh;
+        perspective: 1000px;
+        perspective-origin: 50% 50%;
+        padding-bottom: 45svh;
 
         & > .projectContainer {
             scroll-snap-align: start;

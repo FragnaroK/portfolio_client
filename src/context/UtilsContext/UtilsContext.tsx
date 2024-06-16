@@ -1,8 +1,11 @@
 import Logger from 'node-logger-web';
-import React, { createContext, ReactNode, useMemo, useState } from 'react';
+import './UtilsContext.css';
+import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 interface UtilsContextData {
    currentSection: string;
+   isOnTop: boolean;
+
    setSection: (section: string) => void
 }
 
@@ -16,17 +19,44 @@ export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ chil
   
   const log = new Logger("UtilsContext", import.meta.env.VITE_DEBUG_MODE);
   const [currentSection, setCurrentSection] = useState<string>("Introduction");
+  const [isOnTop, setIsOnTop] = useState<boolean>(true);
+
+  const onScroll = useCallback(() => {
+    if (document.documentElement.scrollTop < 150) {
+      setIsOnTop(true);
+    } else {
+      setIsOnTop(false);
+    }
+  }, [])
 
   const setSection = (section: string) => {
     log.d(`Setting section to ${section}`)
     setCurrentSection((prevSection) => prevSection != section ? section : prevSection)
   }
-  
+
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+
+    document.addEventListener('scroll', onScroll);
+
+    return () => {
+      document.removeEventListener('scroll', onScroll);
+    }
+  }, [onScroll])
 
   const contextValue = useMemo(() => ({
     currentSection,
+    isOnTop,
     setSection
-  }), [currentSection])
+  }), [isOnTop, currentSection])
 
-  return <UtilsContext.Provider value={contextValue}>{children}</UtilsContext.Provider>;
+  return <UtilsContext.Provider value={contextValue}>
+    <div className="utilsWrapper">
+    {children}
+    </div>
+  </UtilsContext.Provider>;
 };

@@ -6,10 +6,10 @@ import Button from "@Components/Button/Button";
 import Image from "@Components/Image/Image";
 import Logger from "node-logger-web";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { motion, useScroll } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import Chips from '../Chips/Chips';
 import Toggle from '../Toggle/Toggle';
-import { faCompressAlt, faExpandAlt, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Card from "../Card/Card";
 import useMarkdown from "@/hooks/useMarkdown/useMarkdown";
 
@@ -20,6 +20,7 @@ interface ProjectContainerProps extends DefaultComponentProps<string, HTMLElemen
   repo: string;
   img: string;
   tech: string[];
+  index?: number;
 }
 
 interface ProjectHeader {
@@ -38,7 +39,7 @@ interface ProjectActions {
   repo: string;
 }
 
-const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech }) => {
+const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech}) => {
 
   const [showInfo, setShowInfo] = useState<boolean>(true);
 
@@ -46,7 +47,7 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
     <header className={showInfo ? "" : "hideProjectContent"}>
 
       <Image src={img} alt='' />
-      <Title level={2} subtitle={timestamp}>{title}</Title>
+      <Title level={2} subtitle={timestamp} >{title}</Title>
       <div className="action">
         <Toggle
           initial={faEye}
@@ -75,64 +76,57 @@ const ProjectContainerFooter: FC<ProjectActions> = ({ href, repo }) => (
 
 const ProjectContainerContent: FC<ProjectContent> = ({ children }) => {
   const parsedMarkdown = useMarkdown(children ?? "");
-  const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
     <main >
       <Card
-        className={`collapsable ${expanded ? "expanded" : ""}`}
         animateInView={false}
         inner={{ __html: parsedMarkdown }}
       />
-      <Card
-        animateInView={false}
-        inner={{ __html: parsedMarkdown }}
-      />
-      <Toggle
-        initial={faExpandAlt}
-        target={faCompressAlt}
-        onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-          if (expanded !== e.currentTarget.checked) setExpanded(e.currentTarget.checked);
-        }}
-      >Expand content</Toggle>
     </main>
   )
 }
 
 
 const ProjectContainer: FC<ProjectContainerProps> = ({
-  style, onClick, href, img, repo, tech, title, children, timestamp, id, ...props
+  style, onClick, href, img, repo, tech, title, children, timestamp, index = 0, ...props
 }) => {
 
   const log = new Logger("ProjectContainer", import.meta.env.VITE_DEBUG_MODE);
+  const translateValue = index % 2 === 0 ? "200vw" : "-200vw";
+  const finalID = `project-container-${title}`;
+  const defStyle: ExtendedCSSProperties = {
+    ...style
+  }
+
   const projectRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
     offset: ["start end", "end end"]
   });
-
-  const defStyle: ExtendedCSSProperties = {
-    ...style
-  }
+  const translation = useTransform(scrollYProgress, [0, .8], [`translate3d(${translateValue}, 0px, 0px)`, `translate3d(0px, ${55 * index}px, 0px)`])
 
   const onProjectClickHandler: React.MouseEventHandler<HTMLElement> = (e) => {
     log.d(`Project '${title}' clicked! -> `, e);
     if (onClick) onClick(e);
   }
+  
+  useMotionValueEvent(translation, "change", (latest) => console.log("Scrolling", title ,latest))
 
   return (
     <motion.article
       className="projectContainer"
       onClick={onProjectClickHandler}
       ref={projectRef}
-      id={`${id}-project-container-${title}`}
+      id={finalID}
       style={{
         ...defStyle,
-        opacity: scrollYProgress
+        opacity: scrollYProgress,
+        transform: translation
       }}
       {...props}
     >
-      <ProjectContainerHeader img={img} tech={tech} title={title} timestamp={timestamp} />
+      <ProjectContainerHeader img={img} tech={tech} title={title} timestamp={timestamp}/>
       <ProjectContainerContent >{children}</ProjectContainerContent>
       <ProjectContainerFooter href={href} repo={repo} />
     </motion.article>

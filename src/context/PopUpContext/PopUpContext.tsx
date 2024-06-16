@@ -66,7 +66,7 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
   useEffect(() => {
     if (!htmlElementRef.current) return;
 
-    htmlElementRef.current.style.overflow = isShowing ? "hidden" : "auto"
+    htmlElementRef.current.style.overflowY = isShowing ? "hidden" : "auto"
   }, [isShowing])
 
 

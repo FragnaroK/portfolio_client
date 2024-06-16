@@ -20,7 +20,7 @@
 		justify-content: space-around;
 	}
 
-	@media (min-width: $tablet-breakpoint) {
+	@media (width > $tablet-breakpoint) {
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;

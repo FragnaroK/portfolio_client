@@ -10,6 +10,7 @@ import Icon from "@Components/Icon/Icon";
 import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
 import { useUtilsContext } from "@/context/UtilsContext/UtilsContextHook";
 import { useScroll, useMotionValueEvent } from "framer-motion";
+import AnimatedStack from '../../../components/AnimatedStack/AnimatedStack';
 
 interface AboutMeProps extends DefaultComponentProps { }
 const techList = [
@@ -150,18 +151,8 @@ const AboutMe: FC<AboutMeProps> = () => {
           <p>{snap?.info.personal.profile}</p>
           </Text>
       </Card>
-      <Card
-        title="Some of the tech I often use"
-        subtitle="Some leading sentence about the tech below"
-      >
-        <br />
-        <Flex
-          fill
-          flexWrap="wrap"
-          justifyContent="space-evenly"
-        >
-          {
-            techList.map((tech, i) => (
+      <br />
+      <AnimatedStack>{techList.map((tech, i) => (
               <Icon
                 key={`${tech.name}-${tech.icon.iconName}`}
                 icon={tech.icon}
@@ -170,12 +161,9 @@ const AboutMe: FC<AboutMeProps> = () => {
                 size="3x"
                 index={i + 1}
                 total={techList.length}
-                style={{ flex: "1 0 20%", textAlign: "center", margin: "15px 0"  }}
+                // style={{ flex: "1 0 20%", textAlign: "center", margin: "15px 0"  }}
               />
-            )) 
-          }
-        </Flex>
-      </Card>
+            ))}</AnimatedStack>
     </section>
   )
 }
