@@ -8,14 +8,53 @@
     align-items: center;
     align-content: center;
     justify-items: center;
-    
-    & > .animatedStackItem { 
+
+    & > .label {
         position: absolute;
         top: 50%;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        /* transition: all 1s ease; */
-        translate: 0% 0% !important;
-        opacity: 0;
-        animation: Rotate linear infinite both, FadeIn ease-in-out 1 both;
-	}
+        padding: 25px 0px;
+        backdrop-filter: blur(10px);
+        background-color: var(--background9);
+        border-radius: var(--container-radius);
+        translate: -50% -50%;
+        z-index: 1;
+    }
+    
+    & > .animatedStackRing {
+        position: absolute;
+
+        &:has(> .animatedStackItem:hover) {
+            & > .animatedStackItem {
+                animation-play-state: paused !important; 
+
+                & > .animatedStackItemContentWrapper {
+                    animation-play-state: paused !important;
+                }
+            }
+        }
+
+        
+
+        & >  .animatedStackItem { 
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            translate: 0% 0% !important;
+            opacity: 0;
+            animation: Rotate linear infinite both, FadeIn ease-in-out 1 both;
+            transform-style: preserve-3d;
+            animation-play-state: running;
+     
+            .animatedStackItemContentWrapper {
+                animation: PartialRotate linear infinite both;
+                transform-style: preserve-3d;
+                animation-play-state: running;
+            }
+        }
+    }
 }

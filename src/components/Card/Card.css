@@ -39,7 +39,7 @@
         & > .cardContentWrapper {
             overflow: auto;
             size: 100%;
-            padding-bottom:  20px;
+            padding: 20px 0;
         }
     }
 

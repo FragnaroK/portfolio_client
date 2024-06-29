@@ -5,19 +5,18 @@ import Projects from '@Sections/Projects/Projects';
 import Button from '@Components/Button/Button';
 import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { useUtilsContext } from '@/context/UtilsContext/UtilsContextHook';
+import Experience from './sections/Experience/Experience';
 
 function App() {
 
-  const { currentSection, isOnTop } = useUtilsContext();
+  const { isOnTop } = useUtilsContext();
 
   return (
     <article id="app">
-      <div className="scrollFollowerContainer">
-        <span className="scrollFollower" >{currentSection}</span>
-      </div>
       <main>
         <Introduction />
         <AboutMe />
+        <Experience />
         <Projects />
       </main>
       <footer>

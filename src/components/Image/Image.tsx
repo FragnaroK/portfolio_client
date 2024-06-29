@@ -17,7 +17,7 @@ const Image: FC<ImageProps> = ({
       <img
         src={src ?? ""}
         alt={alt}
-        aria-hidden={alt ? false : true}
+        aria-hidden={!alt}
         {...imgProps}
         style={{ objectFit: fit ?? "contain" }}
       />

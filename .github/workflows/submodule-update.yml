@@ -3,7 +3,7 @@
     
     on:
       push:
-        branches-ignore: [master]
+        branches-ignore: [master, dev, exp]
       pull_request:
         branches: [master, main]
     

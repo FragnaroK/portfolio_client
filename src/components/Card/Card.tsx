@@ -5,6 +5,7 @@ import Button, { ButtonProps } from "@Components/Button/Button";
 import IconButton, { IconButtonProps } from "@Components/IconButton/IconButton";
 import Flex from "@Components/Flex/Flex";
 import { motion, useInView } from 'framer-motion';
+import useMarkdown from '@/hooks/useMarkdown/useMarkdown';
 
 export interface CardProps extends Pick<DefaultComponentProps, "style" | "id" | "className">, Partial<CardHeaderProps>, Partial<CardContentProps>, Partial<CardFooterProps> {
   animateInView?: boolean
@@ -22,6 +23,7 @@ interface CardContentProps {
 
 interface CardFooterProps {
   label: string;
+  fill?: boolean;
   actions: (ButtonProps | IconButtonProps)[];
 }
 
@@ -35,15 +37,28 @@ const CardHeader: FC<CardHeaderProps> = ({ title, subtitle }) => (
   </header>
 )
 
-const CardContent: FC<CardContentProps> = ({ children, inner }) => (
-  <main className="cardContent" >
-    <div className="cardContentWrapper" dangerouslySetInnerHTML={inner}>
-      {children}
-    </div>
-  </main>
-)
+const CardContent: FC<CardContentProps> = ({ children, inner }) => {
+  const parsedInner = useMarkdown(inner?.__html ?? "")
 
-const CardFooter: FC<CardFooterProps> = ({ label, actions }) => (
+  return (
+    <main className="cardContent" >
+      {
+        inner ?
+          (
+            <div className="cardContentWrapper" dangerouslySetInnerHTML={inner ? { __html: parsedInner } : undefined} />
+          )
+          :
+          (
+            <div className="cardContentWrapper" >
+              {children}
+            </div>
+          )
+      }
+    </main>
+  )
+}
+
+const CardFooter: FC<CardFooterProps> = ({ label, actions, fill = false }) => (
   <footer>
     <Flex
       fill
@@ -60,8 +75,8 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions }) => (
         {
           actions.map(
             (action) => isButton(action) ?
-              (<Button {...action} key={`button-component-${action.type}-${action.children}`} />)
-              : (<IconButton {...action} key={`icon-button-component-${action.type}-${action.children}`} />)
+              (<Button {...action} key={`button-component-${action.type}-${action.children}`} style={fill ? { width: '100%' } : {}} />)
+              : (<IconButton {...action} key={`icon-button-component-${action.type}-${action.children}`} style={fill ? { width: '100%' } : {}} />)
           )
         }
       </Flex>
@@ -69,7 +84,7 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions }) => (
   </footer>
 )
 
-const Card: FC<CardProps> = ({ id, className, style, children, inner, title, subtitle, actions, label, animateInView = true }) => {
+const Card: FC<CardProps> = ({ id, className, style, children, inner, title, subtitle, actions, label, animateInView = true, fill = false }) => {
 
   const cardRef = useRef<HTMLElement>(null);
   const inView = useInView(cardRef, {
@@ -85,7 +100,7 @@ const Card: FC<CardProps> = ({ id, className, style, children, inner, title, sub
     >
       {title && <CardHeader title={title} subtitle={subtitle} />}
       {(children || inner) && <CardContent inner={inner}>{children}</CardContent>}
-      {actions && <CardFooter label={label ?? "Action label"} actions={actions} />}
+      {actions && <CardFooter label={label ?? "Action label"} fill={fill} actions={actions} />}
     </motion.article>
   )
 }

@@ -9,7 +9,7 @@ const useMarkdown = (text: string): string => {
 
   const parseMarkdown = useCallback(async () => {
     const markdown = await marked.parse(text);
-    setParsedMarkdown(DOMPurify.sanitize(markdown, { USE_PROFILES: { html: true }}));
+    setParsedMarkdown(DOMPurify.sanitize(markdown, { USE_PROFILES: { html: true }, SANITIZE_DOM: true}));
   }, [text])
 
   useEffect(() => {

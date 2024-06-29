@@ -62,7 +62,6 @@ const Button: FC<ButtonProps> = ({
 
   const defaultStyle = {
     ...(hoverColor ? { "--button-hover-color": hoverColor } : {}),
-    ...style,
     "--initial-icon": `"\\${iconType.icon[3]}"`,
     "--target-icon": `"\\${onHoverIcon?.icon[3] ?? getIconBasedOnType(type).icon[3]}"`,
   } as ExtendedCSSProperties
@@ -94,7 +93,7 @@ const Button: FC<ButtonProps> = ({
   )
 
   return (
-    <div className="buttonWrapper" ref={buttonRef}>
+    <div className="buttonWrapper" ref={buttonRef} style={style}>
       {type !== 'button' ? renderLink : renderButton}
     </div>
   );

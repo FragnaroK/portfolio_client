@@ -9,8 +9,6 @@ import IconButton from '@Components/IconButton/IconButton';
 import Text from "@Components/Text/Text";
 import Email from "@Components/Email/Email";
 import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useUtilsContext } from "@/context/UtilsContext/UtilsContextHook";
 
 const SocialMedia: FC = () => {
 
@@ -56,14 +54,6 @@ const Introduction: FC<DefaultComponentProps> = () => {
 
   const { database: { snap } } = useFirebaseContext();
   const sectionRef = useRef<HTMLElement>(null)
-  const { scrollY } = useScroll();
-  const { setSection } = useUtilsContext();
-  
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest >= ( sectionRef.current?.offsetTop ?? 0) ) {
-      setSection("Introduction");
-    }
-  })
 
   return (
     <section id="introduction" ref={sectionRef}>

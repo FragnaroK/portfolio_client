@@ -8,9 +8,10 @@ interface IconProps extends Omit<DefaultComponentProps<undefined>, "onClick">, F
   label?: string;
   index?: number;
   total?: number;
+  inViewAnimation?: boolean;
 }
 
-const Icon: FC<IconProps> = ({ style,  icon, label, index,  total, ...faProps }) => {
+const Icon: FC<IconProps> = ({ style,  icon, label, index, inViewAnimation = false,  total, ...faProps }) => {
 
   const iconRef = useRef<HTMLDivElement>(null);
   const inView = useInView(iconRef);
@@ -19,7 +20,7 @@ const Icon: FC<IconProps> = ({ style,  icon, label, index,  total, ...faProps })
     <div className={`iconWrapper`} style={style} ref={iconRef}>
       <FontAwesomeIcon icon={icon} className="icon" {...faProps} style={{
         ...style,
-        animation: index && total? `Fade${inView ? "In" : "Out"} .8s  cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 normal both` : undefined
+        animation: index && total && inViewAnimation? `Fade${inView ? "In" : "Out"} .8s  cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 normal both` : undefined
       }} />
       {label && <p><strong>{label}</strong></p>}
     </div>

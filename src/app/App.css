@@ -16,7 +16,7 @@
 			position: relative;
 			padding: 35px 0 30px 0;
 			width: 90%;
-			max-height: $max-width;
+			max-width: $max-width;
 			height: auto;
 
 			&:first-child {
@@ -63,19 +63,5 @@
 		.goToTopTrigger {
 			transition: opacity 0.5s ease-in-out, background 0.2s ease-in-out;
 		}
-	}
-}
-
-.scrollFollowerContainer {
-	position: fixed;
-	top: 25px;
-	left: 15px;
-
-	.scrollFollower {
-		padding: 10px;
-		width: fit-content;
-		border-radius: var(--container-radius);
-		border: 1px solid var(--primary-lighter);
-		background-color: transparent;
 	}
 }

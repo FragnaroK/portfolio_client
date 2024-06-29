@@ -46,6 +46,7 @@
     --font: Lato;
     --gradient: linear-gradient(to top left, #3f51b1, #5a55ae, #7b5fac, #8f6aae, #a86aa4, #cc6b8e, #f18271, #f3a469, #f7c978);
     --background: hsl(240, 30%, 4%);
+    --background9: hsla(240, 30%, 4%, 0.5);
     --foreground: hsla(245, 4.7%, 97.35%, 1);
     --muted: hsla(245, 23.5%, 14.1%, 1);
     --muted-foreground: hsla(245, 4.7%, 54.7%, 1);
@@ -57,7 +58,7 @@
     --border: hsla(245, 23.5%, 14.1%, 1);
     --input: hsla(245, 23.5%, 14.1%, 1);
     --primary: hsl(245, 47%, 47%);
-    --primary9: hsla(245, 47%, 47%, 0.514);
+    --primary9: hsla(245, 47%, 47%, 0.5);
     --primary-lighter: hsl(245, 47%, 55%);
     --primary-foreground: hsla(245, 4.7%, 4.7%, 1);
     --secondary: hsla(245, 23.5%, 14.1%, 1);

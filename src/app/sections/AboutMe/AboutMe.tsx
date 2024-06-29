@@ -5,12 +5,10 @@ import Title from "@Components/Title/Title";
 import Card from "@Components/Card/Card";
 import Text from "@Components/Text/Text";
 import { faBitbucket, faBootstrap, faChrome, faConfluence, faCss3, faDocker, faGit, faGithub, faGoogle, faHtml5, faJira, faJs, faLess, faLinux, faMarkdown, faNodeJs, faReact, faSass, faSourcetree, faWindows } from "@fortawesome/free-brands-svg-icons";
-import Flex from '@Components/Flex/Flex';
 import Icon from "@Components/Icon/Icon";
 import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
-import { useUtilsContext } from "@/context/UtilsContext/UtilsContextHook";
-import { useScroll, useMotionValueEvent } from "framer-motion";
 import AnimatedStack from '../../../components/AnimatedStack/AnimatedStack';
+import { faK } from "@fortawesome/free-solid-svg-icons";
 
 interface AboutMeProps extends DefaultComponentProps { }
 const techList = [
@@ -113,7 +111,7 @@ const techList = [
     color: "#563D7C", // Bootstrap color
     name: "Bootstrap",
     icon: faBootstrap
-  },
+  }
 ];
 
 
@@ -121,22 +119,14 @@ const AboutMe: FC<AboutMeProps> = () => {
 
   const { database: { snap }} = useFirebaseContext();
   const sectionRef = useRef<HTMLElement>(null)
-  const { scrollY } = useScroll();
-  const { setSection } = useUtilsContext();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest >= ( sectionRef.current?.offsetTop ??   0) ) {
-      setSection("About Me")
-    }
-  })
 
 
   return (
     <section id="aboutMe" ref={sectionRef}>
       <Title>About Me</Title>
       <Card
-        title="Get to know me"
-        subtitle="Brief description about me"
+        title="Who am I?"
+        subtitle="Brief description about me."
         label="You can learn a bit more if you google me!"
         actions={[
           {
@@ -146,24 +136,51 @@ const AboutMe: FC<AboutMeProps> = () => {
             href: "https://www.google.com/search?q=franco+canalejo"
           }
         ]}
-      >
-        <Text>
-          <p>{snap?.info.personal.profile}</p>
-          </Text>
-      </Card>
+        inner={{ __html: snap?.info.personal.profile ?? ""}}
+      ></Card>
       <br />
-      <AnimatedStack>{techList.map((tech, i) => (
-              <Icon
-                key={`${tech.name}-${tech.icon.iconName}`}
-                icon={tech.icon}
-                label={tech.name}
-                color={tech.color}
-                size="3x"
-                index={i + 1}
-                total={techList.length}
-                // style={{ flex: "1 0 20%", textAlign: "center", margin: "15px 0"  }}
-              />
-            ))}</AnimatedStack>
+      <br />
+      <br />
+      <AnimatedStack 
+      radius={[150, 210, 280]} 
+      speed={[25, 50, 80]}
+      label="My knowledge extends through a large set of modern technologies"
+      >{[
+        techList.map((tech, i) => (
+          <Icon
+            key={`${tech.name}-${tech.icon.iconName}`}
+            icon={tech.icon}
+            label={tech.name}
+            color={tech.color}
+            size="2x"
+            index={i + 1}
+            total={techList.length}
+          />
+        )),
+        techList.map((tech, i) => (
+          <Icon
+            key={`${tech.name}-${tech.icon.iconName}`}
+            icon={tech.icon}
+            label={tech.name}
+            color={tech.color}
+            size="2x"
+            index={i + 1}
+            total={techList.length}
+          />
+        )),
+        techList.map((tech, i) => (
+          <Icon
+            key={`${tech.name}-${tech.icon.iconName}`}
+            icon={tech.icon}
+            label={tech.name}
+            color={tech.color}
+            size="3x"
+            index={i + 1}
+            total={techList.length}
+          />
+        ))
+      ]}</AnimatedStack>
+      <br />
     </section>
   )
 }

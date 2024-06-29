@@ -1,0 +1,14 @@
+@import '../../../constants/const.css';
+
+#experience {
+    
+    & > .cardGrid {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+
+        @media (width <= $mobile-breakpoint) {
+            flex-direction: column;
+        }
+    }
+}

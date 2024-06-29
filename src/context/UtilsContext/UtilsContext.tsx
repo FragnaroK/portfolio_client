@@ -5,7 +5,6 @@ import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useSt
 interface UtilsContextData {
    currentSection: string;
    isOnTop: boolean;
-
    setSection: (section: string) => void
 }
 
@@ -29,10 +28,11 @@ export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ chil
     }
   }, [])
 
-  const setSection = (section: string) => {
+  const setSection = useCallback((section: string) => {
+    if (currentSection === section) return;
     log.d(`Setting section to ${section}`)
-    setCurrentSection((prevSection) => prevSection != section ? section : prevSection)
-  }
+    setCurrentSection((prevSection) => prevSection !== section ? section : prevSection)
+  }, [currentSection])
 
   useEffect(() => {
     document.documentElement.scrollTo({

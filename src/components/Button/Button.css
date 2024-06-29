@@ -31,6 +31,10 @@
             size: var(--icon-size);
             text-align: center;
             transition: translate .3s ease;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            justify-content: center;
         }
 
         &::before {
@@ -43,7 +47,7 @@
             content: var(--target-icon);
             position: absolute;
             top: 50%;
-            left: 15px;
+            left: 16px;
             translate: 0% 200%;
         }
 

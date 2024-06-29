@@ -42,7 +42,7 @@ const Flex: FC<FlexProps> = ({
   return (
     <div
       id={id}
-      className={className}
+      className={`flexContainer ${className}`}
       style={flexStyle}
     >
       {children}

@@ -111,8 +111,6 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
     if (onClick) onClick(e);
   }
   
-  useMotionValueEvent(translation, "change", (latest) => console.log("Scrolling", title ,latest))
-
   return (
     <motion.article
       className="projectContainer"

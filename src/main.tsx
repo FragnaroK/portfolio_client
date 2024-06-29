@@ -10,6 +10,8 @@ import { PopUpContextProvider } from '@/context/PopUpContext/PopUpContext.tsx'
 import { NotificationContextProvider } from '@/context/NotificationContext/NotificationContext.tsx'
 import { FirebaseContextProvider } from './context/FirebaseContext/FirebaseContext';
 import { UtilsContextProvider } from './context/UtilsContext/UtilsContext';
+import './window.ts';
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
