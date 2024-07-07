@@ -20,12 +20,14 @@
       "@Components/*": ["src/components/*"],
       "@Types/*": ["src/types/*"],
       "@Public/*": ["public/*"],
-      "@Contexts/*": ["src/contexts/*"],
+      "@Context/*": ["src/context/*"],
       "@Utils/*": ["src/utils/*"],
       "@Database/*": ["src/database/*"],
       "@Assets/*": ["src/assets/*"],
       "@App/*": ["src/app/*"],
       "@Fonts/*": ["src/fonts/*"],
+      "@Hooks/*": ["src/hooks/*"],
+      "@Constants/*": ["src/constants/*"]
     },
 
     /* Linting */

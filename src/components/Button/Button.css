@@ -1,5 +1,4 @@
 .buttonWrapper {
-
     position: relative; 
     overflow: hidden;
 
@@ -12,7 +11,7 @@
         justify-content: center;
         align-items: center;
         gap: 15px;
-        padding: 10px 15px ;
+        padding: 10px 15px;
         border-radius: var(--container-radius);
         cursor: pointer;
         text-decoration: none !important;
@@ -28,19 +27,17 @@
 
         &::before, &::after {
             font-size: calc(var(--icon-size) - 5px);
-            size: var(--icon-size);
             text-align: center;
-            transition: translate .3s ease;
+            transition: transform .3s ease;
             display: flex;
-            flex-wrap: nowrap;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
 
         &::before {
             content: var(--initial-icon);
             position: relative;
-            translate: 0% 0%;
+            transform: translateY(0%);
         }
 
         &::after {
@@ -48,27 +45,24 @@
             position: absolute;
             top: 50%;
             left: 16px;
-            translate: 0% 200%;
+            transform: translateY(200%);
         }
 
         &:not(.singleIcon):hover {
-
             &::before {
-                translate: 0% -200%; 
+                transform: translateY(-200%); 
             }
 
             &::after {
-                translate: 0% -50%;
+                transform: translateY(-50%);
             }
         }
-
-
     }
-   
+
     & a {
         position: relative;
         &::after {
-            content: ""
+            content: "";
         }
     }
 
@@ -83,17 +77,16 @@
 
     @keyframes ToggleIcon {
         0% {
-            translate: 0% 0%;
+            transform: translateY(0%);
         }
     
         50% {
-            translate: 0% 100%;
+            transform: translateY(100%);
         }
     
         100% {
             content: var(--target-icon);
-            translate: 0% 0%;
+            transform: translateY(0%);
         }
     }
 }
-

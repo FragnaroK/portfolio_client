@@ -3,183 +3,86 @@ import { DefaultComponentProps } from "@Types/Types";
 import './AboutMe.css';
 import Title from "@Components/Title/Title";
 import Card from "@Components/Card/Card";
-import Text from "@Components/Text/Text";
-import { faBitbucket, faBootstrap, faChrome, faConfluence, faCss3, faDocker, faGit, faGithub, faGoogle, faHtml5, faJira, faJs, faLess, faLinux, faMarkdown, faNodeJs, faReact, faSass, faSourcetree, faWindows } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Icon from "@Components/Icon/Icon";
-import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
-import AnimatedStack from '../../../components/AnimatedStack/AnimatedStack';
-import { faK } from "@fortawesome/free-solid-svg-icons";
+import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
+import AnimatedStack from '@Components/AnimatedStack/AnimatedStack';
+import Spinner from "@Components/Spinner/Spinner";
+import { TECH_ICON_LIST } from "@Constants/const";
 
 interface AboutMeProps extends DefaultComponentProps { }
-const techList = [
-  {
-    color: "#E44D26", // HTML5 color
-    name: "HTML5",
-    icon: faHtml5
-  },
-  {
-    color: "#264DE4", // CSS3 color
-    name: "CSS3",
-    icon: faCss3
-  },
-  {
-    color: "#61DAFB", // React color
-    name: "React",
-    icon: faReact
-  },
-  {
-    color: "#4285F4", // Google color
-    name: "Google",
-    icon: faGoogle
-  },
-  {
-    color: "#68A063", // Node.js color
-    name: "Node.js",
-    icon: faNodeJs
-  },
-  {
-    color: "#F0DB4F", // JavaScript color
-    name: "JavaScript",
-    icon: faJs
-  },
-  {
-    color: "#FCC624", // Linux color
-    name: "Linux",
-    icon: faLinux
-  },
-  {
-    color: "#0078D7", // Windows color
-    name: "Windows",
-    icon: faWindows
-  },
-  {
-    color: "#CC6699", // Sass color
-    name: "Sass",
-    icon: faSass
-  },
-  {
-    color: "#1D365D", // Less color
-    name: "Less",
-    icon: faLess
-  },
-  {
-    color: "#4078C0", // GitHub color
-    name: "GitHub",
-    icon: faGithub
-  },
-  {
-    color: "#0052CC", // SourceTree color
-    name: "SourceTree",
-    icon: faSourcetree
-  },
-  {
-    color: "#205081", // Bitbucket color
-    name: "Bitbucket",
-    icon: faBitbucket
-  },
-  {
-    color: "#0052CC", // Jira color
-    name: "Jira",
-    icon: faJira
-  },
-  {
-    color: "#172B4D", // Confluence color
-    name: "Confluence",
-    icon: faConfluence
-  },
-  {
-    color: "#F05032", // Git color
-    name: "Git",
-    icon: faGit
-  },
-  {
-    color: "#4285F4", // Chrome color
-    name: "Chrome",
-    icon: faChrome
-  },
-  {
-    color: "#2496ED", // Docker color
-    name: "Docker",
-    icon: faDocker
-  },
-  {
-    color: "#083A7D", // Markdown color
-    name: "Markdown",
-    icon: faMarkdown
-  },
-  {
-    color: "#563D7C", // Bootstrap color
-    name: "Bootstrap",
-    icon: faBootstrap
-  }
-];
-
-
 const AboutMe: FC<AboutMeProps> = () => {
 
-  const { database: { snap }} = useFirebaseContext();
-  const sectionRef = useRef<HTMLElement>(null)
+  const { database: { snap } } = useFirebaseContext();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const experience = `${snap?.info.professional.experience.years}`;
+  const profile = snap?.info.personal.profile.replace("{{work_experience}}", experience);
+  const techRings = [
+    TECH_ICON_LIST.map((tech, i) => (
+      <Icon
+        key={`${tech.name}-${tech.icon.iconName}`}
+        icon={tech.icon}
+        label={tech.name}
+        color={tech.color}
+        size="2x"
+        index={i + 1}
+        total={TECH_ICON_LIST.length}
+      />
+    )),
+    TECH_ICON_LIST.map((tech, i) => (
+      <Icon
+        key={`${tech.name}-${tech.icon.iconName}`}
+        icon={tech.icon}
+        label={tech.name}
+        color={tech.color}
+        size="2x"
+        index={i + 1}
+        total={TECH_ICON_LIST.length}
+      />
+    )),
+    TECH_ICON_LIST.map((tech, i) => (
+      <Icon
+        key={`${tech.name}-${tech.icon.iconName}`}
+        icon={tech.icon}
+        label={tech.name}
+        color={tech.color}
+        size="3x"
+        index={i + 1}
+        total={TECH_ICON_LIST.length}
+      />
+    ))
+  ]
 
 
   return (
     <section id="aboutMe" ref={sectionRef}>
       <Title>About Me</Title>
-      <Card
-        title="Who am I?"
-        subtitle="Brief description about me."
-        label="You can learn a bit more if you google me!"
-        actions={[
-          {
-            type: "link",
-            icon: faGoogle,
-            children: "Google - Franco Canalejo",
-            href: "https://www.google.com/search?q=franco+canalejo"
-          }
-        ]}
-        inner={{ __html: snap?.info.personal.profile ?? ""}}
-      ></Card>
-      <br />
-      <br />
-      <br />
-      <AnimatedStack 
-      radius={[150, 210, 280]} 
-      speed={[25, 50, 80]}
-      label="My knowledge extends through a large set of modern technologies"
-      >{[
-        techList.map((tech, i) => (
-          <Icon
-            key={`${tech.name}-${tech.icon.iconName}`}
-            icon={tech.icon}
-            label={tech.name}
-            color={tech.color}
-            size="2x"
-            index={i + 1}
-            total={techList.length}
-          />
-        )),
-        techList.map((tech, i) => (
-          <Icon
-            key={`${tech.name}-${tech.icon.iconName}`}
-            icon={tech.icon}
-            label={tech.name}
-            color={tech.color}
-            size="2x"
-            index={i + 1}
-            total={techList.length}
-          />
-        )),
-        techList.map((tech, i) => (
-          <Icon
-            key={`${tech.name}-${tech.icon.iconName}`}
-            icon={tech.icon}
-            label={tech.name}
-            color={tech.color}
-            size="3x"
-            index={i + 1}
-            total={techList.length}
-          />
-        ))
-      ]}</AnimatedStack>
+      {snap ? (
+        <Card
+          html
+          title="Who am I?"
+          subtitle="Brief description about me."
+          label="You can learn a bit more if you google me!"
+          actions={[
+            {
+              type: "link",
+              icon: faGoogle,
+              children: "Google - Franco Canalejo",
+              href: "https://www.google.com/search?q=franco+canalejo"
+            }
+          ]}
+        >
+          {profile}
+        </Card>
+      ) : (<Spinner />)}
+      <AnimatedStack
+        radius={[150, 210, 280]}
+        speed={[3, 2, 1]}
+        label="My knowledge extends through a large set of modern technologies"
+      >
+        {techRings}
+      </AnimatedStack>
       <br />
     </section>
   )

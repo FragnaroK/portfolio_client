@@ -16,7 +16,7 @@ interface UtilsContextProviderProps {
 
 export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ children }) => {
   
-  const log = new Logger("UtilsContext", import.meta.env.VITE_DEBUG_MODE);
+  const log = new Logger("UtilsContext", import.meta.env.DEV);
   const [currentSection, setCurrentSection] = useState<string>("Introduction");
   const [isOnTop, setIsOnTop] = useState<boolean>(true);
 

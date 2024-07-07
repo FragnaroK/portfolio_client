@@ -4,8 +4,8 @@ import AboutMe from '@Sections/AboutMe/AboutMe';
 import Projects from '@Sections/Projects/Projects';
 import Button from '@Components/Button/Button';
 import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { useUtilsContext } from '@/context/UtilsContext/UtilsContextHook';
-import Experience from './sections/Experience/Experience';
+import { useUtilsContext } from '@Context/UtilsContext/UtilsContextHook';
+import Experience from '@Sections/Experience/Experience';
 
 function App() {
 

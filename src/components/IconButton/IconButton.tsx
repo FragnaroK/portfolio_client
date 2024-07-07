@@ -31,7 +31,7 @@ const IconButton: FC<IconButtonProps> = ({
   target = "_blank"
 }) => {
 
-  const log = new Logger("IconButton", import.meta.env.VITE_DEBUG_MODE);
+  const log = new Logger("IconButton", import.meta.env.DEV);
   const buttonRef = useRef<HTMLDivElement>(null);
   const finalClassName = `${className} btn-with-icon`;
   const defaultStyle = {

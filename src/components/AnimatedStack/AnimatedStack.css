@@ -28,32 +28,16 @@
     & > .animatedStackRing {
         position: absolute;
 
-        &:has(> .animatedStackItem:hover) {
-            & > .animatedStackItem {
-                animation-play-state: paused !important; 
-
-                & > .animatedStackItemContentWrapper {
-                    animation-play-state: paused !important;
-                }
-            }
-        }
-
-        
-
         & >  .animatedStackItem { 
             position: absolute;
             top: 50%;
             text-align: center;
             translate: 0% 0% !important;
-            opacity: 0;
-            animation: Rotate linear infinite both, FadeIn ease-in-out 1 both;
-            transform-style: preserve-3d;
-            animation-play-state: running;
+            transition-duration: 3s;
+            transition-timing-function: ease-in-out;
      
             .animatedStackItemContentWrapper {
-                animation: PartialRotate linear infinite both;
                 transform-style: preserve-3d;
-                animation-play-state: running;
             }
         }
     }

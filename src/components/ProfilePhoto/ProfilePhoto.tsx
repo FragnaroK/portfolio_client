@@ -11,7 +11,8 @@ interface ProfilePhotoProps extends DefaultComponentProps {
 const ProfilePhoto: FC<ProfilePhotoProps> = ({ id, className, style, label }) => {
 	const profilePhotoRef = useRef<HTMLDivElement>(null);
 	const inView = useInView(profilePhotoRef, {
-		margin: "-50px 0px -50px 0px"
+		margin: "-50px 0px -50px 0px",
+		once: true
 	});
 
 	return (

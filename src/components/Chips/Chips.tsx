@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Chips.css';
+import { deepTrim } from "@/utils/helpers";
 
 type ChipsPosition = "left" | "center" | "right";
 
@@ -26,13 +27,12 @@ const Chip: FC<ChipProps> = ({ children }) => <small className="chip">{children}
 const Chips: FC<ChipsProps> = ({
   chips, gap, position, label
 }) => {
-
   const justifyContent = getPosition(position ?? "left");
 
   return (
     <div className="chipsWrapper" style={{ gap, justifyContent }}>
       {
-        chips.map((chip, i) => <Chip key={`chip-${chip.trim().replace(/\s/g, "")}-${label.trim().replace(/\s/g, "")}-${i}`}>{chip}</Chip>)
+        chips.map((chip, i) => <Chip key={deepTrim(`chip-${chip}-${label}-${i}`)}>{chip}</Chip>)
       }
     </div>
   )

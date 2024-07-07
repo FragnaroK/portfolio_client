@@ -14,7 +14,7 @@ interface IconProps extends Omit<DefaultComponentProps<undefined>, "onClick">, F
 const Icon: FC<IconProps> = ({ style,  icon, label, index, inViewAnimation = false,  total, ...faProps }) => {
 
   const iconRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(iconRef);
+  const inView = useInView(iconRef, { once: true });
 
   return (
     <div className={`iconWrapper`} style={style} ref={iconRef}>

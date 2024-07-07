@@ -1,6 +1,7 @@
-import { FC,  ReactNode,  useRef } from "react";
+import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './AnimatedStack.css';
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 type RotationDirection = "left" | "right";
 
@@ -11,64 +12,109 @@ interface AnimatedStackProps extends DefaultComponentProps<ReactNode[][]> {
   direction?: RotationDirection[];
 }
 
-interface AnimatedStackItemProps {
+interface AnimatedStackRingProps {
+  ring: ReactNode[];
+  index: number;
+  radius: number;
+  speed: number;
+  direction: RotationDirection;
+  scrollProgress: MotionValue<number>;
+}
+
+interface AnimatedStackItemProps extends Omit<Partial<AnimatedStackRingProps>, "index" | "scrollProgress" | "ring"> {
   children: ReactNode;
   index: number;
   total: number;
-  radius?: number;
-  speed?: number;
-  direction?: RotationDirection
-} 
+  rotate: MotionValue<number>;
+}
 
-export const AnimatedStackItem: FC<AnimatedStackItemProps> = ({children, index, total, speed = 55, radius = 250, direction = "left"}) => {
+const AnimatedStackItem: FC<AnimatedStackItemProps> = ({ children, rotate, index, total, speed = 1, radius = 250, direction = "left" }) => {
 
   const itemRef = useRef<HTMLDivElement>(null);
-  
-  return (
-    <div className="animatedStackItem" ref={itemRef} style={{
+
+  const
+    rotation = index * ((360) / total),
+    reverseRotation = direction === "left" ? -(360 * speed) : (360 * speed),
+    itemContainerStyles = {
       left: `calc(50% + ${radius}px)`,
-      animationDuration: `${speed}s, 1s`,
-      animationDelay: `${(index) * ((speed / total) )}s`,
-      animationDirection: `${direction === "left" ? "reverse" : "normal"}, normal`,
-      transformOrigin: `-${radius}px 0px`
-    }}>
-      <div className="animatedStackItemContentWrapper" style={{
-        animationDuration: `${speed}s`,
-        animationDelay: `${(index) * ((speed / total))}s`,
-        animationDirection: direction === "left" ? "reverse" : "normal"
+      rotate: `${rotation}deg`,
+      transformOrigin: `-${radius}px 0px`,
+    }
+
+  const itemRotationFix = useTransform(rotate, [0, 1], [`rotate(${reverseRotation - (rotation)}deg)`, `rotate(${-(rotation)}deg)`]);
+
+  return (
+    <div className="animatedStackItem" ref={itemRef} style={itemContainerStyles}>
+      <motion.div className="animatedStackItemContentWrapper" style={{
+        rotate: `-${rotation}deg`,
+        transform: itemRotationFix,
       }}>
         {children}
-      </div>
+      </motion.div>
     </div>
   )
 }
 
-
-const AnimatedStack: FC<AnimatedStackProps> = ({
-  id, className, style, onClick, label, children, speed = [55], radius = [250], direction = ["right"]
+const AnimatedStackRing: FC<AnimatedStackRingProps> = ({
+  ring, scrollProgress, index, direction, speed, radius
 }) => {
 
-  const ref = useRef<HTMLDivElement>(null);
+  const finalSpeed = 360 * speed;
+  const rotate = useTransform(scrollProgress, [0, 1], [0, (direction === "left" ? -finalSpeed : finalSpeed)])
 
   return (
-    <div className="animatedStack" ref={ref} style={{
-      height: `${radius.reduce((prev, curr) => prev < curr ? curr : prev, 0) * 2.2}px`
-    }}>
+    <motion.div className="animatedStackRing" key={`animatedStackRing${index}}`} style={{ rotate }}>
+      {
+        ring?.map((item, i) => (
+          <AnimatedStackItem
+            key={`stackitem-${index}-${i}`}
+            index={i}
+            speed={speed}
+            radius={radius}
+            total={ring.length}
+            direction={direction}
+            rotate={scrollProgress}
+          >
+            {item}
+          </AnimatedStackItem>)
+        )
+      }
+    </motion.div>
+  )
+}
+
+const AnimatedStack: FC<AnimatedStackProps> = ({
+  label, children, speed = [55], radius = [250], direction = ['right']
+}) => {
+
+  const
+    ref = useRef<HTMLDivElement>(null),
+    { scrollYProgress } = useScroll();
+
+  const height = `${radius.reduce((prev, curr) => prev < curr ? curr : prev, 0) * 3}px`;
+
+  return (
+    <div className="animatedStack" ref={ref} style={{ height }}>
       {label && <h3 className="label">{label}</h3>}
       {
         children?.map((ring, ringIndex) => {
 
-          const finalRadius = radius[ringIndex] ?? radius[0] * ((children.length - ringIndex) / children.length);
-          const finalSpeed = speed[ringIndex] ?? speed[0];
-          const finalDirection = direction[ringIndex] ?? ringIndex % 2 == 0 ? "right" : "left"
+          const
+            finalRadius = radius[ringIndex] ?? radius[0] * ((children.length - ringIndex) / children.length),
+            finalSpeed = speed[ringIndex] ?? speed[0],
+            finalDirection = direction[ringIndex] ?? ringIndex % 2 == 0 ? "right" : "left";
 
           return (
-            <div className="animatedStackRing" key={`animatedStackRing${ringIndex}}`}>
-              {
-                ring?.map((item, i) => <AnimatedStackItem key={`stackitem-${ringIndex}-${i}`} index={i} direction={finalDirection} speed={finalSpeed} radius={finalRadius} total={ring.length}>{item}</AnimatedStackItem>)
-              }
-            </div>
-        )
+            <AnimatedStackRing
+              key={`ring${ringIndex}${finalDirection}${finalSpeed}${finalRadius}`}
+              ring={ring}
+              index={ringIndex}
+              speed={finalSpeed}
+              radius={finalRadius}
+              direction={finalDirection}
+              scrollProgress={scrollYProgress}
+            />
+          )
         })
       }
     </div>

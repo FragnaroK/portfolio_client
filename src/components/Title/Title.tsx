@@ -15,7 +15,8 @@ const Title: FC<TitleProps> = ({
 
   const titleRef = useRef<HTMLDivElement>(null)
   const inView = useInView(titleRef, {
-    margin: "-50px 0px -50px 0px"
+    margin: "-50px 0px -50px 0px",
+    once: true
   });
   const TitleWrapper = `h${level}` as ElementType<HTMLAttributes<HTMLElement>>;
 

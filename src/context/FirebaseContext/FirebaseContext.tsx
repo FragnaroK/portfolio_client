@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 import { DatabaseReference, get } from "firebase/database";
 import Logger from 'node-logger-web';
 import { DatabaseSnap } from '@Types/DatabaseTypes';
@@ -23,7 +23,7 @@ interface FirebaseContextProviderProps {
 
 const useFirebase = () => {
 
-  const log = new Logger("Firebase", import.meta.env.VITE_DEBUG_MODE);
+  const log = new Logger("Firebase", import.meta.env.DEV);
   const [database, setDatabase] = useState<FirebaseContextData["database"]>({ ref: dbRef })
 
   useEffect(() => {
@@ -42,14 +42,14 @@ const useFirebase = () => {
     })
 
   }, [])
-
+  
 
   return useMemo(() => ({ database }), [database]);
 }
 
 export const FirebaseContextProvider: React.FC<FirebaseContextProviderProps> = ({ children }) => {
 
-  // const log = new Logger("FirebaseContext", import.meta.env.VITE_DEBUG_MODE);
+  // const log = new Logger("FirebaseContext", import.meta.env.DEV);
   const { database } = useFirebase();
 
   const contextValue: FirebaseContextData = useMemo(() => ({

@@ -12,12 +12,14 @@ export default defineConfig({
       "@Public": `${path.resolve(__dirname, "./public/")}`,
       "@Sections": path.resolve(__dirname, "./src/app/sections"),
       "@Types": `${path.resolve(__dirname, "./src/types")}`,
-      "@Contexts": `${path.resolve(__dirname, "./src/contexts")}`,
+      "@Context": `${path.resolve(__dirname, "./src/context")}`,
       "@Utils": `${path.resolve(__dirname, "./src/utils")}`,
       "@Database": `${path.resolve(__dirname, "./src/database")}`,
       "@Assets": `${path.resolve(__dirname, "./src/assets")}`,
       "@App": `${path.resolve(__dirname, "./src/app")}`,
       "@Fonts": `${path.resolve(__dirname, "./src/assets/fonts")}`,
+      "@Hooks": `${path.resolve(__dirname, "./src/hooks")}`,
+      "@Constants": `${path.resolve(__dirname, "./src/constants")}`
     }
   }
 })

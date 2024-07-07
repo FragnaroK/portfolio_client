@@ -1,9 +1,5 @@
-import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref } from "firebase/database";
-import Logger from "node-logger-web";
-
-const log = new Logger("Firebase", import.meta.env.VITE_DEBUG_MODE);
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_DB_API_KEY,
@@ -18,9 +14,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const fireApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(fireApp);
 const db = getDatabase(fireApp);
 const dbRef = ref(db, `${import.meta.env.VITE_DB_ENDPOINT}`);
 
 
-    export { fireApp, analytics, db, dbRef }
+export { fireApp, db, dbRef }

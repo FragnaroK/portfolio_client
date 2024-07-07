@@ -6,7 +6,7 @@ type useHoverOutput = [boolean, () => void];
 
 const useHover = ($elRef: React.RefObject<HTMLDivElement>): useHoverOutput => {
 
-  const log = new Logger("useHover", import.meta.env.VITE_DEBUG_MODE);
+  const log = new Logger("useHover", import.meta.env.DEV);
   const [isHover, setIsHover] = useState<boolean>(false);
 
   const onMouseEnterHandler = useCallback(() => {

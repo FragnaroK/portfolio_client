@@ -472,6 +472,15 @@
     }
 }
 
+@keyframes Rotate2 {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
 
 @keyframes PartialRotate {
     0% {

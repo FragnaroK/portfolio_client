@@ -178,30 +178,20 @@
 		transition: all 0.3s ease-in-out;
 
 		& > .card {
+			padding: 10px;
 			border-radius: 20px;
-			padding: 10px 10px 10px 20px;
 			background-color: var(--card9) !important;
-			transition: scale var(--expand-transition), top var(--expand-transition), translate var(--expand-transition), width var(--expand-transition), height var(--expand-transition), opacity var(--expand-transition);
-		
-			& .cardContent {
-				& ul{
-					list-style-type: disc !important;
-					margin: 10px;
-					padding: 10px;
-				}
-			}
 		}
 
 		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
 			width: var(--desktop-content-width);
-
-			
 		}
+		
 		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
 			margin-left: 0px !important;
 
 			& > .card {
-				padding: 10px !important;
+				padding: 0px 10px !important;
 				background-color: var(--background) !important;
 				border: none !important;
 			}

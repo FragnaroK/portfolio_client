@@ -5,20 +5,21 @@ import Button, { ButtonProps } from "@Components/Button/Button";
 import IconButton, { IconButtonProps } from "@Components/IconButton/IconButton";
 import Flex from "@Components/Flex/Flex";
 import { motion, useInView } from 'framer-motion';
-import useMarkdown from '@/hooks/useMarkdown/useMarkdown';
+import useMarkdown from '@Hooks/useMarkdown/useMarkdown';
 
 export interface CardProps extends Pick<DefaultComponentProps, "style" | "id" | "className">, Partial<CardHeaderProps>, Partial<CardContentProps>, Partial<CardFooterProps> {
-  animateInView?: boolean
+  animateInView?: boolean;
 }
 
 interface CardHeaderProps {
-  title: string,
-  subtitle?: string,
+  title: string;
+  subtitle?: string;
+  divider?: boolean;
 }
 
 interface CardContentProps {
-  children?: ReactNode;
-  inner?: { __html: string }
+  children?: ReactNode | string;
+  html?: boolean;
 }
 
 interface CardFooterProps {
@@ -29,30 +30,24 @@ interface CardFooterProps {
 
 const isButton = (obj: ButtonProps | IconButtonProps): obj is ButtonProps => "icon" in obj;
 
-const CardHeader: FC<CardHeaderProps> = ({ title, subtitle }) => (
+const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, divider = true }) => (
   <header className="cardHeader">
     <h2>{title}</h2>
     {subtitle ? <h4>{subtitle}</h4> : null}
-    <hr />
+    {divider && <hr />}
   </header>
 )
 
-const CardContent: FC<CardContentProps> = ({ children, inner }) => {
-  const parsedInner = useMarkdown(inner?.__html ?? "")
+const CardContent: FC<CardContentProps> = ({ children, html = false }) => {
+  const parsedInner = useMarkdown(html ? children as string : '')
 
   return (
     <main className="cardContent" >
       {
-        inner ?
-          (
-            <div className="cardContentWrapper" dangerouslySetInnerHTML={inner ? { __html: parsedInner } : undefined} />
-          )
+        html ?
+          (<div className="cardContentWrapper" dangerouslySetInnerHTML={{ __html: parsedInner }} />)
           :
-          (
-            <div className="cardContentWrapper" >
-              {children}
-            </div>
-          )
+          (<div className="cardContentWrapper" >{children}</div>)
       }
     </main>
   )
@@ -84,22 +79,23 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions, fill = false }) => (
   </footer>
 )
 
-const Card: FC<CardProps> = ({ id, className, style, children, inner, title, subtitle, actions, label, animateInView = true, fill = false }) => {
+const Card: FC<CardProps> = ({ id, className, style, children, html = false, title, subtitle, actions, label, animateInView = true, fill = false }) => {
 
   const cardRef = useRef<HTMLElement>(null);
   const inView = useInView(cardRef, {
-    margin: "-50px 0px -50px 0px"
+    margin: "-50px 0px -50px 0px",
+    once: true
   })
 
   return (
     <motion.article className={`card ${className}`} id={id} ref={cardRef}
       style={{
-        opacity: animateInView ? (inView ? 1 : 0) : 1,
+        opacity: animateInView && !inView ? 0 : 1,
         ...style
       }}
     >
-      {title && <CardHeader title={title} subtitle={subtitle} />}
-      {(children || inner) && <CardContent inner={inner}>{children}</CardContent>}
+      {title && <CardHeader title={title} subtitle={subtitle} divider={!!(children || actions)} />}
+      {children && <CardContent html={html}>{children}</CardContent>}
       {actions && <CardFooter label={label ?? "Action label"} fill={fill} actions={actions} />}
     </motion.article>
   )

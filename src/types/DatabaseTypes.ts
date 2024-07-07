@@ -1,131 +1,138 @@
 export interface DatabaseSnap {
-    info:     Info;
-    meta:     Meta;
-    projects: Project[];
-    stats:    Stats;
+    readonly info:     Info;
+    readonly meta:     Meta;
+    readonly projects: Project[];
+    readonly stats:    Stats;
 }
 
 export interface Info {
-    personal:     Personal;
-    professional: Professional;
+    readonly personal:     Personal;
+    readonly professional: Professional;
 }
 
 export interface Personal {
-    name:      Name;
-    jobTitle:  string[];
-    rights:    string;
-    contact:   Contact;
-    languages: string[];
-    profile:   string;
+    readonly name:      Name;
+    readonly jobTitle:  string[];
+    readonly rights:    string;
+    readonly contact:   Contact;
+    readonly languages: string[];
+    readonly profile:   string;
 }
 
 export interface Contact {
-    location: string;
-    phone:    string;
-    email:    string;
+    readonly location: string;
+    readonly phone:    string;
+    readonly email:    string;
 }
 
 export interface Name {
-    first:  string;
-    second?: string;
-    last?:   string;
-    full:   string;
+    readonly first:  string;
+    readonly second: string;
+    readonly last:   string;
+    readonly full:   string;
 }
 
 export interface Professional {
-    experience:     Experience;
-    workExperience: WorkExperience[];
-    education:      Education[];
-    skills?:         Skill[];
-    interests?:      string[];
-    links:          Links;
-    references:     Reference[];
+    readonly experience:     Experience;
+    readonly workExperience: WorkExperience[];
+    readonly education:      Education[];
+    readonly skills:         Skill[];
+    readonly interests:      string[];
+    readonly links:          Links;
+    readonly references:     Reference[];
 }
 
 export interface Education {
-    degree?:      string;
-    institution?: string;
-    location?:    string;
-    startDate?:   string;
-    endDate?:     string;
+    readonly degree:      string;
+    readonly institution: string;
+    readonly location:    string;
+    readonly startDate:   string;
+    readonly endDate:     string;
+    readonly ref?:        Ref;
+}
+
+export interface Ref {
+    readonly type:  "post" | "certificate";
+    readonly link:  string;
+    readonly label: string;
 }
 
 export interface Experience {
-    years?:  number;
-    months?: number;
+    readonly years:  number;
+    readonly months: number;
 }
 
 export interface Links {
-    portfolio?: string;
-    github?:    string;
-    codepen?:   string;
-    linkedin?:  string;
+    readonly portfolio: string;
+    readonly github:    string;
+    readonly codepen:   string;
+    readonly linkedin:  string;
 }
 
 export interface Reference {
-    name?:     string;
-    position?: string;
-    email?:    string;
-    phone?:    string;
+    readonly name:     string;
+    readonly position: string;
+    readonly email:    string;
+    readonly phone:    string;
 }
 
 export interface Skill {
-    skill?: string;
-    notes?: string;
+    readonly skill: string;
+    readonly notes?: string;
 }
 
 export interface WorkExperience {
-    company?:          string;
-    location?:         string;
-    startDate?:        string;
-    endDate?:          string;
-    position?:         string;
-    responsibilities?: string[];
-    achievements?:     string[];
+    readonly company:          string;
+    readonly location:         string;
+    readonly startDate:        string;
+    readonly endDate:          string;
+    readonly position:         string;
+    readonly responsibilities: string[];
+    readonly achievements:     string[];
+    readonly ref?:              Ref;
 }
 
 export interface Meta {
-    version?:     string;
-    publishDate?: string;
-    repo?:        string;
-    lastResume?:  LastResume;
+    readonly version:      string;
+    readonly publish_date: string;
+    readonly repo:         string;
+    readonly last_resume:  LastResume;
 }
 
 export interface LastResume {
-    date?:     string;
-    job?:      string;
-    filename?: string;
-    filetype?: string;
+    readonly date:     string;
+    readonly job:      string;
+    readonly filename: string;
+    readonly filetype: string;
 }
 
 export interface Project {
-    project:     string;
-    tech:        string[];
-    timestamp?:   string;
-    description: string;
-    image:       string;
-    repo:        string;
-    link:        string;
-    id:          string;
+    readonly content:   string;
+    readonly id:        string;
+    readonly image:     string;
+    readonly languages: string[];
+    readonly link?:      string;
+    readonly repo?:      string;
+    readonly title:     string;
 }
 
 export interface Stats {
-    visits: number;
-    rank:   Rank;
-    clicks: Clicks;
+    readonly visits: number;
+    readonly rank:   Rank;
+    readonly clicks: Clicks;
 }
 
 export interface Clicks {
-    resumeDownloads: number;
-    rankedProjects:  RankedProjectElement[];
+    readonly resumeDownloads: number;
+    readonly rankedProjects:  RankedProjectElement[];
 }
 
 export interface RankedProjectElement {
-    project:   string;
-    clicks:    string;
-    projectID: string;
+    readonly project:   string;
+    readonly clicks:    string;
+    readonly projectId: string;
 }
 
 export interface Rank {
-    topProjects: RankedProjectElement[];
+    readonly topProjects: RankedProjectElement[];
 }

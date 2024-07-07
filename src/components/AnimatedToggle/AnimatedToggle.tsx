@@ -1,6 +1,8 @@
 import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
 import './AnimatedToggle.css';
 
+// TODO: Check usage of this componente, delete if not used.
+
 type Content = ReactNode | string | JSX.Element;
 type Animation = "slideVertical" | "slideHorizontal" | "crossfade" | "slideFadeVertical" | "slideFadeHorizontal"
 
@@ -31,9 +33,7 @@ const getAnimation = (anim: Animation) => {
   }
 }
 
-const getDirection= (anim: string) => anim.includes('vertical')? ["fromTop", "fromBottom"] : ["fromLeft", "fromRight"]
-
-
+const getDirection = (anim: string) => anim.includes('vertical') ? ["fromTop", "fromBottom"] : ["fromLeft", "fromRight"]
 
 const AnimatedToggle: FC<AnimatedToggleProps> = ({
   initial, target, toggle, animation = "slideVertical", delay, easing = "ease-in-out", speed, className
@@ -41,13 +41,14 @@ const AnimatedToggle: FC<AnimatedToggleProps> = ({
 
   const [isToggled, setIsToggled] = useState<boolean>(toggle);
 
-  const animationType = getAnimation(animation);
-  const direction = getDirection(animationType)
+  const
+    animationType = getAnimation(animation),
+    direction = getDirection(animationType);
+
   const animationSpecs: CSSProperties = {
     transition: `transform ${speed ?? 0.2}s ${easing}, opacity ${speed ?? 0.2}s ${easing}`,
     transitionDelay: `${delay ?? 0}s`
   }
-
 
   useEffect(() => {
     setIsToggled(toggle);

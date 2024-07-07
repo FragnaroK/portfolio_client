@@ -8,7 +8,7 @@ import Title from "@Components/Title/Title";
 import IconButton from '@Components/IconButton/IconButton';
 import Text from "@Components/Text/Text";
 import Email from "@Components/Email/Email";
-import { useFirebaseContext } from "@/context/FirebaseContext/FirebaseContextHooks";
+import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
 
 const SocialMedia: FC = () => {
 

@@ -5,6 +5,7 @@
     text-decoration: none;
     color: var(--accent-foreground) !important;
     text-decoration-color: var(--primary) !important;
+    white-space: nowrap;
 
     & span:nth-child(1) {
 
