@@ -3,11 +3,13 @@ import { dependencies, devDependencies, version, author, homepage } from '../pac
 declare global {
     interface Window {
         stats: () => void;
+        ragnarok: () => void;
     }
     interface Console {
         clean: () => void;
     }
 }
+
 
 function showDeps(label: string, depsList: { [key: string]: string }) {
     const title = `${colors.underline}${colors.bold}${label}${colors.r}:`;
@@ -73,6 +75,7 @@ const banner = `
   `;
 
 window.stats = () => console.log(`${info}\n${deps}\n${devDeps}`);
+window.ragnarok = () => { localStorage.clear() };
 console.clean = () => {
     console.clear();
     console.log(banner);

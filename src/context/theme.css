@@ -128,6 +128,13 @@ body {
             background-size: 200% 300%;
             background-repeat: no-repeat;
             background-position: 0px 0px;
+            will-change: background-position;
+
+            &:is(:disabled,[aria-disabled="true"]) {
+                background-color: var(--muted) !important;
+                background-image: none !important;
+                filter: grayscale(100%);
+            }
 
             &:hover {
                 background-position: 0px 50%;
@@ -135,7 +142,6 @@ body {
 
             &:active {
                 background-position: 0px 99%;
-                transition: 0.1s;
             }
 
             .error {

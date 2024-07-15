@@ -27,17 +27,23 @@
     
     & > .animatedStackRing {
         position: absolute;
+        will-change: transform;
+
+        &:nth-child(even) {
+            rotate: 180deg;
+        }
 
         & >  .animatedStackItem { 
+            --item-rotation: 0deg;
+
             position: absolute;
             top: 50%;
             text-align: center;
             translate: 0% 0% !important;
-            transition-duration: 3s;
-            transition-timing-function: ease-in-out;
-     
+            
             .animatedStackItemContentWrapper {
-                transform-style: preserve-3d;
+                rotate: var(--item-rotation);
+                will-change: transform;
             }
         }
     }

@@ -3,6 +3,7 @@ import { DefaultComponentProps, ExtendedCSSProperties } from "@Types/Types";
 import './Toggle.css';
 import { faCircle, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
+ 
 
 interface ToggleProps extends DefaultComponentProps<string, HTMLInputElement> {
   initial?: IconDefinition;
@@ -15,7 +16,7 @@ const Toggle: FC<ToggleProps> = ({
   initial, target, disabled = false
 }) => {
 
-  const log = new Logger("ToggleComponent", import.meta.env.DEV);
+  const log = new Logger("ToggleComponent",   import.meta.env.DEV );
 
   const defaultStyles = useMemo(() => ({
     ...style,

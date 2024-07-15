@@ -1,0 +1,128 @@
+@import "../../constants/const.css";
+/* TODO: Move theme related props to context/theme.css */
+
+.accordionWrapper {
+
+    --label-size: 20px;
+    --label-padding: 5px;
+    --total-padding: calc(var(--label-padding) * 3);
+    --label-height: calc(var(--label-size) + var(--total-padding));
+    --max-accordion-height: 45svh;
+
+    height: var(--label-height);
+    transition: height var(--transition);
+    border-radius: var(--container-radius);
+
+    &:has(> details[open]) {
+        height: var(--max-accordion-height);
+    }
+
+	 & > details {
+		--marker-size: calc(var(--label-size) / 2);
+
+        position: relative;
+        margin: 5px 2.5px;
+        height: var(--label-height);
+        transition: height var(--transition);
+        border-radius: var(--container-radius); 
+        overflow: hidden;
+
+        &:hover {
+            &::before {
+                background-color: var(--primary-lighter) !important;
+            }
+        }
+
+        &::before {
+            height: var(--label-height);
+            z-index: 1;
+            background-color: var(--primary);
+        }
+
+        &::after {
+            height: 0%;
+            z-index: 0;
+            background-color: var(--accent);
+            opacity: 0;
+        } 
+
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            inset: 0;
+            border-radius: var(--container-radius);
+            transition: opacity var(--transition), height var(--transition), background-color var(--transition), border-radius var(--transition);
+        }
+
+		& > summary {
+            position: relative;
+            z-index: 3;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--label-padding);
+            padding-left: calc(var(--marker-size) + 15px); 
+            height: var(--label-height);
+            font-size: calc(var(--label-size) / 1.5);
+            font-weight: bold;
+			cursor: pointer;
+
+			&::marker {
+				content: "";
+			}
+
+			&::before {
+				content: "\f107";
+				position: absolute;
+				top: 50%;
+				left: calc(var(--marker-size) / 2);
+				size: var(--marker-size);
+				font-size: var(--marker-size);
+                translate: 50% -50%;
+				transform: rotate(-90deg);
+				transition: transform var(--transition);
+			}
+
+            & + article {
+                position: relative;
+                z-index: 2;
+                height: calc(100% - var(--label-height));
+                padding: 10px 10px 10px 15px;
+                overflow: auto;
+                opacity: 0;
+                transition: opacity var(--transition);
+                transition-delay: 0s;
+            }
+		}
+
+		
+
+		&[open] {
+			height: 100%;
+
+            &::after {
+                height: 100%;
+                opacity: 1;
+            }
+
+            &::before {
+                background-color: var(--primary-lighter);
+                border-radius: var(--container-radius) var(--container-radius) 0 0 ;
+            }
+
+			& > summary {
+
+				&::before {
+					transform: rotate(0deg);
+				}
+
+                & + article {
+                    transition-delay: .2s !important;
+                    opacity:1;
+                }
+			}
+		}
+	}
+}

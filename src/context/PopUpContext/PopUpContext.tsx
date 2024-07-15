@@ -3,6 +3,7 @@ import PopUp from '@Components/PopUp/PopUp';
 import Logger from 'node-logger-web';
 import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef, useEffect } from 'react';
 import './PopUpContext.css';
+ 
 
 interface PopUpContextData {
   show: (content: CardProps) => void;
@@ -16,7 +17,7 @@ interface PopUpContextProviderProps {
 }
 
 export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ children }) => {
-  const log = new Logger("PopUpContext", import.meta.env.DEV);
+  const log = new Logger("PopUpContext",   import.meta.env.DEV );
 
   const [isShowing, setIsShowing] = useState<boolean>(false);
   const [popupContent, setPopupContent] = useState<CardProps | null>(null);

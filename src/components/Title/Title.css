@@ -1,27 +1,30 @@
 .titleWrapper {
-    margin: 20px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+	margin: 20px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 
+	h1,
+	h2 {
+		margin: 0;
+		cursor: text;
 
-    h1, h2 {
-        margin: 0;
+		& span {
+			display: inline-block;
+			animation: SlideInRight ease-in-out 1 normal both;
+			cursor: text;
+		}
+	}
 
-        & span {
-            display: inline-block;
-            animation: SlideInRight ease-in-out 1 normal both;
-        }
-    }
+	& > h1:nth-child(1) {
+	}
+	& > h2:nth-child(2) {
+		font-size: larger;
 
-    & > h1:nth-child(1) {}
-    & > h2:nth-child(2) {
-        font-size: larger;
-
-        span {
-            color: var(--primary);
-        }
-    }
+		span {
+			color: var(--primary);
+		}
+	}
 }

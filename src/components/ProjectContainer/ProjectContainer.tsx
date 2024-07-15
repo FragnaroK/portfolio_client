@@ -4,13 +4,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Logger from "node-logger-web";
 import { DefaultComponentProps } from "@Types/Types";
 import Title from "@Components/Title/Title";
-import Button from "@Components/Button/Button";
+import BetterButton from "@/components/Button/BetterButton";
 import Image from "@Components/Image/Image";
 import Chips from '@Components/Chips/Chips';
 import Toggle from '@Components/Toggle/Toggle';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Card from "@Components/Card/Card";
 import './ProjectContainer.css';
+import { deepTrim } from "@/utils/helpers";
+ 
 
 interface ProjectContainerProps extends DefaultComponentProps<string, HTMLElement>, ProjectHeader, ProjectContent, ProjectActions {
   index?: number;
@@ -57,8 +59,8 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
 const ProjectContainerFooter: FC<ProjectActions> = ({ href, repo }) => (
   (href || repo) && (
     <footer>
-      {href && <Button type="link" href={href}>Go to project</Button>}
-      {repo && <Button type="link" icon={faGithub} href={repo}>Repository</Button>}
+      {href && <BetterButton type="link" href={href}>Go to project</BetterButton>}
+      {repo && <BetterButton type="link" icon={faGithub} href={repo}>Repository</BetterButton>}
     </footer>
   )
 );
@@ -74,7 +76,7 @@ const ProjectContainerContent: FC<ProjectContent> = ({ children }) => (
 const ProjectContainer: FC<ProjectContainerProps> = ({
   style, onClick, href, img, repo, tech, title, children, timestamp, index = 0, ...props
 }) => {
-  const log = new Logger("ProjectContainer", import.meta.env.DEV);
+  const log = new Logger("ProjectContainer",   import.meta.env.DEV );
   const projectRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,
@@ -93,7 +95,7 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
       className="projectContainer"
       onClick={onProjectClickHandler}
       ref={projectRef}
-      id={`project-container-${title}`}
+      id={`projectContainer${deepTrim(title)}`}
       style={{
         ...style,
         opacity: scrollYProgress,

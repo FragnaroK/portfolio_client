@@ -5,6 +5,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import Logger from "node-logger-web";
 import { faArrowUpRightFromSquare, faSmile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+ 
 
 type ButtonType = "download" | "button" | "link";
 type ButtonTarget = "_blank" | "_parent" | "_self" | "_top"
@@ -31,7 +32,7 @@ const IconButton: FC<IconButtonProps> = ({
   target = "_blank"
 }) => {
 
-  const log = new Logger("IconButton", import.meta.env.DEV);
+  const log = new Logger("IconButton",   import.meta.env.DEV );
   const buttonRef = useRef<HTMLDivElement>(null);
   const finalClassName = `${className} btn-with-icon`;
   const defaultStyle = {

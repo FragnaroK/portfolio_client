@@ -1,5 +1,10 @@
 import { faHtml5, faCss3, faReact, faGoogle, faNodeJs, faJs, faLinux, faWindows, faSass, faLess, faGithub, faSourcetree, faBitbucket, faJira, faConfluence, faGit, faChrome, faDocker, faMarkdown, faBootstrap } from "@fortawesome/free-brands-svg-icons";
 
+// DB Constants
+export const DB_ITERATION_PATH = '/meta/db_iteration'
+export const LS_DB_DATA = 'db_data';
+export const LS_DB_ITERATION = 'db_iteration';
+
 export const TECH_ICON_LIST = [
     {
       color: "#E44D26", // HTML5 color

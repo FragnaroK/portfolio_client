@@ -52,7 +52,7 @@ export interface Education {
 }
 
 export interface Ref {
-    readonly type:  "post" | "certificate";
+    readonly type:  string;
     readonly link:  string;
     readonly label: string;
 }
@@ -78,7 +78,7 @@ export interface Reference {
 
 export interface Skill {
     readonly skill: string;
-    readonly notes?: string;
+    readonly notes: string;
 }
 
 export interface WorkExperience {
@@ -89,21 +89,24 @@ export interface WorkExperience {
     readonly position:         string;
     readonly responsibilities: string[];
     readonly achievements:     string[];
-    readonly ref?:              Ref;
+    readonly ref?: Ref;
 }
 
 export interface Meta {
-    readonly version:      string;
-    readonly publish_date: string;
-    readonly repo:         string;
-    readonly last_resume:  LastResume;
+    readonly version:       string;
+    readonly publish_date:  string;
+    readonly repo:          string;
+    readonly db_iteration:  string;
+    readonly latest_resume: LatestResume;
 }
 
-export interface LastResume {
-    readonly date:     string;
-    readonly job:      string;
-    readonly filename: string;
-    readonly filetype: string;
+export interface LatestResume {
+    readonly date:          string;
+    readonly job:           string;
+    readonly filename:      string;
+    readonly filetype:      string;
+    readonly full_filename: string;
+    readonly ref:           string;
 }
 
 export interface Project {
@@ -111,8 +114,8 @@ export interface Project {
     readonly id:        string;
     readonly image:     string;
     readonly languages: string[];
-    readonly link?:      string;
-    readonly repo?:      string;
+    readonly link:      string;
+    readonly repo:      string;
     readonly title:     string;
 }
 

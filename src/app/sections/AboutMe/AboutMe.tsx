@@ -9,6 +9,7 @@ import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHook
 import AnimatedStack from '@Components/AnimatedStack/AnimatedStack';
 import Spinner from "@Components/Spinner/Spinner";
 import { TECH_ICON_LIST } from "@Constants/const";
+import { deepTrim } from "@/utils/helpers";
 
 interface AboutMeProps extends DefaultComponentProps { }
 const AboutMe: FC<AboutMeProps> = () => {
@@ -21,7 +22,7 @@ const AboutMe: FC<AboutMeProps> = () => {
   const techRings = [
     TECH_ICON_LIST.map((tech, i) => (
       <Icon
-        key={`${tech.name}-${tech.icon.iconName}`}
+        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
         icon={tech.icon}
         label={tech.name}
         color={tech.color}
@@ -32,7 +33,7 @@ const AboutMe: FC<AboutMeProps> = () => {
     )),
     TECH_ICON_LIST.map((tech, i) => (
       <Icon
-        key={`${tech.name}-${tech.icon.iconName}`}
+        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
         icon={tech.icon}
         label={tech.name}
         color={tech.color}
@@ -43,7 +44,7 @@ const AboutMe: FC<AboutMeProps> = () => {
     )),
     TECH_ICON_LIST.map((tech, i) => (
       <Icon
-        key={`${tech.name}-${tech.icon.iconName}`}
+        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
         icon={tech.icon}
         label={tech.name}
         color={tech.color}

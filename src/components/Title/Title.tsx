@@ -2,6 +2,7 @@ import { ElementType, FC, HTMLAttributes, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Title.css';
 import { useInView } from "framer-motion";
+import { deepTrim } from "@/utils/helpers";
 
 interface TitleProps extends DefaultComponentProps<string> {
   children: string;
@@ -25,7 +26,8 @@ const Title: FC<TitleProps> = ({
       (<span 
         aria-hidden="true"
         data-aria-inmutable="true"
-        key={`letter-${char}-from-string-${text}-at-index-${i}`}
+        aria-label={char}
+        key={deepTrim(`letter-${char}-from-string-${text}-at-index-${i}`)}
         style={{
           animationDuration: `${i / text.length}s`,
           animationDelay: `${i / (text.length * 2)}s`

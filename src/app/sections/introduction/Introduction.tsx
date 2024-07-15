@@ -2,13 +2,14 @@ import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Introduction.css';
 import ProfilePhoto from '@Components/ProfilePhoto/ProfilePhoto';
-import Button from "@Components/Button/Button";
+import BetterButton from "@/components/Button/BetterButton";
 import { faCodepen, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Title from "@Components/Title/Title";
 import IconButton from '@Components/IconButton/IconButton';
 import Text from "@Components/Text/Text";
 import Email from "@Components/Email/Email";
 import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
+import { deepTrim } from "@/utils/helpers";
 
 const SocialMedia: FC = () => {
 
@@ -37,7 +38,7 @@ const SocialMedia: FC = () => {
       {
         media.map((m) => (
           <IconButton
-            key={`${m.name}-link-button`}
+            key={deepTrim(`${m.name}-link-button`)}
             type="link"
             href={m.link}
             alt={`Button linked to my ${m.name} profile`}
@@ -74,7 +75,7 @@ const Introduction: FC<DefaultComponentProps> = () => {
         </Text>
       </section>
       <div>
-        <Button type="anchor" href="#aboutMe">About Me</Button>
+        <BetterButton type="anchor" href="#aboutMe">About Me</BetterButton>
       </div>
     </section>
   )

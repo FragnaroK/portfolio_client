@@ -32,7 +32,7 @@
 		border-radius: 8px;
 		overflow: hidden;
 
-		& > .cardContentWrapper {
+		&  .cardContentWrapper {
 			overflow: auto;
 			size: 100%;
 			padding: 10px 0;

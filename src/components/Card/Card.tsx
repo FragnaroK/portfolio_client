@@ -1,11 +1,13 @@
 import './Card.css';
 import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
-import Button, { ButtonProps } from "@Components/Button/Button";
+import BetterButton, { BetterButtonProps } from "@/components/Button/BetterButton";
 import IconButton, { IconButtonProps } from "@Components/IconButton/IconButton";
 import Flex from "@Components/Flex/Flex";
 import { motion, useInView } from 'framer-motion';
 import useMarkdown from '@Hooks/useMarkdown/useMarkdown';
+import Accordion from '../Accordion/Accordion';
+import { deepTrim } from '@/utils/helpers';
 
 export interface CardProps extends Pick<DefaultComponentProps, "style" | "id" | "className">, Partial<CardHeaderProps>, Partial<CardContentProps>, Partial<CardFooterProps> {
   animateInView?: boolean;
@@ -20,15 +22,16 @@ interface CardHeaderProps {
 interface CardContentProps {
   children?: ReactNode | string;
   html?: boolean;
+  collapsable?: string;
 }
 
 interface CardFooterProps {
   label: string;
   fill?: boolean;
-  actions: (ButtonProps | IconButtonProps)[];
+  actions: (BetterButtonProps | IconButtonProps)[];
 }
 
-const isButton = (obj: ButtonProps | IconButtonProps): obj is ButtonProps => "icon" in obj;
+const isButton = (obj: BetterButtonProps | IconButtonProps): obj is BetterButtonProps => "icon" in obj;
 
 const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, divider = true }) => (
   <header className="cardHeader">
@@ -38,16 +41,20 @@ const CardHeader: FC<CardHeaderProps> = ({ title, subtitle, divider = true }) =>
   </header>
 )
 
-const CardContent: FC<CardContentProps> = ({ children, html = false }) => {
+const CardContent: FC<CardContentProps> = ({ children, collapsable, html = false }) => {
   const parsedInner = useMarkdown(html ? children as string : '')
+  const content = html ?
+  (<div className="cardContentWrapper" dangerouslySetInnerHTML={{ __html: parsedInner }} />)
+  : (<div className="cardContentWrapper" >{children}</div>)
 
   return (
     <main className="cardContent" >
       {
-        html ?
-          (<div className="cardContentWrapper" dangerouslySetInnerHTML={{ __html: parsedInner }} />)
-          :
-          (<div className="cardContentWrapper" >{children}</div>)
+        collapsable ? (
+          <Accordion label={collapsable}>
+            {content}
+          </Accordion>
+        ) : content
       }
     </main>
   )
@@ -70,8 +77,8 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions, fill = false }) => (
         {
           actions.map(
             (action) => isButton(action) ?
-              (<Button {...action} key={`button-component-${action.type}-${action.children}`} style={fill ? { width: '100%' } : {}} />)
-              : (<IconButton {...action} key={`icon-button-component-${action.type}-${action.children}`} style={fill ? { width: '100%' } : {}} />)
+              (<BetterButton {...action} key={deepTrim(`button-component-${action.type}-${action.children}`)} style={fill ? { width: '100%' } : {}} />)
+              : (<IconButton {...action} key={deepTrim(`icon-button-component-${action.type}-${action.children}`)} style={fill ? { width: '100%' } : {}} />)
           )
         }
       </Flex>
@@ -79,7 +86,7 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions, fill = false }) => (
   </footer>
 )
 
-const Card: FC<CardProps> = ({ id, className, style, children, html = false, title, subtitle, actions, label, animateInView = true, fill = false }) => {
+const Card: FC<CardProps> = ({ id, className, style, children, collapsable, html = false, title, subtitle, actions, label, animateInView = true, fill = false }) => {
 
   const cardRef = useRef<HTMLElement>(null);
   const inView = useInView(cardRef, {
@@ -95,7 +102,7 @@ const Card: FC<CardProps> = ({ id, className, style, children, html = false, tit
       }}
     >
       {title && <CardHeader title={title} subtitle={subtitle} divider={!!(children || actions)} />}
-      {children && <CardContent html={html}>{children}</CardContent>}
+      {children && <CardContent html={html} collapsable={collapsable}>{children}</CardContent>}
       {actions && <CardFooter label={label ?? "Action label"} fill={fill} actions={actions} />}
     </motion.article>
   )

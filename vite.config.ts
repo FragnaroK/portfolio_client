@@ -19,7 +19,8 @@ export default defineConfig({
       "@App": `${path.resolve(__dirname, "./src/app")}`,
       "@Fonts": `${path.resolve(__dirname, "./src/assets/fonts")}`,
       "@Hooks": `${path.resolve(__dirname, "./src/hooks")}`,
-      "@Constants": `${path.resolve(__dirname, "./src/constants")}`
+      "@Constants": `${path.resolve(__dirname, "./src/constants")}`,
+      "@Firebase": `${path.resolve(__dirname, "./src/firebase.ts")}`
     }
   }
 })

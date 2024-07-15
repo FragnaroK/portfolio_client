@@ -1,6 +1,7 @@
 import Logger from 'node-logger-web';
 import './UtilsContext.css';
 import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+ 
 
 interface UtilsContextData {
    currentSection: string;
@@ -16,7 +17,7 @@ interface UtilsContextProviderProps {
 
 export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ children }) => {
   
-  const log = new Logger("UtilsContext", import.meta.env.DEV);
+  const log = new Logger("UtilsContext",   import.meta.env.DEV );
   const [currentSection, setCurrentSection] = useState<string>("Introduction");
   const [isOnTop, setIsOnTop] = useState<boolean>(true);
 

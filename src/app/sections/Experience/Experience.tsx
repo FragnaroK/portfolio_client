@@ -12,7 +12,8 @@ import { Education, WorkExperience } from "@Types/DatabaseTypes";
 
 interface ExperienceProps extends DefaultComponentProps { }
 
-function getActionIcon(type: "post" | "certificate" = "certificate") {
+type ActionType = 'post' | 'certificate' | undefined
+function getActionIcon(type: ActionType = "certificate") {
   return type === "certificate" ? faCertificate : faNewspaper;
 }
 
@@ -35,13 +36,14 @@ const Experience: FC<ExperienceProps> = () => {
           {snap ?
             workExperience?.map((job) => (
               <Card
+                collapsable={`Learn more about the '${job.position}' role`}
                 fill
                 key={deepTrim(`JobCard-${job.company}-${job.position}`)}
                 title={job.position}
                 subtitle={`${job.company} — ${job.location} — ${job.startDate} to ${job.endDate}`}
                 label=""
                 actions={job.ref && [
-                  { href: job.ref.link, type: "link", icon: getActionIcon(job.ref.type), children: job.ref.label }
+                  { href: job.ref.link, type: "link", icon: getActionIcon(job.ref.type as ActionType), children: job.ref.label }
                 ]}
               >
                 <h3>About the role</h3>
@@ -72,7 +74,7 @@ const Experience: FC<ExperienceProps> = () => {
                 subtitle={`${course.institution} — ${course.location} — ${course.startDate} to ${course.endDate}`}
                 label=""
                 actions={course.ref && [
-                  { href: course.ref.link, type: "link", icon: getActionIcon(course.ref.type), children: course.ref.label }
+                  { href: course.ref.link, type: "link", icon: getActionIcon(course.ref.type as ActionType), children: course.ref.label }
                 ]}
               />
             ))

@@ -27,7 +27,8 @@
       "@App/*": ["src/app/*"],
       "@Fonts/*": ["src/fonts/*"],
       "@Hooks/*": ["src/hooks/*"],
-      "@Constants/*": ["src/constants/*"]
+      "@Constants/*": ["src/constants/*"],
+      "@Firebase": ["src/firebase.ts"]
     },
 
     /* Linting */

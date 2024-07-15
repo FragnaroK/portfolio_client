@@ -6,6 +6,7 @@ import ProjectContainer from "@Components/ProjectContainer/ProjectContainer";
 import Flex from "@Components/Flex/Flex";
 import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
 import Spinner from '@Components/Spinner/Spinner';
+import { deepTrim } from "@/utils/helpers";
 
 interface ProjectsProps extends DefaultComponentProps<undefined> { }
 
@@ -28,7 +29,7 @@ const Projects: FC<ProjectsProps> = () => {
       >
         { snap ?
           snap.projects?.slice(0, 5).map((project, i) => (
-            <ProjectContainer key={`${project.title}`}
+            <ProjectContainer key={deepTrim(project.title)}
               title={project.title}
               href={project.link}
               img={project.image}

@@ -18,8 +18,6 @@ interface NotificationContextProviderProps {
 
 // Define your context provider component
 export const NotificationContextProvider: React.FC<NotificationContextProviderProps> = ({ children }) => {
-
-  
  
   const notify = useCallback((type: ToastType, msg: string, id?: string) => {
     switch (type) {
@@ -59,7 +57,7 @@ export const NotificationContextProvider: React.FC<NotificationContextProviderPr
       },
       
       style: {
-        border: "2px solid var(--primary)",
+        border: "1px solid var(--primary)",
         background: "var(--card)",
         color: "var(--card-foreground)",
         fontFamily: "var(--font)",
