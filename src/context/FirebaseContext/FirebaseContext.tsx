@@ -42,7 +42,7 @@ const firebaseContextStateReducer: Reducer<FirebaseContextData["database"], Fire
 
 const useFirebase = () => {
 
-  const log = new Logger("Firebase", import.meta.env.DEV);
+  const log = new Logger("Firebase::hook", import.meta.env.DEV);
   const initalState = { ref: dbRef, iteration: localStorage.getItem(LS_DB_ITERATION) ?? undefined }
   const [database, dispatch] = useReducer<Reducer<FirebaseContextData["database"], FirebaseContextStateAction>>(firebaseContextStateReducer, initalState)
 

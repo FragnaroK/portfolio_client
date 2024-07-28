@@ -15,7 +15,7 @@ interface ProjectsProps extends DefaultComponentProps<undefined> { }
 const Projects: FC<ProjectsProps> = () => {
 
   const { database: { snap } } = useFirebaseContext();
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
 
   return (
     <section id="projects" ref={sectionRef}>
@@ -26,6 +26,7 @@ const Projects: FC<ProjectsProps> = () => {
         flexWrap="nowrap"
         gap={100}
         className="projectsList"
+        alignItems="center"
       >
         { snap ?
           snap.projects?.slice(0, 5).map((project, i) => (

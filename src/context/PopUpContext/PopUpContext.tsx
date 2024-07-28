@@ -3,6 +3,7 @@ import PopUp from '@Components/PopUp/PopUp';
 import Logger from 'node-logger-web';
 import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef, useEffect } from 'react';
 import './PopUpContext.css';
+import useQuerySelector from '@/hooks/useQuerySelector/useQuerySelector';
  
 
 interface PopUpContextData {
@@ -17,7 +18,7 @@ interface PopUpContextProviderProps {
 }
 
 export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ children }) => {
-  const log = new Logger("PopUpContext",   import.meta.env.DEV );
+  const log = new Logger("PopUp::context",   import.meta.env.DEV );
 
   const [isShowing, setIsShowing] = useState<boolean>(false);
   const [popupContent, setPopupContent] = useState<CardProps | null>(null);
@@ -32,7 +33,7 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
     const focusable = mainContentRef.current.querySelectorAll<HTMLElement>('input, button, a, textarea, select');
 
     log.d("Focusable items selected -> ", focusable);
-    log.d(enable ? "Enabling" : "Disabling");
+    log.d(`Trap ${enable ? "enabled" : "disabled"}`);
 
     focusable.forEach((item) => {
       if (item.getAttribute("data-aria-inmutable") === "true") return;
@@ -63,21 +64,21 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
   }), [hide, show]);
 
   useEffect(() => {
-    if (!htmlElementRef.current) return;
-
+    if (!htmlElementRef?.current) return;
+    log.d(`Changing html scroll state to ${!isShowing ? "enabled" : "disabled"}`)
     htmlElementRef.current.style.overflowY = isShowing ? "hidden" : "auto";
   }, [isShowing]);
 
   useEffect(() => {
-    if (!htmlElementRef.current) {
-      htmlElementRef.current = document.querySelector('html');
-    }
-  }, []);
+     if (!htmlElementRef.current) {
+       htmlElementRef.current = document.querySelector('html');
+     }
+   }, []);
 
   return (
     <PopUpContext.Provider value={contextValue}>
       <div id="popupContextWrapper" className={isShowing ? "popup-visible" : ""}>
-        <div aria-hidden={isShowing} tabIndex={isShowing ? -1 : 0} ref={mainContentRef}>
+        <div aria-hidden={isShowing ? "true" : "false"} tabIndex={isShowing ? -1 : 0} ref={mainContentRef}>
           {children}
         </div>
         <PopUp show={isShowing} onCloseAreaClick={onCloseAreaClickHandler} {...popupContent} />

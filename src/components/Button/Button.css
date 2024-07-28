@@ -1,103 +1,118 @@
 .buttonWrapper {
-    position: relative; 
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 
-    --initial-icon: "Icon";
-    --target-icon: "Icon";
-    --icon-size: 20px;
+	--initial-icon: "Icon";
+	--target-icon: "Icon";
+	--icon-size: 20px;
 
-    & > :is(a, button).btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        padding: 10px 15px;
-        border-radius: var(--container-radius);
-        text-decoration: none !important;
-        cursor: pointer;
-        overflow: hidden;
+	& > :is(a, button).btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 15px;
+		padding: 10px 15px;
+        border: 2px solid;
+		border-radius: var(--container-radius);
+		text-decoration: none !important;
+		cursor: pointer;
+		overflow: hidden;
 
-        &:disabled, &[aria-disabled="true"] {
-            pointer-events: none !important;
-            user-select: none !important;
+		/* Background animation */
+		background-size: 200% 300%;
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+		will-change: background-position;
+
+		&:disabled,
+		&[aria-disabled="true"] {
+			pointer-events: none !important;
+			user-select: none !important;
+            background-image: none !important;
+		}
+
+        &:hover {
+            background-position: 0px 50%;
         }
 
-        &:active {
-            transition: 0.1s;
-        }
+		&:active {
+            background-position: 0px 99%;
+			transition: 0.1s;
+		}
 
-        & > span {
-            position: relative;
-            display: inline-block;
-            size: var(--icon-size);
+		& > span {
+			position: relative;
+			display: inline-block;
+			size: var(--icon-size);
 
-            &::before, &::after {
-                font-size: calc(var(--icon-size) - 5px);
-                text-align: center;
-                transition: transform .3s ease;
-                will-change: transform;
-            }
-    
-            &::before {
-                content: var(--initial-icon);
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transform: translateY(0%);
-            }
-    
-            &::after {
-                content: var(--target-icon);
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                translate: -50% 0%;
-                transform: translateY(200%);
-            } 
-        }
+			&::before,
+			&::after {
+				font-size: calc(var(--icon-size) - 5px);
+				text-align: center;
+				transition: transform 0.3s ease;
+				will-change: transform;
+			}
 
-        &:not(.singleIcon):hover > span {
-            &::before {
-                transform: translateY(-200%); 
-            }
+			&::before {
+				content: var(--initial-icon);
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: translateY(0%);
+			}
 
-            &::after {
-                transform: translateY(-50%);
-            }
-        }
-    }
+			&::after {
+				content: var(--target-icon);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				translate: -50% 0%;
+				transform: translateY(200%);
+			}
+		}
 
-    & a {
-        position: relative;
-        
-        & > span {
-            &::after {
-                content: "";
-            }
-        }
-    }
+		&:not(.singleIcon):hover > span {
+			&::before {
+				transform: translateY(-200%);
+			}
 
-    .iconWrapper {
-        width: 25px !important;
-    }
+			&::after {
+				transform: translateY(-50%);
+			}
+		}
+	}
 
-    .btn-big {
-        padding: 20px 30px;
-        font-size: large;
-    }
+	& a {
+		position: relative;
 
-    @keyframes ToggleIcon {
-        0% {
-            transform: translateY(0%);
-        }
-    
-        50% {
-            transform: translateY(100%);
-        }
-    
-        100% {
-            transform: translateY(0%);
-        }
-    }
+		& > span {
+			&::after {
+				content: "";
+			}
+		}
+	}
+
+	.iconWrapper {
+		width: 25px !important;
+	}
+
+	.btn-big {
+		padding: 20px 30px;
+		font-size: large;
+	}
+
+	@keyframes ToggleIcon {
+		0% {
+			transform: translateY(0%);
+		}
+
+		50% {
+			transform: translateY(100%);
+		}
+
+		100% {
+			transform: translateY(0%);
+		}
+	}
 }

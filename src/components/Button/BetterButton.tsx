@@ -58,7 +58,7 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
   disabled = false,
   type = 'button',
 }, outerRef) => {
-  const log = useMemo(() => new Logger("Button",   import.meta.env.DEV ), []);
+  const log = useMemo(() => new Logger("Button::component",   import.meta.env.DEV ), []);
   const buttonRef = useRef<HTMLDivElement>(null);
 
   const iconType = icon ?? faLink;

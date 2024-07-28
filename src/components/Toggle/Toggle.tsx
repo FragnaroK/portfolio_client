@@ -3,20 +3,23 @@ import { DefaultComponentProps, ExtendedCSSProperties } from "@Types/Types";
 import './Toggle.css';
 import { faCircle, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
+import { deepTrim } from "@/utils/helpers";
+import { uniqueId } from "lodash";
  
 
 interface ToggleProps extends DefaultComponentProps<string, HTMLInputElement> {
   initial?: IconDefinition;
   target?: IconDefinition;
   disabled?: boolean;
+  title: string,
 }
 
 const Toggle: FC<ToggleProps> = ({
-  id, className = "", style, onClick, children,
-  initial, target, disabled = false
+  id = uniqueId(), className = "", style, onClick, children,
+  initial, target, title, disabled = false
 }) => {
 
-  const log = new Logger("ToggleComponent",   import.meta.env.DEV );
+  const log = new Logger("Toggle::component", import.meta.env.DEV );
 
   const defaultStyles = useMemo(() => ({
     ...style,
@@ -30,8 +33,8 @@ const Toggle: FC<ToggleProps> = ({
   }, [onClick])
 
   return (
-    <label className={`toggleWrapper ${className}`} style={defaultStyles} id={id}>
-      <input type="checkbox" name={children} onClick={onToggleClicked} disabled={disabled}/>
+    <label className={`toggleWrapper ${className}`} style={defaultStyles} id={deepTrim(`${id}-${title}`)}>
+      <input type="checkbox" name={deepTrim(children ?? '')} onClick={onToggleClicked} disabled={disabled} title={`"toggle checkbox: ${title}"`}/>
       <span className="slide-checkbox"></span>
     </label>
   )

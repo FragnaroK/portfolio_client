@@ -19,8 +19,8 @@ function App() {
   
   const downloadResumeRef = useRef<HTMLAnchorElement>(null);
   useDownloadFirebaseFile({
-    firebaseStorageUrl: snap?.meta.latest_resume.ref,
-    fileName: snap?.meta.latest_resume.full_filename,
+    firebaseStorageUrl: snap?.meta?.latest_resume.ref,
+    fileName: snap?.meta?.latest_resume.full_filename,
     anchor: downloadResumeRef.current
   });
 

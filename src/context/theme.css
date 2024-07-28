@@ -93,8 +93,8 @@ body {
 
     * {
         --transition: .2s ease-in-out;
-        transition: color var(--transition), background var(--transition), background-color var(--transition), background-image var(--transition);
-        will-change: color, background, box-shadow, background-color, background-image;
+        transition: background var(--transition), background-color var(--transition), background-image var(--transition);
+        will-change: color, background, background-color, background-image;
     }
 
     &.light {
@@ -119,29 +119,16 @@ body {
             }
         }
         
-        button, a.btn-link {
+        button.btn, a.btn {
 
-            color: var(--accent-foreground);
+            color: var(--accent-foreground) ;
             background-color: var(--primary);
-            border: 2px solid var(--primary);
+            border-color: var(--primary);
             background-image: linear-gradient(180deg, var(--primary) 33.33%, var(--button-hover-color) 34% 66%, var(--background) 66.66%);
-            background-size: 200% 300%;
-            background-repeat: no-repeat;
-            background-position: 0px 0px;
-            will-change: background-position;
 
-            &:is(:disabled,[aria-disabled="true"]) {
+            &:disabled,&[aria-disabled="true"] {
                 background-color: var(--muted) !important;
-                background-image: none !important;
                 filter: grayscale(100%);
-            }
-
-            &:hover {
-                background-position: 0px 50%;
-            }
-
-            &:active {
-                background-position: 0px 99%;
             }
 
             .error {
@@ -149,25 +136,40 @@ body {
             }
 
             .success {
-                --button-hover-color:
+                --button-hover-color: var(--success);
             }
         }
         
         input, textarea {
             background-color: var(--input);
             color: var(--foreground);
-            border: 1px solid var(--border);
+            border-color: var(--border);
 
             &:focus {
                 outline: none;
                 box-shadow: 0 0 0 3px var(--ring);
             }
         }
+
+        details {
+
+            &:hover::before, &[open]::before {
+                background-color: var(--primary-lighter) !important;
+            }
+
+            &::before {
+                background-color: var(--primary);
+            }
+
+            &::after {
+                background-color: var(--accent);
+            } 
+        }
         
         .card {
             background-color: var(--card);
             color: var(--card-foreground);
-            border: 1px solid var(--border);
+            border-color: var(--border);
 
             & header > h4 {
                 color: var(--muted-foreground);

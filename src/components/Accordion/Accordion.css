@@ -1,5 +1,4 @@
 @import "../../constants/const.css";
-/* TODO: Move theme related props to context/theme.css */
 
 .accordionWrapper {
 
@@ -25,24 +24,16 @@
         height: var(--label-height);
         transition: height var(--transition);
         border-radius: var(--container-radius); 
-        overflow: hidden;
-
-        &:hover {
-            &::before {
-                background-color: var(--primary-lighter) !important;
-            }
-        }
+        overflow: hidden; 
 
         &::before {
             height: var(--label-height);
             z-index: 1;
-            background-color: var(--primary);
         }
 
         &::after {
             height: 0%;
             z-index: 0;
-            background-color: var(--accent);
             opacity: 0;
         } 
 
@@ -91,9 +82,6 @@
                 height: calc(100% - var(--label-height));
                 padding: 10px 10px 10px 15px;
                 overflow: auto;
-                opacity: 0;
-                transition: opacity var(--transition);
-                transition-delay: 0s;
             }
 		}
 
@@ -101,14 +89,13 @@
 
 		&[open] {
 			height: 100%;
-
+            padding-bottom: 2.5px;
             &::after {
                 height: 100%;
                 opacity: 1;
             }
 
             &::before {
-                background-color: var(--primary-lighter);
                 border-radius: var(--container-radius) var(--container-radius) 0 0 ;
             }
 
@@ -119,8 +106,6 @@
 				}
 
                 & + article {
-                    transition-delay: .2s !important;
-                    opacity:1;
                 }
 			}
 		}

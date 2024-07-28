@@ -1,20 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref } from "firebase/database";
 import { getStorage } from "firebase/storage";
+import { una_forma, matata, de_ser } from "./utils/helpers";
 
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_DB_API_KEY,
-    authDomain: "francocanalejo-fragnarok.firebaseapp.com",
-    databaseURL: "https://francocanalejo-fragnarok-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "francocanalejo-fragnarok",
-    storageBucket: "francocanalejo-fragnarok.appspot.com",
-    messagingSenderId: "960659338948",
-    appId: "1:960659338948:web:fc4a315e58e48a3dc8fb91",
-    measurementId: "G-N0Y6G89KWH"
-};
+
+const hakuna = matata(una_forma(de_ser));
 
 // Initialize Firebase
-const fireApp = initializeApp(firebaseConfig);
+const fireApp = initializeApp(hakuna);
 const db = getDatabase(fireApp);
 const storage = getStorage(fireApp);
 const dbRef = ref(db, `${import.meta.env.VITE_DB_ENDPOINT}`);

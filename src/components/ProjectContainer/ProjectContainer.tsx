@@ -11,7 +11,7 @@ import Toggle from '@Components/Toggle/Toggle';
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Card from "@Components/Card/Card";
 import './ProjectContainer.css';
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
  
 
 interface ProjectContainerProps extends DefaultComponentProps<string, HTMLElement>, ProjectHeader, ProjectContent, ProjectActions {
@@ -46,8 +46,9 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
           initial={faEye}
           target={faEyeSlash}
           onClick={(e) => setShowInfo(!e.currentTarget.checked)}
+          title={`Project ${title} content`}
         >
-          Show/hide project content
+          {`Show/hide project ${title} content`}
         </Toggle>
       </div>
       {timestamp && <small className="timestamp">{timestamp}</small>}
@@ -76,7 +77,7 @@ const ProjectContainerContent: FC<ProjectContent> = ({ children }) => (
 const ProjectContainer: FC<ProjectContainerProps> = ({
   style, onClick, href, img, repo, tech, title, children, timestamp, index = 0, ...props
 }) => {
-  const log = new Logger("ProjectContainer",   import.meta.env.DEV );
+  const log = new Logger("ProjectContainer::component",   import.meta.env.DEV );
   const projectRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: projectRef,

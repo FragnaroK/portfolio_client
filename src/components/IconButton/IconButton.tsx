@@ -32,7 +32,7 @@ const IconButton: FC<IconButtonProps> = ({
   target = "_blank"
 }) => {
 
-  const log = new Logger("IconButton",   import.meta.env.DEV );
+  const log = new Logger("IconButton::component",   import.meta.env.DEV );
   const buttonRef = useRef<HTMLDivElement>(null);
   const finalClassName = `${className} btn-with-icon`;
   const defaultStyle = {
@@ -46,7 +46,7 @@ const IconButton: FC<IconButtonProps> = ({
   };
 
   const renderButton = (
-    <button className={`btn ${finalClassName}`} id={id} style={defaultStyle} onClick={onButtonClick} disabled={disabled}>
+    <button title={`Button ${alt}`} className={`btn ${finalClassName}`} id={id} style={defaultStyle} onClick={onButtonClick} disabled={disabled}>
       <FontAwesomeIcon icon={children} />
     </button>
   );

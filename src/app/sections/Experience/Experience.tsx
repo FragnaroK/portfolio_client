@@ -25,8 +25,8 @@ const Experience: FC<ExperienceProps> = () => {
   const { database: { snap } } = useFirebaseContext();
   const sectionRef = useRef<HTMLElement>(null);
 
-  const workExperience = sortByYear<WorkExperience>(snap?.info.professional.workExperience ?? []);
-  const education = sortByYear<Education>(snap?.info.professional.education ?? []);
+  const workExperience = sortByYear<WorkExperience>(snap?.info?.professional.workExperience ?? []);
+  const education = sortByYear<Education>(snap?.info?.professional.education ?? []);
 
   return (
     <section id="experience" ref={sectionRef}>

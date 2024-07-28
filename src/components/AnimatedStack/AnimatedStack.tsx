@@ -87,7 +87,7 @@ const AnimatedStackRing: FC<AnimatedStackRingProps> = ({
 }
 
 const AnimatedStack: FC<AnimatedStackProps> = ({
-  label, children, speed = [55], radius = [250], direction = ['right']
+  label, children, speed = [55], radius = [250], direction = ['right'], style
 }) => {
 
   const
@@ -97,7 +97,7 @@ const AnimatedStack: FC<AnimatedStackProps> = ({
   const height = `${radius.reduce((prev, curr) => prev < curr ? curr : prev, 0) * 3}px`;
 
   return (
-    <div className="animatedStack" ref={ref} style={{ height }}>
+    <div className="animatedStack" ref={ref} style={{ height, ...style }}>
       {label && <h3 className="label">{label}</h3>}
       {
         children?.map((ring, ringIndex) => {
