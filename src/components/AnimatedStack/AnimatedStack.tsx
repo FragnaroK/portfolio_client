@@ -1,7 +1,7 @@
 import './AnimatedStack.css';
 import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types/Types";
-import { m, MotionValue, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { m, MotionValue, useScroll, useTransform } from "framer-motion";
 import { deepTrim, isEven } from '@Utils/helpers';
 
 type RotationDirection = "left" | "right";
