@@ -2,18 +2,55 @@ import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Introduction.css';
 import ProfilePhoto from '@Components/ProfilePhoto/ProfilePhoto';
-import BetterButton from "@/components/Button/BetterButton";
+import BetterButton from "@Components/Button/BetterButton";
 import { faCodepen, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Title from "@Components/Title/Title";
 import IconButton from '@Components/IconButton/IconButton';
 import Text from "@Components/Text/Text";
 import Email from "@Components/Email/Email";
 import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
-import { deepTrim } from "@/utils/helpers";
-import AnimatedStack from "@/components/AnimatedStack/AnimatedStack";
-import Icon from "@/components/Icon/Icon";
-import { TECH_ICON_LIST } from "@/constants/const";
-import Card from '@Components/Card/Card';
+import { deepTrim } from "@Utils/helpers";
+import AnimatedStack from "@Components/AnimatedStack/AnimatedStack";
+import Icon from "@Components/Icon/Icon";
+import {  TECH_ICON_LIST } from "@Constants/const";
+import { shuffle } from "lodash";
+
+
+const techRings = [
+  shuffle(TECH_ICON_LIST).map((tech, i) => (
+    <Icon
+      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      icon={tech.icon}
+      label={tech.name}
+      color={tech.color}
+      size="2x"
+      index={i + 1}
+      total={TECH_ICON_LIST.length}
+    />
+  )),
+  shuffle(TECH_ICON_LIST).map((tech, i) => (
+    <Icon
+      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      icon={tech.icon}
+      label={tech.name}
+      color={tech.color}
+      size="2x"
+      index={i + 1}
+      total={TECH_ICON_LIST.length}
+    />
+  )),
+  shuffle(TECH_ICON_LIST).map((tech, i) => (
+    <Icon
+      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      icon={tech.icon}
+      label={tech.name}
+      color={tech.color}
+      size="3x"
+      index={i + 1}
+      total={TECH_ICON_LIST.length}
+    />
+  ))
+]
 
 const SocialMedia: FC = () => {
 
@@ -59,41 +96,7 @@ const Introduction: FC<DefaultComponentProps> = () => {
 
   const { database: { snap } } = useFirebaseContext();
   const sectionRef = useRef<HTMLElement>(null)
-  const techRings = [
-    TECH_ICON_LIST.map((tech, i) => (
-      <Icon
-        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
-        icon={tech.icon}
-        label={tech.name}
-        color={tech.color}
-        size="2x"
-        index={i + 1}
-        total={TECH_ICON_LIST.length}
-      />
-    )),
-    TECH_ICON_LIST.map((tech, i) => (
-      <Icon
-        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
-        icon={tech.icon}
-        label={tech.name}
-        color={tech.color}
-        size="2x"
-        index={i + 1}
-        total={TECH_ICON_LIST.length}
-      />
-    )),
-    TECH_ICON_LIST.map((tech, i) => (
-      <Icon
-        key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
-        icon={tech.icon}
-        label={tech.name}
-        color={tech.color}
-        size="3x"
-        index={i + 1}
-        total={TECH_ICON_LIST.length}
-      />
-    ))
-  ]
+  
   return (
     <section id="introduction" ref={sectionRef}>
       <section className="profilePhotoSection">
@@ -126,9 +129,9 @@ const Introduction: FC<DefaultComponentProps> = () => {
           </p>
         </Text>
       </section>
-      <div>
+      <section>
         <BetterButton type="anchor" href="#aboutMe">About Me</BetterButton>
-      </div>
+      </section>
     </section>
   )
 }

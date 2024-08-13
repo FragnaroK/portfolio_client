@@ -1,13 +1,14 @@
 import './Card.css';
 import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
-import BetterButton, { BetterButtonProps } from "@/components/Button/BetterButton";
+import BetterButton, { BetterButtonProps } from "@Components/Button/BetterButton";
 import IconButton, { IconButtonProps } from "@Components/IconButton/IconButton";
 import Flex from "@Components/Flex/Flex";
-import { motion, useInView } from 'framer-motion';
+import { m, useInView } from 'framer-motion';
 import useMarkdown from '@Hooks/useMarkdown/useMarkdown';
 import Accordion from '../Accordion/Accordion';
-import { deepTrim } from '@/utils/helpers';
+import { deepTrim } from '@Utils/helpers';
+import classNames from 'classnames';
 
 export interface CardProps extends Pick<DefaultComponentProps, "style" | "id" | "className">, Partial<CardHeaderProps>, Partial<CardContentProps>, Partial<CardFooterProps> {
   animateInView?: boolean;
@@ -95,7 +96,7 @@ const Card: FC<CardProps> = ({ id, className, style, children, collapsable, html
   })
 
   return (
-    <motion.article className={`card ${className}`} id={id} ref={cardRef}
+    <m.article className={classNames('card', className)} id={id} ref={cardRef}
       style={{
         opacity: animateInView && !inView ? 0 : 1,
         ...style
@@ -104,7 +105,7 @@ const Card: FC<CardProps> = ({ id, className, style, children, collapsable, html
       {title && <CardHeader title={title} subtitle={subtitle} divider={!!(children || actions)} />}
       {children && <CardContent html={html} collapsable={collapsable}>{children}</CardContent>}
       {actions && <CardFooter label={label ?? "Action label"} fill={fill} actions={actions} />}
-    </motion.article>
+    </m.article>
   )
 }
 

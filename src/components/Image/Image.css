@@ -1,8 +1,23 @@
 .imageWrapper {
     width: 100%;
+    overflow: hidden;
+
     & > img {
         size: 100%;
         max-width: 1140px;
         max-height: 400px;
+    }
+
+    &.loaded::after {
+        opacity: 0 !important;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        size: 100%;
+        opacity: 1;
+        transition: opacity var(--transition);
     }
 }

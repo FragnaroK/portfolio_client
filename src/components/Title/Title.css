@@ -18,13 +18,7 @@
 		}
 	}
 
-	& > h1:nth-child(1) {
-	}
 	& > h2:nth-child(2) {
 		font-size: larger;
-
-		span {
-			color: var(--primary);
-		}
 	}
 }

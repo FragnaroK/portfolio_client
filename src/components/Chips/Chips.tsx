@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Chips.css';
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
 
 type ChipsPosition = "left" | "center" | "right";
 

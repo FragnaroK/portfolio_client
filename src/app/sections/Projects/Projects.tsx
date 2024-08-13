@@ -6,7 +6,7 @@ import ProjectContainer from "@Components/ProjectContainer/ProjectContainer";
 import Flex from "@Components/Flex/Flex";
 import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
 import Spinner from '@Components/Spinner/Spinner';
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
 
 interface ProjectsProps extends DefaultComponentProps<undefined> { }
 

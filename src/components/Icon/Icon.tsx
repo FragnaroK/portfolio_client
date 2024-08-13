@@ -17,7 +17,7 @@ const Icon: FC<IconProps> = ({ style,  icon, label, index, inViewAnimation = fal
   const inView = useInView(iconRef, { once: true });
 
   return (
-    <div className={`iconWrapper`} style={style} ref={iconRef}>
+    <div className='iconWrapper' style={style} ref={iconRef}>
       <FontAwesomeIcon icon={icon} className="icon" {...faProps} style={{
         ...style,
         animation: index && total && inViewAnimation? `Fade${inView ? "In" : "Out"} .8s  cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 normal both` : undefined

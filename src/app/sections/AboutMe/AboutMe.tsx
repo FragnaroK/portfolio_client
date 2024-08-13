@@ -3,9 +3,8 @@ import { DefaultComponentProps } from "@Types/Types";
 import './AboutMe.css';
 import Title from "@Components/Title/Title";
 import Card from "@Components/Card/Card";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { useFirebaseContext } from "@Context/FirebaseContext/FirebaseContextHooks";
-import AnimatedStack from '@Components/AnimatedStack/AnimatedStack';
 import Spinner from "@Components/Spinner/Spinner";
 
 interface AboutMeProps extends DefaultComponentProps { }

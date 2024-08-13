@@ -17,7 +17,9 @@
         z-index: calc(var(--on-top-index) - 1);
         transition: opacity var(--popup-speed);
         outline: none !important;
-        -webkit-tap-highlight-color: transparent !important; /* for removing the highlight */
+
+        /* Removes tap highlight */
+        -webkit-tap-highlight-color: transparent !important; 
     }
 
 
@@ -33,7 +35,6 @@
         opacity: 0;
         scale: 0.9;
         border: none !important;
-        background: transparent !important;
         z-index: var(--on-top-index);
         transition: opacity var(--popup-speed), scale var(--popup-speed);
 

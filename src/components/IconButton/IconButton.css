@@ -16,16 +16,13 @@
 		border-radius: 10px;
 		text-decoration: none !important;
 		cursor: pointer;
-        background: none !important;
         border: none !important;
 		overflow: hidden;
 
 		&:is(:disabled, [aria-disabled="true"]) {
-			background-color: var(--muted) !important;
 			background-image: none !important;
 			pointer-events: none !important;
 			user-select: none !important;
-			filter: grayscale(100%);
 		}
 
 		&::after {
@@ -42,7 +39,6 @@
 			transform-origin: center;
 			opacity: 0;
 			scale: 0.8;
-			background-color: rgba(0, 0, 0, 0.788);
             transition: scale .1s ease, opacity .3s ease;
         }
 

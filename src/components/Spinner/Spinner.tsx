@@ -10,7 +10,7 @@ const Spinner: FC<SpinnerProps> = () => {
 
   return (
   <Flex fill justifyContent="center" alignContent="center" alignItems="center" style={{ height: '100%' }}>
-    <ThreeCircles visible color="var(--primary)" innerCircleColor="var(--primary9)" ariaLabel="Loading, please wait..."/>
+    <ThreeCircles visible color="var(--primary)" innerCircleColor="var(--primary-alpha-50)" ariaLabel="Loading, please wait..."/>
   </Flex>
   )
 }

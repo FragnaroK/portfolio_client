@@ -1,6 +1,7 @@
 import { CSSProperties, FC, ReactNode } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Flex.css';
+import classNames from "classnames";
 
 type PickedCSS =
   | "alignContent"
@@ -42,7 +43,7 @@ const Flex: FC<FlexProps> = ({
   return (
     <div
       id={id}
-      className={`flexContainer ${className}`}
+      className={classNames('flexContainer', className)}
       style={flexStyle}
     >
       {children}

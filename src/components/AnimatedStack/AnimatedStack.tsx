@@ -1,7 +1,7 @@
 import './AnimatedStack.css';
 import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types/Types";
-import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { m, MotionValue, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { deepTrim, isEven } from '@Utils/helpers';
 
 type RotationDirection = "left" | "right";
@@ -44,15 +44,16 @@ const AnimatedStackItem: FC<AnimatedStackItemProps> = ({ children, ringIndex, ro
       left: `calc(50% + ${radius}px)`,
       rotate: `${rotation}deg`,
       transformOrigin: `-${radius}px 0px`,
+      animationDelay: `${index * 2}s`
     } as ExtendedCSSProperties
 
   const itemRotationFix = useTransform(rotate, [0, 1], [`rotate(${(reverseRotation - initialRotation)}deg)`, `rotate(${-(initialRotation)}deg)`]);
 
   return (
     <div className="animatedStackItem" ref={itemRef} style={itemContainerStyles}>
-      <motion.div className="animatedStackItemContentWrapper" style={{ transform: itemRotationFix }}>
+      <m.div className="animatedStackItemContentWrapper" style={{ transform: itemRotationFix, animationDelay: `${0.1 * index}s` }}>
         {children}
-      </motion.div>
+      </m.div>
     </div>
   )
 }
@@ -65,7 +66,7 @@ const AnimatedStackRing: FC<AnimatedStackRingProps> = ({
   const rotate = useTransform(scrollProgress, [0, 1], ['rotate(0deg)', (direction === "left" ? `rotate(${-finalSpeed}deg)` : `rotate(${finalSpeed}deg)`)])
 
   return (
-    <motion.div className="animatedStackRing" key={`animatedStackRing${index}}`} style={{ transform: rotate }}>
+    <m.div className="animatedStackRing" key={`animatedStackRing${index}}`} style={{ transform: rotate }}>
       {
         ring?.map((item, i) => (
           <AnimatedStackItem
@@ -82,7 +83,7 @@ const AnimatedStackRing: FC<AnimatedStackRingProps> = ({
           </AnimatedStackItem>)
         )
       }
-    </motion.div>
+    </m.div>
   )
 }
 

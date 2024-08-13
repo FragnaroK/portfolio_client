@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Email.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,9 @@ interface EmailProps extends DefaultComponentProps<string, HTMLAnchorElement> { 
 
 const Email: FC<EmailProps> = ({ children, ...props }) => {
   if (!children?.includes("@")) throw new Error("Invalid email provided");
+
+  const popupConfirmation = useRef<boolean>(false);
+  const emailAnchorRef = useRef<HTMLAnchorElement>(null);
 
   const
     popup = usePopUpContext(),
@@ -37,7 +40,8 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
           singleIcon: true,
           children: "Yes",
           onClick: () => {
-            window.location.href = `mailto:${children}`;
+            popupConfirmation.current = true;
+            emailAnchorRef.current?.click();
             fakeLoadingNotify("success", "Opening email provider...", "Done!", 2500);
             popup.hide();
           },
@@ -47,6 +51,10 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
     }), [children, popup, fakeLoadingNotify]);
 
   const onClickHandler: React.MouseEventHandler<HTMLAnchorElement> = useCallback((e) => {
+    if (popupConfirmation.current || !emailAnchorRef.current) {
+      popupConfirmation.current = false;
+      return;
+    }
     e.preventDefault();
     popup.show(popupContent);
   }, [popup, popupContent]);
@@ -54,7 +62,7 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
   const emailAddress = children.split("@");
 
   return (
-    <a href={`mailto:${emailAddress.join("@")}`} className="email" onClick={onClickHandler} {...props}>
+    <a href={`mailto:${emailAddress.join("@")}`} className="email" onClick={onClickHandler} ref={emailAnchorRef} {...props}>
       <span>{emailAddress[0]}</span>
       <span>@</span>
       <span>{emailAddress[1]}</span>

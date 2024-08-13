@@ -3,6 +3,7 @@ import { DefaultComponentProps } from "@Types/Types";
 import "./ProfilePhoto.css";
 import { useInView } from "framer-motion";
 import Picture from '@Assets/ProfilePicture.svg?react';
+import classNames from "classnames";
 
 interface ProfilePhotoProps extends DefaultComponentProps {
 	label?: string;
@@ -16,7 +17,7 @@ const ProfilePhoto: FC<ProfilePhotoProps> = ({ id, className, style, label }) =>
 	});
 
 	return (
-		<div className={`profilePhotoWrapper ${className ?? ""} ${inView ? "show" : "not-show"}`} id={id} style={style} ref={profilePhotoRef}>
+		<div className={classNames('profilePhotoWrapper', className, inView ? "show" : "not-show")} id={id} style={style} ref={profilePhotoRef}>
 			<ProfilePhotoImage svg={<Picture/>} />
 			{label ? <ProfilePhotoLabel label={label} /> : null}
 		</div>

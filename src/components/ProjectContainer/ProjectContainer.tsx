@@ -1,10 +1,10 @@
 import React, { FC, useRef, useState } from "react";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { m, useInView, useScroll, useTransform } from 'framer-motion';
 import Logger from "node-logger-web";
 import { DefaultComponentProps } from "@Types/Types";
 import Title from "@Components/Title/Title";
-import BetterButton from "@/components/Button/BetterButton";
+import BetterButton from "@Components/Button/BetterButton";
 import Image from "@Components/Image/Image";
 import Chips from '@Components/Chips/Chips';
 import Toggle from '@Components/Toggle/Toggle';
@@ -79,6 +79,7 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
 }) => {
   const log = new Logger("ProjectContainer::component",   import.meta.env.DEV );
   const projectRef = useRef<HTMLElement>(null);
+  const inView = useInView(projectRef, { once: true });
   const { scrollYProgress } = useScroll({
     target: projectRef,
     offset: ["start end", "end end"]
@@ -92,7 +93,7 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
   }
 
   return (
-    <motion.article
+    <m.article
       className="projectContainer"
       onClick={onProjectClickHandler}
       ref={projectRef}
@@ -104,10 +105,10 @@ const ProjectContainer: FC<ProjectContainerProps> = ({
       }}
       {...props}
     >
-      <ProjectContainerHeader img={img} tech={tech} title={title} timestamp={timestamp} />
+      <ProjectContainerHeader img={inView ? img : ''} tech={tech} title={title} timestamp={timestamp} />
       <ProjectContainerContent>{children}</ProjectContainerContent>
       <ProjectContainerFooter href={href} repo={repo} />
-    </motion.article>
+    </m.article>
   )
 }
 

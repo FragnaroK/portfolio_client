@@ -1,7 +1,7 @@
 import { forwardRef, HTMLAttributeAnchorTarget, MouseEventHandler } from "react";
 import { BetterButtonProps } from "./BetterButton";
 import classNames from 'classnames';
-import { ExtendedCSSProperties } from "@/types/Types";
+import { ExtendedCSSProperties } from "@Types/Types";
 
 interface LinkProps extends BetterButtonProps {
     defaultStyle: ExtendedCSSProperties;
@@ -27,7 +27,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
 
   return (
     <a
-      className={`btn btn-link ${finalClassName}`}
+      className={classNames('btn', 'btn-link', finalClassName)}
       type={type === "download" ? type : undefined}
       id={id}
       style={defaultStyle}

@@ -29,9 +29,7 @@
 		& path:not(.gray) {
 			fill: var(--primary) !important;
 		}
-	}
-
-	
+	} 
 
 	&:hover {
 		& img {
@@ -45,16 +43,12 @@
 			}
 		}
 
-		&::before,&::after {
-			opacity: 0 !important;
-			scale: 0.8 !important;
-		}
-
 		&::before {
-			transition-delay: .5s;
+			opacity: 0 !important;
+			transition-delay: 0s;
 		}
-
 	}
+
 
 	&::before, &::after {
 		content: "";
@@ -67,37 +61,25 @@
 		z-index: 1;
 		opacity: 0;
 		scale: 0.5;
-		transition: opacity var(--delay) ease-in-out, scale var(--delay) ease-in-out;
+		transition: opacity 1s var(--delay) ease-in-out, scale var(--delay) ease-in-out;
 		transition-delay: var(--delay);
-		
-		background-size: var(--gradient-size);
-		-webkit-animation: GradientBGAnimation var(--gradient-speed) ease infinite,
-			Rotation360Animation var(--rotation-speed) ease infinite;
-		-moz-animation: GradientBGAnimation var(--gradient-speed) ease infinite,
-			Rotation360Animation var(--rotation-speed) ease infinite;
-		-o-animation: GradientBGAnimation var(--gradient-speed) ease infinite,
-			Rotation360Animation var(--rotation-speed) ease infinite;
-		animation: GradientBGAnimation var(--gradient-speed) ease infinite,
-			Rotation360Animation var(--rotation-speed) ease infinite;
 	}
 
 
-	&::before {
-		background: linear-gradient(222deg, #4940b0 20%, var(--background) 75%);
-		animation-direction: normal !important;
-		-o-animation-direction: normal !important;
-		-moz-animation-direction: normal !important;
-		-webkit-animation-direction: normal !important;
-
+	&::before { 
+		-webkit-animation: GradientBGAnimation var(--gradient-speed) linear infinite,
+			Rotation360Animation var(--rotation-speed) linear infinite;
+		-moz-animation: GradientBGAnimation var(--gradient-speed) linear infinite,
+			Rotation360Animation var(--rotation-speed) linear infinite;
+		-o-animation: GradientBGAnimation var(--gradient-speed) linear infinite,
+			Rotation360Animation var(--rotation-speed) linear infinite;
+		animation: GradientBGAnimation var(--gradient-speed) linear infinite,
+			Rotation360Animation var(--rotation-speed) linear infinite;
 	}
 
 	&::after {
-		background: linear-gradient(222deg, var(--card) 20%, var(--background) 75%);
-		animation-direction: reverse !important;
-		-o-animation-direction: reverse !important;
-		-moz-animation-direction: reverse !important;
-		-webkit-animation-direction: reverse !important;
-
+		opacity: 1 !important;
+		scale: 0.995 !important;
 	}
 
 	& .profilePhoto {
@@ -109,7 +91,6 @@
 		& > img {
 			opacity: 0;
 			scale: 0.8;
-			/* mix-blend-mode: exclusion !important; */
 			background-blend-mode: color;
 			object-fit: contain;
 			max-width: var(--max-height);
@@ -145,13 +126,9 @@
 			}
 		}
 
-		&::before,&::after {
+		&::before {
 			opacity: 1;
 			scale: 1;
-		}
-
-		&::after {
-			scale: 0.9;
 		}
 	}
 }

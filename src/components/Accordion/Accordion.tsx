@@ -1,7 +1,7 @@
 import { FC, ReactNode} from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Accordion.css';
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
 
 interface AccordionProps extends DefaultComponentProps<ReactNode | string | ReactNode[], undefined> {
   label: string;

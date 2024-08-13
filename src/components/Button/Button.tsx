@@ -1,7 +1,7 @@
 import { forwardRef, MouseEventHandler } from "react";
 import { BetterButtonProps } from "./BetterButton";
 import classNames from 'classnames';
-import { ExtendedCSSProperties } from "@/types/Types";
+import { ExtendedCSSProperties } from "@Types/Types";
 
 interface ButtonProps extends BetterButtonProps {
     defaultStyle: ExtendedCSSProperties;
@@ -27,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
             disabled={disabled}
             style={defaultStyle}
             onClick={onButtonClick}
-            className={`btn ${finalClassName}`}
+            className={classNames('btn', finalClassName)}
         >
             <span />
             {children}

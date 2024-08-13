@@ -107,3 +107,4 @@ export const TECH_ICON_LIST = [
       icon: faBootstrap
     }
   ];
+ 

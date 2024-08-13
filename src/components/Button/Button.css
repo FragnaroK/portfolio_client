@@ -6,7 +6,8 @@
 	--target-icon: "Icon";
 	--icon-size: 20px;
 
-	& > :is(a, button).btn {
+	& > button.btn,
+	& > a.btn {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -17,12 +18,14 @@
 		text-decoration: none !important;
 		cursor: pointer;
 		overflow: hidden;
+		transition: color var(--transition),
+		 background-position var(--transition),
+		 background-image var(--transition);
 
 		/* Background animation */
 		background-size: 200% 300%;
 		background-repeat: no-repeat;
 		background-position: 0px 0px;
-		will-change: background-position;
 
 		&:disabled,
 		&[aria-disabled="true"] {
@@ -37,7 +40,6 @@
 
 		&:active {
             background-position: 0px 99%;
-			transition: 0.1s;
 		}
 
 		& > span {
@@ -49,8 +51,7 @@
 			&::after {
 				font-size: calc(var(--icon-size) - 5px);
 				text-align: center;
-				transition: transform 0.3s ease;
-				will-change: transform;
+				transition: color var(--transition), transform var(--transition); 
 			}
 
 			&::before {

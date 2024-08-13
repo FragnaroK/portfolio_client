@@ -2,7 +2,7 @@ import { ElementType, FC, HTMLAttributes, useRef } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Title.css';
 import { useInView } from "framer-motion";
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
 
 interface TitleProps extends DefaultComponentProps<string> {
   children: string;

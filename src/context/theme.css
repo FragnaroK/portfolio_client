@@ -1,207 +1,350 @@
+@import "../constants/const.css";
+
 @font-face {
-    font-family: Lato;
-    font-weight: normal;
-    font-style: normal;
-    src: url('../assets/fonts/Lato/Lato-Regular.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: normal;
+	font-style: normal;
+	src: url("../assets/fonts/Lato/Lato-Regular.ttf"), format("ttf");
 }
 
 @font-face {
-    font-family: Lato;
-    font-weight: bold;
-    font-style: normal;
-    src: url('../assets/fonts/Lato/Lato-Bold.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: bold;
+	font-style: normal;
+	src: url("../assets/fonts/Lato/Lato-Bold.ttf"), format("ttf");
 }
 
 @font-face {
-    font-family: Lato;
-    font-weight: lighter;
-    font-style: normal;
-    src: url('../assets/fonts/Lato/Lato-Light.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: lighter;
+	font-style: normal;
+	src: url("../assets/fonts/Lato/Lato-Light.ttf"), format("ttf");
 }
 
 @font-face {
-    font-family: Lato;
-    font-weight: normal;
-    font-style: italic;
-    src: url('../assets/fonts/Lato/Lato-Italic.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: normal;
+	font-style: italic;
+	src: url("../assets/fonts/Lato/Lato-Italic.ttf"), format("ttf");
 }
 
 @font-face {
-    font-family: Lato;
-    font-weight: lighter;
-    font-style: italic;
-    src: url('../assets/fonts/Lato/Lato-Light.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: lighter;
+	font-style: italic;
+	src: url("../assets/fonts/Lato/Lato-Light.ttf"), format("ttf");
 }
 
 @font-face {
-    font-family: Lato;
-    font-weight: bold;
-    font-style: italic;
-    src: url('../assets/fonts/Lato/Lato-BoldItalic.ttf'), format('ttf');
+	font-family: Lato;
+	font-weight: bold;
+	font-style: italic;
+	src: url("../assets/fonts/Lato/Lato-BoldItalic.ttf"), format("ttf");
 }
-
-
 
 :root {
-    --font: Lato;
-    --gradient: linear-gradient(to top left, #3f51b1, #5a55ae, #7b5fac, #8f6aae, #a86aa4, #cc6b8e, #f18271, #f3a469, #f7c978);
-    --background: hsl(240, 30%, 4%);
-    --background9: hsla(240, 30%, 4%, 0.5);
-    --foreground: hsla(245, 4.7%, 97.35%, 1);
-    --muted: hsla(245, 23.5%, 14.1%, 1);
-    --muted-foreground: hsla(245, 4.7%, 54.7%, 1);
-    --popover: hsla(245, 55.6%, 6.11%, 1);
-    --popover-foreground: hsla(245, 4.7%, 97.35%, 1);
-    --card: hsla(245, 55.6%, 6.11%, 1);
-    --card9: hsla(244, 55%, 6%, 0.89);
-    --card-foreground: hsla(245, 4.7%, 97.35%, 1);
-    --border: hsla(245, 23.5%, 14.1%, 1);
-    --input: hsla(245, 23.5%, 14.1%, 1);
-    --primary: hsl(245, 47%, 47%);
-    --primary9: hsla(245, 47%, 47%, 0.5);
-    --primary-lighter: hsl(245, 47%, 55%);
-    --primary-foreground: hsla(245, 4.7%, 4.7%, 1);
-    --secondary: hsla(245, 23.5%, 14.1%, 1);
-    --secondary-foreground: hsla(245, 4.7%, 97.35%, 1);
-    --accent: hsla(245, 23.5%, 14.1%, 1);
-    --accent-foreground: hsla(245, 4.7%, 97.35%, 1);
-    --destructive: hsla(0, 62.8%, 30.6%, 1);
-    --destructive-foreground: hsla(245, 4.7%, 97.35%, 1);
-    --ring: hsla(245, 47%, 47%, 1);
-    --button-hover-color: var(--accent);
-    --success: rgb(32, 127, 29);
-    --container-radius: 8px;
+	--font: Lato;
+	--container-radius: 8px;
+	--transition: 0.2s ease-in-out;
+
+	--success: rgb(32, 127, 29);
+	--success-foreground: hsla(245, 4.7%, 97.35%, 1);
+	--destructive: hsla(0, 62.8%, 30.6%, 1);
+	--destructive-foreground: hsla(245, 4.7%, 97.35%, 1);
+
+	--background: hsl(199.71428571428572, 84.67741935483872%, 1.3725490196078525%);
+	--background-alpha-50: hsla(199.71428571428572, 84.67741935483872%, 1.3725490196078525%, 0.5);
+	--foreground: hsl(0, 0%, 100%);
+	--primary: hsl(199.71428571428572, 84.67741935483872%, 51.37254901960785%);
+	--primary-alpha-50: hsla(199.71428571428572, 84.67741935483872%, 51.37254901960785%, 0.5);
+	--primary-lighter: hsl(199.71428571428572, 84.67741935483872%, 59.37254901960785%);
+	--primary-foreground: hsl(0, 0%, 0%);
+	--secondary: hsl(199.71428571428572, 84.67741935483872%, 6.3725490196078525%);
+	--secondary-foreground: hsl(0, 0%, 100%);
+	--card: hsl(199.71428571428572, 84.67741935483872%, 11.372549019607852%);
+	--card-alpha-70: hsla(199.71428571428572, 84.67741935483872%, 11.372549019607852%, 0.9);
+	--card-foreground: hsl(0, 0%, 100%);
+	--muted: hsl(199.71428571428572, 84.67741935483872%, 31.372549019607852%);
+	--muted-foreground: hsl(0, 0%, 100%);
+	--border: hsl(199.71428571428572, 84.67741935483872%, 21.372549019607852%);
+	--input: hsl(199.71428571428572, 84.67741935483872%, 11.372549019607852%);
+	--popover: var(--card);
+	--popover-foreground: var(--card-foreground);
+	--accent: var(--secondary);
+	--accent-foreground: var(--secondary-foreground);
+	--ring: var(--primary);
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: var(--primary) var(--secondary);
-  }
+/* Firefox */
+* {
+	font-family: Lato, Arial, Helvetica, sans-serif;
+	scrollbar-color: var(--primary) transparent;
 
-  *::-webkit-scrollbar-track {
-    background: var(--secondary) !important;
-  }
+	&::-webkit-scrollbar-track {
+		background: transparent !important;
+	}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
-  }
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--primary);
+	}
+
+	&::after,
+	&::before {
+		font-family: "Font Awesome 5 Free", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "Font Awesome 6 Free",
+			"Font Awesome 6 Regular", "Font Awesome 6 Brands" !important;
+		font-weight: 900 !important;
+		font-size: 1.5rem !important;
+	}
+}
 
 body {
-    font-family: Lato, sans-serif;
+	&.light {
+		background-color: var(--secondary);
+	}
 
-    * {
-        --transition: .2s ease-in-out;
-        transition: background var(--transition), background-color var(--transition), background-image var(--transition);
-        will-change: color, background, background-color, background-image;
-    }
+	&.dark {
+		background-color: var(--background);
+		color: var(--foreground);
 
-    &.light {
-        background-color: var(--secondary);
-    }
+		hr {
+			border-color: var(--border);
+			opacity: 0.4;
+		}
 
-    &.dark {
-        background-color: var(--background);
-        color: var(--foreground);
+		a {
+			color: var(--primary);
 
-       hr {
-        border-color: var(--border);
-        opacity: .4;
-       }
+			&:hover {
+				color: var(--accent);
+				text-decoration: underline;
+			}
+		}
 
-        a {
-            color: var(--primary);
+		button.btn,
+		a.btn {
+			--button-foreground: var(--primary-foreground);
+			--button-hover-foreground: var(--secondary-foreground);
+			--button-active-foreground: var(--foreground);
+			--button-hover-background: var(--secondary);
 
-            &:hover {
-                color: var(--accent);
-                text-decoration: underline;
-            }
-        }
-        
-        button.btn, a.btn {
+			color: var(--button-foreground);
+			background-color: var(--primary);
+			border-color: var(--primary);
+			background-image: linear-gradient(
+				180deg,
+				var(--primary) 33.33%,
+				var(--button-hover-background) 34% 66%,
+				var(--background) 66.66%
+			);
 
-            color: var(--accent-foreground) ;
-            background-color: var(--primary);
-            border-color: var(--primary);
-            background-image: linear-gradient(180deg, var(--primary) 33.33%, var(--button-hover-color) 34% 66%, var(--background) 66.66%);
+			&.btn-icn {
+				color: var(--foreground);
+				background: none !important;
 
-            &:disabled,&[aria-disabled="true"] {
-                background-color: var(--muted) !important;
-                filter: grayscale(100%);
-            }
+				&::after {
+					background-color: var(--background-alpha-50);
+				}
+			}
 
-            .error {
-                --button-hover-color: var(--destructive);
-            }
+			&:hover {
+				color: var(--button-hover-foreground);
+			}
+			&:active {
+				color: var(--button-active-foreground);
+				& > span {
+					&::after {
+						color: var(--button-active-foreground);
+					}
+				}
+			}
 
-            .success {
-                --button-hover-color: var(--success);
-            }
-        }
-        
-        input, textarea {
-            background-color: var(--input);
-            color: var(--foreground);
-            border-color: var(--border);
+			&:disabled,
+			&[aria-disabled="true"] {
+				color: var(--muted-foreground);
+				background-color: var(--muted) !important;
+				filter: grayscale(100%);
+			}
 
-            &:focus {
-                outline: none;
-                box-shadow: 0 0 0 3px var(--ring);
-            }
-        }
+			.error {
+				--button-hover-background: var(--destructive);
+			}
 
-        details {
+			.success {
+				--button-hover-background: var(--success);
+			}
 
-            &:hover::before, &[open]::before {
-                background-color: var(--primary-lighter) !important;
-            }
+			& > span {
+				&::before {
+					color: var(--button-foreground);
+				}
 
-            &::before {
-                background-color: var(--primary);
-            }
+				&::after {
+					color: var(--button-hover-foreground);
+				}
+			}
+		}
 
-            &::after {
-                background-color: var(--accent);
-            } 
-        }
-        
-        .card {
-            background-color: var(--card);
-            color: var(--card-foreground);
-            border-color: var(--border);
+		input,
+		textarea {
+			background-color: var(--input);
+			color: var(--foreground);
+			border-color: var(--border);
 
-            & header > h4 {
-                color: var(--muted-foreground);
-            }
-        }
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 0 3px var(--ring);
+			}
+		}
 
-        .chip {
-            background-color: var(--primary9);
-            color: var(--foreground);
-        }
+		details {
+			& > summary {
+				color: var(--primary-foreground);
+			}
 
-        .popup {
-            background-color: var(--popover);
-            color: var(--popover-foreground);
-        }
+			&:hover::before,
+			&[open]::before {
+				background-color: var(--primary-lighter) !important;
+			}
 
-        .closeArea {
-            background-color: var(--popover);
-        }
-        
-        .destructive {
-            background-color: var(--destructive);
-            color: var(--destructive-foreground);
-        }
+			&::before {
+				background-color: var(--primary);
+			}
 
-        .slide-checkbox {
-            background-color: var(--input);
+			&::after {
+				background-color: var(--accent);
+			}
+		}
 
-            &::after, &::before {
-                background-color: var(--primary);
-            }
-        }
-    }
+		#app {
+			& > main {
+				& > section {
+					&::after {
+						color: var(--primary) !important;
+					}
+				}
+
+				& > section .profileSideContent {
+					background: conic-gradient(
+						var(--background-alpha-50) 0deg,
+						var(--background) 180deg,
+						var(--background-alpha-50) 360deg
+					);
+
+					@media (width > $tablet-breakpoint) {
+						background: conic-gradient(
+							var(--background) 180deg,
+							var(--background-alpha-50) 270deg,
+							var(--background) 360deg
+						);
+					}
+				}
+			}
+
+			& > footer {
+				background-image: linear-gradient(to bottom, transparent, var(--background));
+			}
+		}
+
+		.animatedStack {
+			& > .label {
+				background-color: var(--background-alpha-50);
+			}
+		}
+
+		.card {
+			background-color: var(--card);
+			color: var(--card-foreground);
+			border-color: var(--border);
+
+			& header > h4 {
+				color: var(--muted-foreground);
+			}
+		}
+
+		.imageWrapper::after {
+			/* pending image placeholder */
+			background-color: var(--background);
+		}
+
+		.chip {
+			background-color: var(--primary-alpha-50);
+			color: var(--foreground);
+		}
+
+		.email {
+			color: var(--foreground) !important;
+			text-decoration-color: var(--primary) !important;
+
+			& span:nth-child(2) {
+				color: var(--primary-lighter);
+			}
+			& span:nth-child(3) {
+				color: var(--primary-lighter);
+			}
+		}
+
+		.titleWrapper {
+			& > h2:nth-child(2) {
+				& span {
+					color: var(--primary);
+				}
+			}
+		}
+		.popup {
+			background-color: var(--popover);
+			color: var(--popover-foreground);
+		}
+
+		.closeArea {
+			background-color: var(--popover);
+		}
+
+		.destructive {
+			background-color: var(--destructive);
+			color: var(--destructive-foreground);
+		}
+
+		.slide-checkbox {
+			background-color: var(--input);
+
+			&::after,
+			&::before {
+				background-color: var(--primary);
+			}
+		}
+
+		.profilePhotoWrapper {
+			background-color: var(--background);
+
+			&::before {
+				background: repeating-conic-gradient(transparent 0deg, transparent 50deg, var(--primary) 80deg, var(--primary) 90deg);
+			}
+
+			&::after {
+				background-color: var(--background);
+			}
+		}
+
+		.projectContainer {
+			& > header {
+				@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
+					& > .imageWrapper {
+						&::before {
+							background-color: var(--background);
+						}
+					}
+				}
+			}
+
+			& > main {
+				& > .card {
+					background-color: var(--card-alpha-70) !important;
+					@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+						background-color: var(--background) !important;
+					}
+				}
+			}
+		}
+	}
 }
- 

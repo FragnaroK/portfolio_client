@@ -19,7 +19,6 @@
 		text-align: center;
 		padding: 25px 0px;
 		backdrop-filter: blur(10px);
-		background-color: var(--background9);
 		border-radius: var(--container-radius);
 		translate: -50% -50%;
 		z-index: 1;
@@ -48,6 +47,7 @@
 		}
 
 		& > .animatedStackItem {
+			
 			--item-rotation: 0deg;
 
 			position: absolute;
@@ -55,10 +55,20 @@
 			text-align: center;
 			translate: 0% 0% !important;
 
+			animation: Bubble 15s alternate infinite cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+
 			.animatedStackItemContentWrapper {
 				rotate: var(--item-rotation);
 				will-change: transform;
+				animation: FadeInSpring 1s 1 both cubic-bezier(0.68, -0.55, 0.265, 1.55);
 			}
 		}
+	}
+}
+
+
+@keyframes Bubble {
+	to {
+		transform: scale(1.1);
 	}
 }

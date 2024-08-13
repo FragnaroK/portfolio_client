@@ -30,7 +30,7 @@
 	}
 
 	& > * {
-		transition: opacity var(--project-container-transition), transform var(--project-container-transition);
+		transition: opacity var(--project-container-transition);
 	}
 
 	& > header {
@@ -62,7 +62,7 @@
 		}
 
 		& > *:not(.action, .imageWrapper) {
-			transition: opacity var(--project-container-transition), transform var(--project-container-transition);
+			transition: opacity var(--project-container-transition);
 		}
 
 		&:hover {
@@ -99,7 +99,6 @@
 					border-radius: 10px;
 					position: absolute;
 					inset: 0;
-					background-color: var(--background);
 					size: 100%;
 					z-index: -1;
 				}
@@ -179,7 +178,6 @@
 		& > .card {
 			padding: 10px;
 			border-radius: 20px;
-			background-color: var(--card9) !important;
 		}
 
 		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
@@ -191,7 +189,6 @@
 
 			& > .card {
 				padding: 0px 10px !important;
-				background-color: var(--background) !important;
 				border: none !important;
 			}
 		}

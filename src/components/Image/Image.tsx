@@ -1,6 +1,7 @@
-import { CSSProperties, FC } from "react";
+import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 import { DefaultComponentProps } from "@Types/Types";
 import './Image.css';
+import classNames from "classnames";
 
 interface ImageProps extends DefaultComponentProps<undefined> {
   src?: string;
@@ -9,12 +10,26 @@ interface ImageProps extends DefaultComponentProps<undefined> {
 }
 
 const Image: FC<ImageProps> = ({
-  onClick, fit, src, alt, ...imgProps
+  fit, src, alt, ...imgProps
 }) => {
 
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    if (!imgRef.current || imageLoaded) return;
+
+    imgRef.current.onload = () => {
+      setImageLoaded(true);
+    }
+
+  }, [imgRef, imageLoaded])
+
   return (
-    <div className="imageWrapper">
+    <div className={classNames("imageWrapper", imageLoaded ? 'loaded' : '')}>
       <img
+        ref={imgRef}
         src={src ?? ""}
         alt={alt}
         aria-hidden={!alt}

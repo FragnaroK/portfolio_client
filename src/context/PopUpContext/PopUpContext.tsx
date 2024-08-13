@@ -3,7 +3,6 @@ import PopUp from '@Components/PopUp/PopUp';
 import Logger from 'node-logger-web';
 import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef, useEffect } from 'react';
 import './PopUpContext.css';
-import useQuerySelector from '@/hooks/useQuerySelector/useQuerySelector';
  
 
 interface PopUpContextData {

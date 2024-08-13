@@ -14,11 +14,14 @@
 		"url": "https://github.com/FragnaroK/portfolio/issues"
 	},
 	"scripts": {
-		"dev": "npm i && vite --host",
-		"build": "npm i && tsc && vite build",
+		"gen::config": "node ./config_gen.js",
+		"gen::theme": "node ./theme_gen.js",
+		"preany": "pnpm i && pnpm gen::config",
+		"dev": "pnpm preany && vite --host",
+		"build": "pnpm preany && tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"manage": "node ./scripts/component_manager.js",
-		"preview": "npm run build && vite preview --host"
+		"preview": "pnpm build && vite preview --host"
 	},
 	"postcss": {
 		"plugins": {
@@ -37,6 +40,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"classnames": "^2.5.1",
+		"clipboardy": "^4.0.0",
 		"dompurify": "^3.1.0",
 		"firebase": "^10.10.0",
 		"framer-motion": "^11.0.24",

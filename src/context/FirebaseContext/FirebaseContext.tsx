@@ -3,7 +3,7 @@ import { child, DatabaseReference, get } from "firebase/database";
 import Logger from 'node-logger-web';
 import { DatabaseSnap } from '@Types/DatabaseTypes';
 import { dbRef } from '@/firebase';
-import { DB_ITERATION_PATH, LS_DB_DATA, LS_DB_ITERATION } from '@/constants/const';
+import { DB_ITERATION_PATH, LS_DB_DATA, LS_DB_ITERATION } from '@Constants/const';
 
 
 // Define the shape of your context data

@@ -74,7 +74,7 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
   useImperativeHandle(outerRef, () => type === 'button' ? buttonElementRef.current! : linkElementRef.current!, [type]);
 
   const defaultStyle = useMemo(() => ({
-    ...(hoverColor ? { "--button-hover-color": hoverColor } : {}),
+    ...(hoverColor ? { "--button-hover-background": hoverColor } : {}),
     "--initial-icon": `"\\${iconType.icon[3]}"`,
     "--target-icon": `"\\${onHoverIcon?.icon[3] ?? getIconBasedOnType(type).icon[3]}"`,
   }), [hoverColor, iconType, onHoverIcon, type]) as ExtendedCSSProperties;

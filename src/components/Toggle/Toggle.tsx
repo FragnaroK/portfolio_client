@@ -3,8 +3,9 @@ import { DefaultComponentProps, ExtendedCSSProperties } from "@Types/Types";
 import './Toggle.css';
 import { faCircle, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
-import { deepTrim } from "@/utils/helpers";
+import { deepTrim } from "@Utils/helpers";
 import { uniqueId } from "lodash";
+import classNames from "classnames";
  
 
 interface ToggleProps extends DefaultComponentProps<string, HTMLInputElement> {
@@ -33,7 +34,7 @@ const Toggle: FC<ToggleProps> = ({
   }, [onClick])
 
   return (
-    <label className={`toggleWrapper ${className}`} style={defaultStyles} id={deepTrim(`${id}-${title}`)}>
+    <label className={classNames('toggleWrapper', className)} style={defaultStyles} id={deepTrim(`${id}-${title}`)}>
       <input type="checkbox" name={deepTrim(children ?? '')} onClick={onToggleClicked} disabled={disabled} title={`"toggle checkbox: ${title}"`}/>
       <span className="slide-checkbox"></span>
     </label>
