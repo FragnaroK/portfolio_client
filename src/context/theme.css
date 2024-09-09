@@ -14,12 +14,6 @@
 	src: url("../assets/fonts/Lato/Lato-Bold.ttf"), format("ttf");
 }
 
-@font-face {
-	font-family: Lato;
-	font-weight: lighter;
-	font-style: normal;
-	src: url("../assets/fonts/Lato/Lato-Light.ttf"), format("ttf");
-}
 
 @font-face {
 	font-family: Lato;
@@ -28,12 +22,7 @@
 	src: url("../assets/fonts/Lato/Lato-Italic.ttf"), format("ttf");
 }
 
-@font-face {
-	font-family: Lato;
-	font-weight: lighter;
-	font-style: italic;
-	src: url("../assets/fonts/Lato/Lato-Light.ttf"), format("ttf");
-}
+
 
 @font-face {
 	font-family: Lato;
@@ -41,7 +30,7 @@
 	font-style: italic;
 	src: url("../assets/fonts/Lato/Lato-BoldItalic.ttf"), format("ttf");
 }
-
+/* TODO: Clean */
 :root {
 	--font: Lato;
 	--container-radius: 8px;
@@ -114,9 +103,11 @@ body {
 
 		a {
 			color: var(--primary);
+			font-weight: bold;
+			text-decoration: none;
 
 			&:hover {
-				color: var(--accent);
+				color: var(--primary-lighter);
 				text-decoration: underline;
 			}
 		}

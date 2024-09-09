@@ -60,7 +60,7 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
 const ProjectContainerFooter: FC<ProjectActions> = ({ href, repo }) => (
   (href || repo) && (
     <footer>
-      {href && <BetterButton type="link" href={href}>Go to project</BetterButton>}
+      {href && <BetterButton type="link" href={href} >Go to project</BetterButton>}
       {repo && <BetterButton type="link" icon={faGithub} href={repo}>Repository</BetterButton>}
     </footer>
   )

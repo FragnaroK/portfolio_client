@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import classNames from 'classnames';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import toast from 'react-hot-toast';
+import Footer from './sections/Footer/Footer';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
           <AboutMe />
           <Experience />
           <Projects />
+          <Footer />
         </main>
         <footer>
           <BetterButton

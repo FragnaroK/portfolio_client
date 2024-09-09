@@ -22,12 +22,12 @@ const getPosition = (position: ChipsPosition) => {
   return "center";
 }
 
-const Chip: FC<ChipProps> = ({ children }) => <small className="chip">{children}</small>
+export const Chip: FC<ChipProps> = ({ children }) => <small className="chip">{children}</small>
 
 const Chips: FC<ChipsProps> = ({
   chips, gap, position, label
 }) => {
-  const justifyContent = getPosition(position ?? "left");
+  const justifyContent = getPosition(position ?? "center");
 
   return (
     <div className="chipsWrapper" style={{ gap, justifyContent }}>

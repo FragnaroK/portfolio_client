@@ -22,8 +22,7 @@ const AboutMe: FC<AboutMeProps> = () => {
       {snap ? (
         <Card
           html
-          title="Who am I?"
-          subtitle="Brief description about me."
+          title="My Journey"
           label="You can learn a bit more if you google me!"
           actions={[
             {

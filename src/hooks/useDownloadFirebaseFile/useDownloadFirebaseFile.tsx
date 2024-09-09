@@ -35,12 +35,6 @@ const useDownloadFirebaseFile = ({ firebaseStorageUrl, fileName, anchor = docume
       });
   }), [anchor, downloadURL.current, fileName, firebaseStorageUrl])
 
-
-  // useEffect(() => {
-  //   if (anchor?.href !== downloadUrl) return;
-  //   onSuccess();
-  // }, [downloadUrl])
-
   return {
     downloadURL,
     onDownloadTrigger

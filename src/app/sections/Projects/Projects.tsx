@@ -29,7 +29,7 @@ const Projects: FC<ProjectsProps> = () => {
         alignItems="center"
       >
         { snap ?
-          snap.projects?.slice(0, 5).map((project, i) => (
+          snap.projects?.slice(0, 4).map((project, i) => (
             <ProjectContainer key={deepTrim(project.title)}
               title={project.title}
               href={project.link}

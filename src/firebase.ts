@@ -10,7 +10,7 @@ const hakuna = matata(una_forma(de_ser));
 const fireApp = initializeApp(hakuna);
 const db = getDatabase(fireApp);
 const storage = getStorage(fireApp);
-const dbRef = ref(db, `${import.meta.env.VITE_DB_ENDPOINT}`);
+const dbRef = ref(db, `${import.meta.env.VITE_DB_ENDPOINT}/${import.meta.env.VITE_ITERATION}`);
 
 
 export { fireApp, db, dbRef, storage }
