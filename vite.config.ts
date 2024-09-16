@@ -8,10 +8,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/"),
-      "@Components": `${path.resolve(__dirname, "./src/components/")}`,
+      "@Components": `${path.resolve(__dirname, "./src/components/index.ts")}`,
+      "@Component": `${path.resolve(__dirname, "./src/components")}`,
       "@Public": `${path.resolve(__dirname, "./public/")}`,
       "@Sections": path.resolve(__dirname, "./src/app/sections"),
-      "@Types": `${path.resolve(__dirname, "./src/types")}`,
+      "@Types": `${path.resolve(__dirname, "./src/types/index.ts")}`,
+      "@Type": `${path.resolve(__dirname, "./src/types")}`,
       "@Context": `${path.resolve(__dirname, "./src/context")}`,
       "@Utils": `${path.resolve(__dirname, "./src/utils")}`,
       "@Database": `${path.resolve(__dirname, "./src/database")}`,

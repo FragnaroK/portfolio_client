@@ -17,8 +17,10 @@
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
       "@Sections/*": ["src/app/sections/*"],
-      "@Components/*": ["src/components/*"],
-      "@Types/*": ["src/types/*"],
+      "@Component/*": ["src/components/*"],
+      "@Components": ["src/components/index.ts"],
+      "@Types": ["src/types/index.ts"],
+      "@Type/*": ["src/types/*.types.ts"],
       "@Public/*": ["public/*"],
       "@Context/*": ["src/context/*"],
       "@Utils/*": ["src/utils/*"],

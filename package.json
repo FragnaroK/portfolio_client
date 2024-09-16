@@ -14,8 +14,8 @@
 		"url": "https://github.com/FragnaroK/portfolio/issues"
 	},
 	"scripts": {
-		"gen::config": "node ./config_gen.js",
-		"gen::theme": "node ./theme_gen.js",
+		"gen::config": "node ./scripts/config_gen.js",
+		"gen::theme": "node ./scripts/theme_gen.js",
 		"preany": "pnpm i && pnpm gen::config",
 		"dev": "pnpm preany && vite --host",
 		"build": "pnpm preany && tsc && vite build",

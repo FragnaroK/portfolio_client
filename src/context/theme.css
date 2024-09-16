@@ -41,27 +41,29 @@
 	--destructive: hsla(0, 62.8%, 30.6%, 1);
 	--destructive-foreground: hsla(245, 4.7%, 97.35%, 1);
 
-	--background: hsl(199.71428571428572, 84.67741935483872%, 1.3725490196078525%);
-	--background-alpha-50: hsla(199.71428571428572, 84.67741935483872%, 1.3725490196078525%, 0.5);
-	--foreground: hsl(0, 0%, 100%);
-	--primary: hsl(199.71428571428572, 84.67741935483872%, 51.37254901960785%);
-	--primary-alpha-50: hsla(199.71428571428572, 84.67741935483872%, 51.37254901960785%, 0.5);
-	--primary-lighter: hsl(199.71428571428572, 84.67741935483872%, 59.37254901960785%);
-	--primary-foreground: hsl(0, 0%, 0%);
-	--secondary: hsl(199.71428571428572, 84.67741935483872%, 6.3725490196078525%);
-	--secondary-foreground: hsl(0, 0%, 100%);
-	--card: hsl(199.71428571428572, 84.67741935483872%, 11.372549019607852%);
-	--card-alpha-70: hsla(199.71428571428572, 84.67741935483872%, 11.372549019607852%, 0.9);
-	--card-foreground: hsl(0, 0%, 100%);
-	--muted: hsl(199.71428571428572, 84.67741935483872%, 31.372549019607852%);
-	--muted-foreground: hsl(0, 0%, 100%);
-	--border: hsl(199.71428571428572, 84.67741935483872%, 21.372549019607852%);
-	--input: hsl(199.71428571428572, 84.67741935483872%, 11.372549019607852%);
-	--popover: var(--card);
-	--popover-foreground: var(--card-foreground);
-	--accent: var(--secondary);
-	--accent-foreground: var(--secondary-foreground);
-	--ring: var(--primary);
+	/* Generated theme using scripts/theme_gen.js */
+
+	    --background: hsl(29.88235294117647, 100%, 0%);
+    --background-alpha-50: hsla(29.88235294117647, 100%, 0%, 0.5);
+    --foreground: hsl(0, 0%, 100%);
+    --primary: hsl(29.88235294117647, 100%, 50%);
+    --primary-alpha-50: hsla(29.88235294117647, 100%, 50%, 0.5);
+    --primary-lighter: hsl(29.88235294117647, 100%, 58%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(29.88235294117647, 100%, 5%);
+    --secondary-foreground: hsl(0, 0%, 100%);
+    --card: hsl(29.88235294117647, 100%, 10%);
+    --card-alpha-70: hsla(29.88235294117647, 100%, 10%, 0.7);
+    --card-foreground: hsl(0, 0%, 100%);
+    --muted: hsl(29.88235294117647, 100%, 30%);
+    --muted-foreground: hsl(0, 0%, 100%);
+    --border: hsl(29.88235294117647, 100%, 20%);
+    --input: hsl(29.88235294117647, 100%, 10%);
+    --popover: var(--card);
+    --popover-foreground: var(--card-foreground);
+    --accent: var(--secondary);
+    --accent-foreground: var(--secondary-foreground);
+    --ring: var(--primary);
 }
 
 /* ===== Scrollbar CSS ===== */
