@@ -26,10 +26,10 @@ const Footer: FC<FooterProps> = () => {
         <ul>
           <li>
             <BetterButton
-              href="https://francocanalejo-fragnarok.firebaseapp.com/"
+              href="https://francocanalejo-v1.firebaseapp.com/"
               type="link"
             >
-              v2.0.0
+              v1.0.0
             </BetterButton>
           </li>
         </ul>
