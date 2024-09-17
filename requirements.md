@@ -11,6 +11,10 @@ Add the following env variables into an `env.json` file (structure below):
                 "encode": false,
                 "value": 3
             },
+            "ITERATION": {
+                "encode": false,
+                "value": "v3"
+	        },
             "DV_CONFIG": {
                 "encode": true,
                 "value": "some db config values/object"

@@ -1,16 +1,14 @@
 import { useRef } from 'react';
-import { useUtilsContext } from '@Context/Utils/hooks';
-import { useFirebaseContext } from '@Context/Firebase/hooks';
-
-import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
-
 import toast from 'react-hot-toast';
-import BetterButton from '@Component/Button';
 import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 
-const BottomBar = () => {
+import { useUtilsContext } from '@Context/Utils/hooks';
+import { useFirebaseContext } from '@Context/Firebase/hooks';
+import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
+import BetterButton from '@Component/Button';
 
+const BottomBar = () => {
 
     const { isOnTop } = useUtilsContext();
     const { database: { snap } } = useFirebaseContext();

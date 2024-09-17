@@ -74,8 +74,8 @@ async function generate(type, name) {
         const template_adapted = template_content.replace(component_template_regex, capitalizedName);
 
         await mkdir(generated_path);
-        await writeFile(path.join(generated_path, `${capitalizedName}.tsx`), template_adapted);
-        if (css) await writeFile(path.join(generated_path, `${capitalizedName}.css`), "");
+        await writeFile(path.join(generated_path, 'index.tsx'), template_adapted);
+        if (css) await writeFile(path.join(generated_path, 'style.css'), "");
         await wait();
 
         log.i(`${capitalize(type)} '${capitalizedName}' created at '${generated_path}'!`)

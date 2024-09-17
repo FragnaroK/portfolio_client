@@ -1,8 +1,8 @@
-import { CardProps } from '@/components/Card';
-import PopUp from '@/components/PopUp';
-import Logger from 'node-logger-web';
-import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef, useEffect } from 'react';
 import './style.css';
+import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef, useEffect } from 'react';
+import Logger from 'node-logger-web';
+import { CardProps } from '@Component/Card';
+import PopUp from '@Component/PopUp';
  
 
 interface PopUpContextData {

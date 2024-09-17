@@ -1,5 +1,5 @@
 import { forwardRef, HTMLAttributeAnchorTarget, MouseEventHandler } from "react";
-import { BetterButtonProps } from ".";
+import { BetterButtonProps } from "..";
 import classNames from 'classnames';
 import { ExtendedCSSProperties } from "@Types";
 

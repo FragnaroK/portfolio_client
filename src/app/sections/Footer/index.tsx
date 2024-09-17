@@ -6,9 +6,7 @@ import { Title, BetterButton } from '@Components';
 
 interface FooterProps extends DefaultComponentProps { }
 
-const Footer: FC<FooterProps> = ({
-  id, className, style, onClick, children
-}) => {
+const Footer: FC<FooterProps> = () => {
 
   const { database: { snap } } = useFirebaseContext();
 
@@ -27,10 +25,12 @@ const Footer: FC<FooterProps> = ({
         <Title>Iterations</Title>
         <ul>
           <li>
-            <BetterButton 
+            <BetterButton
               href="https://francocanalejo-fragnarok.firebaseapp.com/"
               type="link"
-            >v2.0.0</BetterButton>
+            >
+              v2.0.0
+            </BetterButton>
           </li>
         </ul>
       </section>

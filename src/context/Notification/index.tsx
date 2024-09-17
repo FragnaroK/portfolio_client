@@ -1,5 +1,5 @@
-import Logger from 'node-logger-web';
 import React, { createContext, ReactNode, useCallback, useMemo, useRef } from 'react';
+import Logger from 'node-logger-web';
 import toast, { ToastType, Toaster } from 'react-hot-toast';
 
 interface NotificationContextData {

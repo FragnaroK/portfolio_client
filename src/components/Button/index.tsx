@@ -11,8 +11,8 @@ import {
   faLink,
   IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
-import RenderButton from "./button.tag";
-import RenderLink from "./link.tag";
+import RenderButton from "./variants/button.tag";
+import RenderLink from "./variants/link.tag";
 
 
 type ButtonType = "download" | "button" | "link" | "anchor";
