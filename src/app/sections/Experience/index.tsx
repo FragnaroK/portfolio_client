@@ -45,11 +45,9 @@ const Experience: FC<ExperienceProps> = () => {
                 ]}
               >
                 <h3>About the role</h3>
-                <ul>
-                  {
-                    job.responsibilities.map((resp) => (<li key={deepTrim(`JobCard-${job.company}-${job.position}-${resp}`)}>{resp}</li>))
-                  }
-                </ul>
+                {
+                  job.responsibilities.map((resp) => (<p key={deepTrim(`JobCard-${job.company}-${job.position}-${resp}`)}>{resp}</p>))
+                }
                 <h3>Achievements</h3>
                 <ul>
                   {

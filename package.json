@@ -16,6 +16,7 @@
 	"scripts": {
 		"gen::config": "node ./scripts/config_gen.js",
 		"gen::theme": "node ./scripts/theme_gen.js",
+		"firebase::deploy": "firebase deploy --only hosting:fcanalejo",
 		"preany": "pnpm i && pnpm gen::config",
 		"dev": "pnpm preany && vite --host",
 		"build": "pnpm preany && tsc && vite build",

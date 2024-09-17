@@ -9,11 +9,11 @@ Add the following env variables into an `env.json` file (structure below):
         {
             "DB_ENDPOINT": {
                 "encode": false,
-                "value": 3
+                "value": 3 // 3: DEV | 0: PROD
             },
-            "ITERATION": {
+            "DB_VERSION": {
                 "encode": false,
-                "value": "v3"
+                "value": "v3" // DB version
 	        },
             "DV_CONFIG": {
                 "encode": true,

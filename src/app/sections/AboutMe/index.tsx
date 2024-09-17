@@ -1,4 +1,4 @@
-import './style.css'; 
+import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
@@ -21,6 +21,7 @@ const AboutMe: FC<AboutMeProps> = () => {
         <Card
           html
           title="My Journey"
+          subtitle=' '
           label="You can learn a bit more if you google me!"
           actions={[
             {
