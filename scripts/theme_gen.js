@@ -111,16 +111,13 @@ function generateThemeScheme(colors) {
     }
     cssString += '}';
 
-    try { clipboard.writeSync(cssVarsOnly); console.info("CSS Variables copied to clipboard") } catch(err) {
+    try { clipboard.writeSync(cssVarsOnly); console.info("CSS Variables saved to clipboard") } catch(err) {
         console.warn("Could not copy to clipboard. ", err?.message ?? '')
     }
 
     return cssString;
 }
 
-// Example usage:
 const themeCSS = generateThemeScheme({ primary: "#ff7f00" });
-
-// #1aa7ec
 
 console.log(themeCSS);

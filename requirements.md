@@ -3,8 +3,9 @@
 
 Add the following env variables into an `env.json` file (structure below):
  
- - Add `VITE_DB_ENDPOINT` to `env.json` file
- - Add `VITE_DV_CONFIG` to `env.json` file
+ - Add `DB_ENDPOINT` to `env.json` file
+ - Add `DV_CONFIG` to `env.json` file
+ - Add `DB_VERSION` to `env.json` file
 
         {
             "DB_ENDPOINT": {
