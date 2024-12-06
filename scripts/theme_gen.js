@@ -122,5 +122,4 @@ function generateThemeScheme(colors) {
 const themeCSS = generateThemeScheme({ primary: "#ff7f00" });
 
 // #1aa7ec
-
 console.log(themeCSS);

@@ -2,15 +2,16 @@
 
 .accordionWrapper {
 
-    --label-size: 20px;
+    --label-size: 23px;
     --label-padding: 5px;
     --total-padding: calc(var(--label-padding) * 3);
     --label-height: calc(var(--label-size) + var(--total-padding));
-    --max-accordion-height: 45svh;
+    --max-accordion-height: 400px;
 
     height: var(--label-height);
     transition: height var(--transition);
     border-radius: var(--container-radius);
+    max-height: 400px;
 
     &:has(> details[open]) {
         height: var(--max-accordion-height);
@@ -18,6 +19,7 @@
 
 	 & > details {
 		--marker-size: calc(var(--label-size) / 2);
+        max-height: var(----max-accordion-height);
 
         position: relative;
         margin: 5px 2.5px;
@@ -47,6 +49,8 @@
         }
 
 		& > summary {
+    max-height: var(--max-accordion-height);
+
             position: relative;
             z-index: 3;
             inset: 0;
@@ -79,7 +83,7 @@
             & + article {
                 position: relative;
                 z-index: 2;
-                height: calc(100% - var(--label-height));
+                max-height: calc(var(--max-accordion-height) - var(--label-height));
                 padding: 10px 10px 10px 15px;
                 overflow: auto;
             }
