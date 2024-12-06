@@ -247,3 +247,8 @@ yarn-error.log*
 *.tsbuildinfo
 
 env.json
+
+
+# Cache
+*.cache
+/.firebase
