@@ -22,7 +22,12 @@ export default defineConfig({
       "@Fonts": `${path.resolve(__dirname, "./src/assets/fonts")}`,
       "@Hooks": `${path.resolve(__dirname, "./src/hooks")}`,
       "@Constants": `${path.resolve(__dirname, "./src/constants")}`,
-      "@Firebase": `${path.resolve(__dirname, "./src/firebase.ts")}`
+      "@Firebase": `${path.resolve(__dirname, "./src/config/firebase.config.ts")}`,
+      "@Styles": `${path.resolve(__dirname, "./src/styles/components")}`,
+      "@Style": `${path.resolve(__dirname, "./src/styles/global.css")}`,
+      "@Theme": `${path.resolve(__dirname, "./src/styles/theme.css")}`,
+      "@Window": `${path.resolve(__dirname, "./src/config/window.config.ts")}`,
+      "@Layout": `${path.resolve(__dirname, "./src/app/layout")}`,
     }
   }
 })
