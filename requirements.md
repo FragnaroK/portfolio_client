@@ -1,8 +1,6 @@
 
 ## Requirements
 
-### Change 
-
 ### Setting Up the Environment
 
 1. **Setup Firebase:** Follow the instructions of the firebase docs to setup your firebase project: [Firebase Documentation](https://firebase.google.com/docs/web/setup?hl=es-419)
