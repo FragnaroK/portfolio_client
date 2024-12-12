@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { useUtilsContext } from '@Context/Utils/hooks';
 import { useFirebaseContext } from '@Context/Firebase/hooks';
 import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
-import BetterButton from '@Component/Button';
+import BetterButton from '@Component/common/Button';
 
 const BottomBar = () => {
 

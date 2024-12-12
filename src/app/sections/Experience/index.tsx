@@ -5,7 +5,7 @@ import { Education, WorkExperience } from '@Type/database';
 
 import { Title, Flex, Card, Spinner } from '@Components';
 import { faCertificate, faNewspaper } from "@fortawesome/free-solid-svg-icons";
-import { useFirebaseContext } from "@/context/Firebase/hooks";
+import { useFirebaseContext } from "@Context/Firebase/hooks";
 import { deepTrim } from "@Utils/helpers";
 // Education, WorkExperience, 
 interface ExperienceProps extends DefaultComponentProps { }

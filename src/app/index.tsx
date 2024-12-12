@@ -1,7 +1,7 @@
 import './style.css';
-import Provider from '@App/Provider';
-import Content from './layout/Content/index';
-import BottomBar from './layout/BottomBar/index';
+import Provider from '@/app/Provider';
+import Content from '@Layout/Content/index';
+import BottomBar from '@Layout/BottomBar/index';
 
 function App() { 
 
