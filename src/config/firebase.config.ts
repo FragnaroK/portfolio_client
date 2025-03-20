@@ -9,12 +9,13 @@ import { una_forma, matata, de_ser } from "../utils/helpers";
 // ---
 // FYI this is from a disney song: https://www.youtube.com/watch?v=sfXPGuZ68HM&ab_channel=DisneyStudiosLA
 const hakuna = matata(una_forma(de_ser));
+const dbRefUrl = `${import.meta.env.VITE_DB_ENDPOINT}/v${import.meta.env.VITE_DB_VERSION}`;
 
 // Initialize Firebase
 const fireApp = initializeApp(hakuna);
 const db = getDatabase(fireApp);
 const storage = getStorage(fireApp);
-const dbRef = ref(db, `${import.meta.env.VITE_DB_ENDPOINT}/${import.meta.env.VITE_DB_VERSION}`);
+const dbRef = ref(db, dbRefUrl);
 
 
 export { fireApp, db, dbRef, storage }

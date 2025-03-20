@@ -2,46 +2,47 @@ import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
 import { useFirebaseContext } from "@Context/Firebase/hooks";
-import {  TECH_ICON_LIST } from "@Constants/const";
+import Const from "@/constants";
 import { deepTrim } from "@Utils/helpers";
 import { ProfilePhoto, BetterButton, Title, IconButton, Text, Email, AnimatedStack, Icon } from '@Components';
 
 import { faCodepen, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { shuffle } from "lodash";
 
+const techIconsList = Object.keys(Const.Icons).map((key) => Const.Icons[key]);
 
 const techRings = [
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="2x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   )),
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="2x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   )),
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="3x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   ))
 ]
