@@ -2,7 +2,6 @@ import './style.css';
 import { FC } from "react";
 import { DefaultComponentProps } from "@Types";
 import { Title, BetterButton } from '@Components';
-import useFirebase from '@/hooks/useFirebase';
 
 interface FooterProps extends DefaultComponentProps { }
 
