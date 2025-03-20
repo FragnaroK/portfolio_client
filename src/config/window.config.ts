@@ -20,6 +20,8 @@ function showDeps(label: string, depsList: { [key: string]: string }) {
     `
 }
 
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isChrome = !!(window as any).chrome;
 
 const colors = {

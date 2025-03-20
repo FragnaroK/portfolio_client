@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 
 function envExist() {
     // Check if the file or directory exists asynchronously
-    stat(pathToFileOrDir, (err, stats) => {
+    stat(pathToFileOrDir, (err) => {
         if (err) {
             console.log(`The file or directory at '${pathToFileOrDir}' not found.`);
             throw new Error(err)

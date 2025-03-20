@@ -7,17 +7,13 @@ interface NotificationContextData {
   fakeLoadingNotify: (type: ToastType, initial: string, msg: string, timeout?: number, cb?: () => void) => void;
 }
 
-// Create a context with an initial value
 export const NotificationContext = createContext<NotificationContextData | undefined>(undefined);
 
-// Create a custom hook to easily access the context
 
-// Define props for your context provider
 interface NotificationContextProviderProps {
-  children: ReactNode; // ReactNode allows any valid React children
+  children: ReactNode; 
 }
 
-// Define your context provider component
 export const NotificationContextProvider: React.FC<NotificationContextProviderProps> = ({ children }) => {
 
   const log = new Logger('Notification::context', import.meta.env.DEV);

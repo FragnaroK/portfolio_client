@@ -1,23 +1,23 @@
 import './style.css';
 import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import Logger from 'node-logger-web';
- 
+
 
 interface UtilsContextData {
-   currentSection: string;
-   isOnTop: boolean;
-   setSection: (section: string) => void
+  currentSection: string;
+  isOnTop: boolean;
+  setSection: (section: string) => void
 }
 
 export const UtilsContext = createContext<UtilsContextData | undefined>(undefined);
 
 interface UtilsContextProviderProps {
-  children: ReactNode; 
+  children: ReactNode;
 }
 
 export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ children }) => {
-  
-  const log = new Logger("Utils::context",   import.meta.env.DEV );
+
+  const log = new Logger("Utils::context", import.meta.env.DEV);
   const [currentSection, setCurrentSection] = useState<string>("Introduction");
   const [isOnTop, setIsOnTop] = useState<boolean>(true);
 
@@ -57,7 +57,7 @@ export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ chil
 
   return <UtilsContext.Provider value={contextValue}>
     <div className="utilsWrapper">
-    {children}
+      {children}
     </div>
   </UtilsContext.Provider>;
 };

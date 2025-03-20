@@ -3,21 +3,20 @@ import React, { createContext, useState, ReactNode, useCallback, useMemo, useRef
 import Logger from 'node-logger-web';
 import { CardProps } from '@Component/common/Card';
 import PopUp from '@Component/common/PopUp';
- 
 
 interface PopUpContextData {
   show: (content: CardProps) => void;
   hide: () => void;
 }
 
-export const PopUpContext = createContext<PopUpContextData | undefined>(undefined);
-
 interface PopUpContextProviderProps {
   children: ReactNode;
 }
 
+export const PopUpContext = createContext<PopUpContextData | undefined>(undefined);
+
 export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ children }) => {
-  const log = new Logger("PopUp::context",   import.meta.env.DEV );
+  const log = new Logger("PopUp::context", import.meta.env.DEV);
 
   const [isShowing, setIsShowing] = useState<boolean>(false);
   const [popupContent, setPopupContent] = useState<CardProps | null>(null);
@@ -69,10 +68,10 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
   }, [isShowing]);
 
   useEffect(() => {
-     if (!htmlElementRef.current) {
-       htmlElementRef.current = document.querySelector('html');
-     }
-   }, []);
+    if (!htmlElementRef.current) {
+      htmlElementRef.current = document.querySelector('html');
+    }
+  }, []);
 
   return (
     <PopUpContext.Provider value={contextValue}>

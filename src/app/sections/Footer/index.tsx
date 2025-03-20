@@ -1,35 +1,38 @@
 import './style.css';
 import { FC } from "react";
 import { DefaultComponentProps } from "@Types";
-import { useFirebaseContext } from '@Context/Firebase/hooks';
 import { Title, BetterButton } from '@Components';
+import useFirebase from '@/hooks/useFirebase';
 
 interface FooterProps extends DefaultComponentProps { }
 
 const Footer: FC<FooterProps> = () => {
 
-  const { database: { snap } } = useFirebaseContext();
-
-  const version = snap?.meta.version;
-  const dbIteration = snap?.meta.db_iteration;
-
   return (
     <section id="footer">
-      <section>
+      {/* <section>
         <Title subtitle={`v${version}`}>Portfolio</Title>
       </section>
       <section>
         <Title subtitle={`v${dbIteration}`}>Database</Title>
-      </section>
+      </section> */}
       <section>
         <Title>Iterations</Title>
         <ul>
           <li>
             <BetterButton
-              href="https://francocanalejo-v1.firebaseapp.com/"
+              href="https://v1.francocanalejo.dev"
               type="link"
             >
-              v1.0.0
+              v1
+            </BetterButton>
+          </li>
+          <li>
+            <BetterButton
+              href="https://francocanalejo.dev"
+              type="link"
+            >
+              v2 (Current)
             </BetterButton>
           </li>
         </ul>

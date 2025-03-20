@@ -1,6 +1,5 @@
 #popupContextWrapper {
-
-    position: relative;
+	position: relative;
 
 	&.popup-visible {
 		overflow: hidden !important;

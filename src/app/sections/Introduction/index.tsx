@@ -1,96 +1,56 @@
 import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
-import { useFirebaseContext } from "@Context/Firebase/hooks";
-import {  TECH_ICON_LIST } from "@Constants/const";
+import Const from "@/constants";
 import { deepTrim } from "@Utils/helpers";
-import { ProfilePhoto, BetterButton, Title, IconButton, Text, Email, AnimatedStack, Icon } from '@Components';
-
-import { faCodepen, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { ProfilePhoto, BetterButton, Title, Text, Email, AnimatedStack, Icon } from '@Components';
 import { shuffle } from "lodash";
+import useFirebase from '@/hooks/useFirebase';
+import SocialMedia from '@/components/SocialMedia';
 
+const techIconsList = Object.keys(Const.Icons).map((key) => Const.Icons[key]);
 
 const techRings = [
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="2x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   )),
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="2x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   )),
-  shuffle(TECH_ICON_LIST).map((tech, i) => (
+  shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(`${tech.name}-${tech.icon.iconName}`)}
+      key={deepTrim(tech.icon.iconName)}
       icon={tech.icon}
-      label={tech.name}
+      label={tech.icon.iconName}
       color={tech.color}
       size="3x"
       index={i + 1}
-      total={TECH_ICON_LIST.length}
+      total={techIconsList.length}
     />
   ))
 ]
 
-const SocialMedia: FC = () => {
-
-  const { database } = useFirebaseContext();
-
-  const media = [
-    {
-      name: "GitHub",
-      link: database.snap?.info?.professional.links.github,
-      icon: faGithub
-    },
-    {
-      name: "CodePen",
-      link: database.snap?.info?.professional.links.codepen,
-      icon: faCodepen,
-    },
-    {
-      name: "LinkedIn",
-      link: database.snap?.info?.professional.links.linkedin,
-      icon: faLinkedin
-    }
-  ]
-
-  return (
-    <div className="socialMediaGrid">
-      {
-        media.map((m) => (
-          <IconButton
-            key={deepTrim(`${m.name}-link-button`)}
-            type="link"
-            href={m.link}
-            alt={`Button linked to my ${m.name} profile`}
-          >
-            {m.icon}
-          </IconButton>
-        ))
-      }
-    </div>
-  );
-}
-
 const Introduction: FC<DefaultComponentProps> = () => {
 
-  const { database: { snap } } = useFirebaseContext();
+  const { database: { snap } } = useFirebase();
   const sectionRef = useRef<HTMLElement>(null)
-  
+
   return (
     <section id="introduction" ref={sectionRef}>
       <section className="profilePhotoSection">
@@ -112,7 +72,11 @@ const Introduction: FC<DefaultComponentProps> = () => {
       </section>
       <section className="profileSideContent">
         <Title subtitle="Web Developer">{`${snap?.info?.personal.name.first ?? "Franco"} ${snap?.info?.personal.name.last ?? "Canalejo"}`}</Title>
-        <SocialMedia />
+        <SocialMedia
+          github={snap?.info?.professional.links.github}
+          codepen={snap?.info?.professional.links.codepen}
+          linkedin={snap?.info?.professional.links.linkedin}
+        />
         <Text>
           <h3>Hey, welcome to my website.</h3>
           <p>

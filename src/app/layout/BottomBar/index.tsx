@@ -4,14 +4,14 @@ import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-s
 import classNames from 'classnames';
 
 import { useUtilsContext } from '@Context/Utils/hooks';
-import { useFirebaseContext } from '@Context/Firebase/hooks';
 import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
 import BetterButton from '@Component/common/Button';
+import useFirebase from '@/hooks/useFirebase';
 
 const BottomBar = () => {
 
     const { isOnTop } = useUtilsContext();
-    const { database: { snap } } = useFirebaseContext();
+    const { database: { snap } } = useFirebase();
 
     const downloadResumeRef = useRef<HTMLAnchorElement>(null);
     const { onDownloadTrigger, downloadURL } = useDownloadFirebaseFile({

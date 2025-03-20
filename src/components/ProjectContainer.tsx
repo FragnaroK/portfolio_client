@@ -8,7 +8,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { deepTrim } from "@Utils/helpers";
 
 import { Title, BetterButton, Image, Chips, Toggle, Card } from '@Components'
- 
+
 
 interface ProjectContainerProps extends DefaultComponentProps<string, HTMLElement>, ProjectHeader, ProjectContent, ProjectActions {
   index?: number;
@@ -73,7 +73,7 @@ const ProjectContainerContent: FC<ProjectContent> = ({ children }) => (
 const ProjectContainer: FC<ProjectContainerProps> = ({
   style, onClick, href, img, repo, tech, title, children, timestamp, index = 0, ...props
 }) => {
-  const log = new Logger("ProjectContainer::component",   import.meta.env.DEV );
+  const log = new Logger("ProjectContainer::component", import.meta.env.DEV);
   const projectRef = useRef<HTMLElement>(null);
   const inView = useInView(projectRef, { once: true });
   const { scrollYProgress } = useScroll({
