@@ -2,8 +2,11 @@ import './style.css';
 import Provider from '@/app/Provider';
 import Content from '@Layout/Content/index';
 import BottomBar from '@Layout/BottomBar/index';
+import useFirebase from '@/hooks/useFirebase';
 
-function App() { 
+function App() {
+
+  useFirebase({ enableFetch: true })
 
   return (
     <Provider>

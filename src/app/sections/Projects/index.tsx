@@ -1,9 +1,9 @@
 import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
-import { useFirebaseContext } from "@Context/Firebase/hooks";
 import { deepTrim } from "@Utils/helpers";
 import { Title, ProjectContainer, Flex, Spinner} from '@Components';
+import useFirebase from '@/hooks/useFirebase';
 
 interface ProjectsProps extends DefaultComponentProps<undefined> { }
 
@@ -11,7 +11,7 @@ interface ProjectsProps extends DefaultComponentProps<undefined> { }
 
 const Projects: FC<ProjectsProps> = () => {
 
-  const { database: { snap } } = useFirebaseContext();
+  const { database: { snap } } = useFirebase();
   const sectionRef = useRef<HTMLElement>(null);
 
   return (

@@ -2,13 +2,13 @@ import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
-import { useFirebaseContext } from "@Context/Firebase/hooks";
 import { Spinner, Card, Title } from "@Components"
+import useFirebase from '@/hooks/useFirebase';
 
 interface AboutMeProps extends DefaultComponentProps { }
 const AboutMe: FC<AboutMeProps> = () => {
 
-  const { database: { snap } } = useFirebaseContext();
+  const { database: { snap } } = useFirebase();
   const sectionRef = useRef<HTMLElement>(null);
 
   const experience = `${snap?.info?.professional.experience.years}`;

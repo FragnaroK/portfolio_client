@@ -1,5 +1,5 @@
 .utilsWrapper {
-    /* html/body tag horizontal overflow not working on mobile - Workaround */
-    /* Overflow set to clip instead of hidden so the sticky position set to any children works */
-    overflow-x: clip !important;
+	/* html/body tag horizontal overflow not working on mobile - Workaround */
+	/* Overflow set to clip instead of hidden so the sticky position set to any children works */
+	overflow-x: clip !important;
 }

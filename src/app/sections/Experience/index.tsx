@@ -5,9 +5,10 @@ import { Education, WorkExperience } from '@Type/database';
 
 import { Title, Flex, Card, Spinner } from '@Components';
 import { faCertificate, faNewspaper } from "@fortawesome/free-solid-svg-icons";
-import { useFirebaseContext } from "@Context/Firebase/hooks";
 import { deepTrim } from "@Utils/helpers";
-// Education, WorkExperience, 
+import useFirebase from '@/hooks/useFirebase';
+
+
 interface ExperienceProps extends DefaultComponentProps { }
 
 type ActionType = 'post' | 'certificate' | undefined
@@ -20,7 +21,7 @@ function sortByYear<TypeOfExperience = WorkExperience | Education>(arr: (WorkExp
 }
 
 const Experience: FC<ExperienceProps> = () => {
-  const { database: { snap } } = useFirebaseContext();
+  const { database: { snap } } = useFirebase();
   const sectionRef = useRef<HTMLElement>(null);
 
   const workExperience = sortByYear<WorkExperience>(snap?.info?.professional.workExperience ?? []);

@@ -1,31 +1,30 @@
-@import '../../../constants/const.css';
+@import "../../../constants/const.css";
 
 #footer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin: 25px 0 80px 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	margin: 25px 0 80px 0;
 
-    @media (width <= $tablet-breakpoint) {
-        flex-direction: column;
-        align-items: center;
-    }
+	@media (width <= $tablet-breakpoint) {
+		flex-direction: column;
+		align-items: center;
+	}
 
-    & > .titleWrapper {
-        margin: 0;
-    }
+	& > .titleWrapper {
+		margin: 0;
+	}
 
-    & > section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+	& > section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-        & > ul {
-            
-            & > li {
-                list-style: none;
-            }
-        }
-    }
-
+		& > ul {
+			& > li {
+				list-style: none;
+                margin-bottom: 15px;
+			}
+		}
+	}
 }
