@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import svgr from 'vite-plugin-svgr';
@@ -13,7 +14,11 @@ export default defineConfig({
     generatedRouteTree: "./src/routeTree.gen.ts",
     routeFileIgnorePrefix: "-",
     quoteStyle: "single"
-  }), react(), svgr()],
+  }), react(), svgr(), sentryVitePlugin({
+    org: "valhalla",
+    project: "portfolio_client"
+  })],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/"),
@@ -38,5 +43,9 @@ export default defineConfig({
       "@Window": `${path.resolve(__dirname, "./src/config/window.config.ts")}`,
       "@Layout": `${path.resolve(__dirname, "./src/app/layout")}`,
     }
+  },
+
+  build: {
+    sourcemap: true
   }
 })

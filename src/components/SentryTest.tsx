@@ -1,3 +1,5 @@
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import * as Sentry from '@sentry/react';
 // Add this button component to your app to test Sentry's error tracking
 export function ErrorButton() {

@@ -21,7 +21,7 @@
 		"preany": "pnpm i && pnpm gen::config",
 		"dev": "pnpm preany && vite --host",
 		"build": "pnpm preany && tsc && vite build",
-		"preview": "pnpm build && vite preview --host",
+		"preview": "vite preview --host",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 	},
 	"postcss": {
@@ -36,6 +36,7 @@
 	},
 	"dependencies": {
 		"@sentry/react": "^10.29.0",
+		"@sentry/vite-plugin": "^4.6.1",
 		"@tanstack/react-router": "^1.139.14",
 		"classnames": "^2.5.1",
 		"dompurify": "^3.3.0",

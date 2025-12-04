@@ -252,3 +252,5 @@ env.json
 # Cache
 *.cache
 /.firebase
+# Sentry Config File
+.env.sentry-build-plugin
