@@ -26,7 +26,7 @@ const AboutMe: FC<AboutMeProps> = () => {
           actions={[
             {
               type: "link",
-              icon: IconMeta.faLinkedinIn,
+              icon: IconMeta.faLinkedIn,
               children: "Franco Canalejo",
               href: "https://www.linkedin.com/in/franco-canalejo"
             }

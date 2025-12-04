@@ -25,7 +25,7 @@ const SocialMedia: SocialMediaProps = (socialMedias) => {
         {
             name: "LinkedIn",
             link: socialMedias.linkedin ?? "null",
-            icon: IconMeta.faLinkedin.className,
+            icon: IconMeta.faLinkedIn.className,
         }
     ], [socialMedias]);
 

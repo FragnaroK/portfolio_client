@@ -27,7 +27,7 @@ export const IconMeta: { [key: string]: IconDefinition } = {
     faDocker: { className: "fa-brands fa-docker", unicode: "f395", name: "Docker" },
     faMarkdown: { className: "fa-brands fa-markdown", unicode: "f60f", name: "Markdown" },
     faBootstrap: { className: "fa-brands fa-bootstrap", unicode: "f836", name: "Bootstrap" },
-    faLinkedin: { className: "fa-brands fa-linkedin", unicode: "f08c", name: "LinkedIn" },
+    faLinkedIn: { className: "fa-brands fa-linkedin", unicode: "f08c", name: "LinkedIn" },
     faCodepen: { className: "fa-brands fa-codepen", unicode: "f1cb", name: "CodePen" },
     
     // Solid Icons
@@ -42,7 +42,7 @@ export const IconMeta: { [key: string]: IconDefinition } = {
 	faCircle: { className: "fa-solid fa-circle", unicode: "f111", name: "Circle" },
 	faDownload: { className: "fa-solid fa-download", unicode: "f019", name: "Download" },
 	faAnchor: { className: "fa-solid fa-anchor", unicode: "f13d", name: "Anchor" },
-	
+
 } as const; 
 
 export const TechIcons: { [key: string]: { color: string; icon: IconDefinition; name: string } } = {

@@ -4,6 +4,8 @@
 
     --target-icon: "Icon";
     --icon-size: 20px;
+	
+
 
 	& :is(a, button).btn {
 		display: flex;
@@ -45,6 +47,13 @@
 		&:hover::after {
 			opacity: 1;
 			scale: 1.1;
+		}
+
+		& > span {
+			size: 100%;
+			&::before {
+				font-size: clamp(2rem, 5vw, 3rem) !important;
+			}
 		}
         
 	}
