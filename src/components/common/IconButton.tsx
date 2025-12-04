@@ -3,7 +3,8 @@ import { FC, MouseEventHandler, useRef } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import Logger from "node-logger-web";
-import { faArrowUpRightFromSquare, faSmile } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
+import { faSmile } from "@fortawesome/free-solid-svg-icons/faSmile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
  

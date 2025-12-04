@@ -4,7 +4,8 @@ import { DefaultComponentProps } from "@Types";
 import { Education, WorkExperience } from '@Type/database';
 
 import { Title, Flex, Card, Spinner } from '@Components';
-import { faCertificate, faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { faCertificate } from "@fortawesome/free-solid-svg-icons/faCertificate";
+import { faNewspaper } from "@fortawesome/free-solid-svg-icons/faNewspaper";
 import { deepTrim } from "@Utils/helpers";
 import useFirebase from '@/hooks/useFirebase';
 
@@ -17,7 +18,7 @@ function getActionIcon(type: ActionType = "certificate") {
 }
 
 function sortByYear<TypeOfExperience = WorkExperience | Education>(arr: (WorkExperience | Education)[]): TypeOfExperience[] {
-  return arr.sort((a, b) => parseInt(b.endDate) - parseInt(a.endDate)) as TypeOfExperience[]
+  return arr.sort((a, b) => Number.parseInt(b.endDate) - Number.parseInt(a.endDate)) as TypeOfExperience[]
 }
 
 const Experience: FC<ExperienceProps> = () => {
@@ -35,7 +36,7 @@ const Experience: FC<ExperienceProps> = () => {
           {snap ?
             workExperience?.map((job) => (
               <Card
-                collapsable={`Learn more about the '${job.position}' role`}
+                collapsable={`Learn more about this role`}
                 fill
                 key={deepTrim(`JobCard-${job.company}-${job.position}`)}
                 title={job.position}

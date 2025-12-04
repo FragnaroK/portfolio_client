@@ -1,12 +1,14 @@
 import { useRef } from 'react';
 import toast from 'react-hot-toast';
-import { faFileWord, faFileDownload, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faFileWord } from '@fortawesome/free-solid-svg-icons/faFileWord';
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons/faFileDownload';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons/faArrowUp';
 import classNames from 'classnames';
 
 import { useUtilsContext } from '@Context/Utils/hooks';
 import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
 import BetterButton from '@Component/common/Button';
-import useFirebase from '@/hooks/useFirebase';
+import useFirebase from '@Hooks/useFirebase';
 
 const BottomBar = () => {
 

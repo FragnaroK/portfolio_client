@@ -3,14 +3,12 @@ import { MouseEventHandler, useRef, useCallback, useMemo, forwardRef, useImperat
 import Logger from 'node-logger-web';
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
 import classNames from 'classnames';
-import {
-  faAnchor,
-  faArrowUpRightFromSquare,
-  faCircle,
-  faDownload,
-  faLink,
-  IconDefinition
-} from "@fortawesome/free-solid-svg-icons";
+import { faAnchor } from "@fortawesome/free-solid-svg-icons/faAnchor";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
+import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
+import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import RenderButton from "./variants/button.tag";
 import RenderLink from "./variants/link.tag";
 

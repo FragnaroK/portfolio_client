@@ -1,9 +1,9 @@
 import './style.css';
 import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { Spinner, Card, Title } from "@Components"
-import useFirebase from '@/hooks/useFirebase';
+import useFirebase from '@Hooks/useFirebase';
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
 
 interface AboutMeProps extends DefaultComponentProps { }
 const AboutMe: FC<AboutMeProps> = () => {
@@ -22,13 +22,13 @@ const AboutMe: FC<AboutMeProps> = () => {
           html
           title="My Journey"
           subtitle=' '
-          label="You can learn a bit more if you google me!"
+          label='Get in touch!'
           actions={[
             {
               type: "link",
-              icon: faGoogle,
-              children: "Google - Franco Canalejo",
-              href: "https://www.google.com/search?q=franco+canalejo"
+              icon: faLinkedinIn,
+              children: "Franco Canalejo",
+              href: "https://www.linkedin.com/in/franco-canalejo"
             }
           ]}
         >

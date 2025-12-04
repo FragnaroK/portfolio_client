@@ -1,8 +1,9 @@
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import IconButton from "./common/IconButton";
 import { deepTrim } from "@/utils/helpers";
-import { faGithub, faCodepen, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import React from "react";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons/faCodepen";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 
 type SocialMediaProps = FC<Partial<{
     github: string;

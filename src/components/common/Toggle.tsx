@@ -1,7 +1,8 @@
 import '@Styles/common/Toggle.css';
 import { FC, useCallback, useMemo } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
-import { faCircle, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
 import { deepTrim } from "@Utils/helpers";
 import uniqueId from "lodash/uniqueId";

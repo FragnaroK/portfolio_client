@@ -1,10 +1,11 @@
 import '@Styles/ProjectContainer.css';
 import React, { FC, useRef, useState } from "react";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 import { m, useInView, useScroll, useTransform } from 'framer-motion';
 import Logger from "node-logger-web";
 import { DefaultComponentProps } from "@Types";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { deepTrim } from "@Utils/helpers";
 
 import { Title, BetterButton, Image, Chips, Toggle, Card } from '@Components'
