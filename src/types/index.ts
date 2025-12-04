@@ -1,5 +1,4 @@
 import { CSSProperties, MouseEventHandler } from "react";
-import * as DatabaseStructure from './database.types';
 
 export interface ExtendedCSSProperties extends CSSProperties {
     [key: string]: any
@@ -22,4 +21,4 @@ export interface DefaultComponentProps<Children = unknown, ClickEvent = unknown>
     [key: string]: unknown;
 }
 
-export { DatabaseStructure }
+export * as DatabaseStructure from './database.types';

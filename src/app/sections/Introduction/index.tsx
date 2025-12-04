@@ -8,62 +8,72 @@ import shuffle from "lodash/shuffle";
 import useFirebase from '@/hooks/useFirebase';
 import SocialMedia from '@/components/SocialMedia';
 
-const techIconsList = Object.keys(Const.Icons).map((key) => Const.Icons[key]);
+const techIconsList = Object.keys(Const.TechIcons).map((key) => Const.TechIcons[key]);
 
-const techRings = [
-  shuffle(techIconsList).map((tech, i) => (
+const generateTechRing = (size: number) => {
+  console.log("Generating tech ring of size:", size);
+  return shuffle(techIconsList).map((tech, i) => (
     <Icon
-      key={deepTrim(tech.icon.iconName)}
+      key={`${deepTrim(tech.name)}-${size}-${i}`}
       icon={tech.icon}
-      label={tech.icon.iconName}
-      color={tech.color}
-      size="2x"
+      label={tech.name}
+      style={{ transform: `scale(${size})` }}
       index={i + 1}
       total={techIconsList.length}
     />
-  )),
-  shuffle(techIconsList).map((tech, i) => (
-    <Icon
-      key={deepTrim(tech.icon.iconName)}
-      icon={tech.icon}
-      label={tech.icon.iconName}
-      color={tech.color}
-      size="2x"
-      index={i + 1}
-      total={techIconsList.length}
-    />
-  )),
-  shuffle(techIconsList).map((tech, i) => (
-    <Icon
-      key={deepTrim(tech.icon.iconName)}
-      icon={tech.icon}
-      label={tech.icon.iconName}
-      color={tech.color}
-      size="3x"
-      index={i + 1}
-      total={techIconsList.length}
-    />
-  ))
-]
+  ));
+};
+
+const TECH_RINGS_CONFIG = {
+  count: 3,
+  baseRadius: 200,
+  radiusIncrement: 80,
+  baseSpeed: 1,
+  speedIncrement: 1,
+  minScale: 1.05,
+  maxScale: 1.3
+};
 
 const Introduction: FC<DefaultComponentProps> = () => {
 
   const { database: { snap } } = useFirebase();
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const techRings = useRef(
+    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => {
+      const ringIndex = TECH_RINGS_CONFIG.count - i - 1; 
+      const scale = TECH_RINGS_CONFIG.minScale + 
+        (ringIndex / (TECH_RINGS_CONFIG.count - 1)) * 
+        (TECH_RINGS_CONFIG.maxScale - TECH_RINGS_CONFIG.minScale);
+      return generateTechRing(scale);
+    })
+  ).current;
+
+  const techRingsRadius = useRef(
+    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => 
+      TECH_RINGS_CONFIG.baseRadius + (i * TECH_RINGS_CONFIG.radiusIncrement)
+    )
+  ).current;
+
+  const techRingsSpeed = useRef(
+    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => 
+      TECH_RINGS_CONFIG.baseSpeed + (i * TECH_RINGS_CONFIG.speedIncrement)
+    )
+  ).current;
 
   return (
     <section id="introduction" ref={sectionRef}>
       <section className="profilePhotoSection">
         <AnimatedStack
-          radius={[150, 210, 280]}
-          speed={[3, 2, 1]}
+          radius={techRingsRadius}
+          speed={techRingsSpeed}
           style={{
             position: 'absolute',
             top: '50%',
             left: '0',
             width: '100%',
             height: '100%',
-            transform: 'translateY(-50%)'
+            transform: 'translateY(-50%) scale(1.2)'
           }}
         >
           {techRings}
@@ -80,7 +90,7 @@ const Introduction: FC<DefaultComponentProps> = () => {
         <Text>
           <h3>Hey, welcome to my website.</h3>
           <p>
-            Here you will find information about me, my experience, my education, and a little bit of my journey.
+            Here you will find information about me, my experience, my education, and a bit of my journey.
           </p>
           <p>
             Feel free to connect and chat with me through my LinkedIn or send me an email to <Email>{snap?.info?.personal.contact.email ?? "loading@outlook.com"}</Email>

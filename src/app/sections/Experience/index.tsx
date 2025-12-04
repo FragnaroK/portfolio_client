@@ -4,17 +4,16 @@ import { DefaultComponentProps } from "@Types";
 import { Education, WorkExperience } from '@Type/database';
 
 import { Title, Flex, Card, Spinner } from '@Components';
-import { faCertificate } from "@fortawesome/free-solid-svg-icons/faCertificate";
-import { faNewspaper } from "@fortawesome/free-solid-svg-icons/faNewspaper";
 import { deepTrim } from "@Utils/helpers";
 import useFirebase from '@/hooks/useFirebase';
+import { IconMeta } from '@/constants/icons';
 
 
 interface ExperienceProps extends DefaultComponentProps { }
 
 type ActionType = 'post' | 'certificate' | undefined
 function getActionIcon(type: ActionType = "certificate") {
-  return type === "certificate" ? faCertificate : faNewspaper;
+  return type === "certificate" ? IconMeta.faCertificate : IconMeta.faNewspaper;
 }
 
 function sortByYear<TypeOfExperience = WorkExperience | Education>(arr: (WorkExperience | Education)[]): TypeOfExperience[] {

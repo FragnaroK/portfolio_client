@@ -4,7 +4,7 @@ import { m, useInView } from 'framer-motion';
 import classNames from 'classnames';
 
 import { DefaultComponentProps } from "@Types";
-import useMarkdown from '@/hooks/useMarkdown';
+import useMarkdown from '@Hooks/useMarkdown';
 import { deepTrim } from '@Utils/helpers';
 import {Accordion, IconButton, Flex, BetterButton } from '@Components';
 import { IconButtonProps } from "@/components/common/IconButton";

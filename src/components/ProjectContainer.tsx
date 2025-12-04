@@ -1,13 +1,10 @@
 import '@Styles/ProjectContainer.css';
 import React, { FC, useRef, useState } from "react";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
-import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 import { m, useInView, useScroll, useTransform } from 'framer-motion';
 import Logger from "node-logger-web";
 import { DefaultComponentProps } from "@Types";
 import { deepTrim } from "@Utils/helpers";
-
+import { IconMeta } from "@Constants/icons";
 import { Title, BetterButton, Image, Chips, Toggle, Card } from '@Components'
 
 
@@ -40,8 +37,8 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
       <Title level={2} subtitle={timestamp}>{title}</Title>
       <div className="action">
         <Toggle
-          initial={faEye}
-          target={faEyeSlash}
+          initial={IconMeta.faEye}
+          target={IconMeta.faEyeSlash}
           onClick={(e) => setShowInfo(!e.currentTarget.checked)}
           title={`Project ${title} content`}
         >
@@ -58,7 +55,7 @@ const ProjectContainerFooter: FC<ProjectActions> = ({ href, repo }) => (
   (href || repo) && (
     <footer>
       {href && <BetterButton type="link" href={href} >Go to project</BetterButton>}
-      {repo && <BetterButton type="link" icon={faGithub} href={repo}>Repository</BetterButton>}
+      {repo && <BetterButton type="link" icon={IconMeta.faGithub} href={repo}>Repository</BetterButton>}
     </footer>
   )
 );

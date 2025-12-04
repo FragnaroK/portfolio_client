@@ -1,14 +1,12 @@
 import { useRef } from 'react';
 import toast from 'react-hot-toast';
-import { faFileWord } from '@fortawesome/free-solid-svg-icons/faFileWord';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons/faFileDownload';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons/faArrowUp';
 import classNames from 'classnames';
 
 import { useUtilsContext } from '@Context/Utils/hooks';
 import useDownloadFirebaseFile from '@Hooks/useDownloadFirebaseFile';
 import BetterButton from '@Component/common/Button';
 import useFirebase from '@Hooks/useFirebase';
+import { IconMeta } from '@Constants/icons';
 
 const BottomBar = () => {
 
@@ -41,8 +39,8 @@ const BottomBar = () => {
             <BetterButton
                 type="download"
                 className="floatingButton"
-                icon={faFileWord}
-                onHoverIcon={faFileDownload}
+                icon={IconMeta.faFileWord}
+                onHoverIcon={IconMeta.faFileDownload}
                 ref={downloadResumeRef}
                 onClick={onResumeDownload}
             >Resume</BetterButton>
@@ -50,7 +48,7 @@ const BottomBar = () => {
                 type="anchor"
                 href="#introduction"
                 className={classNames('floatingButton', 'goToTopTrigger', isOnTop ? "hid" : "")}
-                icon={faArrowUp}
+                icon={IconMeta.faArrowUp}
             >Top</BetterButton>
         </>
     )

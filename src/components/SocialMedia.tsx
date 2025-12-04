@@ -1,9 +1,7 @@
 import React, { FC, useMemo } from "react";
 import IconButton from "./common/IconButton";
-import { deepTrim } from "@/utils/helpers";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faCodepen } from "@fortawesome/free-brands-svg-icons/faCodepen";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { deepTrim } from "@/utils/helpers"; 
+import { IconMeta } from "@Constants/icons";
 
 type SocialMediaProps = FC<Partial<{
     github: string;
@@ -17,17 +15,17 @@ const SocialMedia: SocialMediaProps = (socialMedias) => {
         {
             name: "GitHub",
             link: socialMedias.github ?? "null",
-            icon: faGithub
+            icon: IconMeta.faGithub.className,
         },
         {
             name: "CodePen",
             link: socialMedias.codepen ?? "null",
-            icon: faCodepen,
+            icon: IconMeta.faCodepen.className,
         },
         {
             name: "LinkedIn",
             link: socialMedias.linkedin ?? "null",
-            icon: faLinkedin
+            icon: IconMeta.faLinkedin.className,
         }
     ], [socialMedias]);
 

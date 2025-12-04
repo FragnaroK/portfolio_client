@@ -3,12 +3,7 @@ import { MouseEventHandler, useRef, useCallback, useMemo, forwardRef, useImperat
 import Logger from 'node-logger-web';
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
 import classNames from 'classnames';
-import { faAnchor } from "@fortawesome/free-solid-svg-icons/faAnchor";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
-import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
-import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
-import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition, IconMeta } from "@Constants/icons";
 import RenderButton from "./variants/button.tag";
 import RenderLink from "./variants/link.tag";
 
@@ -28,15 +23,15 @@ export interface BetterButtonProps extends DefaultComponentProps<string, HTMLBut
   filename?: string;
 }
 
-const getTargetBasedOnType = (type: ButtonType): ButtonTarget | undefined => type !== "anchor" ? "_blank" : undefined;
+const getTargetBasedOnType = (type: ButtonType): ButtonTarget | undefined => type === "anchor" ? undefined : "_blank";
 
 const getIconBasedOnType = (type: ButtonType): IconDefinition => {
   switch (type) {
-    case "button": return faCircle;
-    case "download": return faDownload;
-    case "link": return faArrowUpRightFromSquare;
-    case "anchor": return faAnchor;
-    default: return faCircle;
+    case "button": return IconMeta.faCircle;
+    case "download": return IconMeta.faDownload;
+    case "link": return IconMeta.faArrowUpRightFromSquare;
+    case "anchor": return IconMeta.faAnchor;
+    default: return IconMeta.faCircle;
   }
 };
 
@@ -59,7 +54,7 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
   const log = useMemo(() => new Logger("Button::component", import.meta.env.DEV), []);
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  const iconType = icon ?? faLink;
+  const iconType = icon ?? IconMeta.faLink;
   const targetType = target ?? getTargetBasedOnType(type);
   const finalClassName = classNames(className, {
     'btn-with-icon': icon,
@@ -73,8 +68,8 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
 
   const defaultStyle = useMemo(() => ({
     ...(hoverColor ? { "--button-hover-background": hoverColor } : {}),
-    "--initial-icon": `"\\${iconType.icon[3]}"`,
-    "--target-icon": `"\\${onHoverIcon?.icon[3] ?? getIconBasedOnType(type).icon[3]}"`,
+    "--initial-icon": `"\\${iconType.unicode}"`,
+    "--target-icon": `"\\${onHoverIcon?.unicode ?? getIconBasedOnType(type).unicode}"`,
   }), [hoverColor, iconType, onHoverIcon, type]) as ExtendedCSSProperties;
 
   const onButtonClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = useCallback((event) => {
@@ -84,7 +79,17 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
 
   return (
     <div className="buttonWrapper" ref={buttonRef} style={style}>
-      {type !== 'button' ? (
+      {type === 'button' ? (
+        <RenderButton
+          id={id}
+          className={finalClassName}
+          defaultStyle={defaultStyle}
+          onButtonClick={onButtonClick}
+          disabled={disabled}
+          ref={buttonElementRef}
+          children={children}
+        />
+      ) : (
         <RenderLink
           id={id}
           className={finalClassName}
@@ -96,16 +101,6 @@ const BetterButton = forwardRef<HTMLAnchorElement | HTMLButtonElement, BetterBut
           type={type}
           filename={filename}
           ref={linkElementRef}
-          children={children}
-        />
-      ) : (
-        <RenderButton
-          id={id}
-          className={finalClassName}
-          defaultStyle={defaultStyle}
-          onButtonClick={onButtonClick}
-          disabled={disabled}
-          ref={buttonElementRef}
           children={children}
         />
       )}

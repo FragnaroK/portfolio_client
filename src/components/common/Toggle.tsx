@@ -1,12 +1,11 @@
 import '@Styles/common/Toggle.css';
 import { FC, useCallback, useMemo } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
-import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
 import { deepTrim } from "@Utils/helpers";
 import uniqueId from "lodash/uniqueId";
 import classNames from "classnames";
+import { IconMeta, IconDefinition } from "@Constants/icons";
  
 
 interface ToggleProps extends DefaultComponentProps<string, HTMLInputElement> {
@@ -25,13 +24,13 @@ const Toggle: FC<ToggleProps> = ({
 
   const defaultStyles = useMemo(() => ({
     ...style,
-    "--initial-icon": `'\\${(initial ?? faCircle).icon[3]}'`,
-    "--target-icon": `'\\${(target ?? faCircle).icon[3]}'`
+    "--initial-icon": `'\\${(initial ?? IconMeta.faCircle).unicode}'`,
+    "--target-icon": `'\\${(target ?? IconMeta.faCircle).unicode}'`
   } as ExtendedCSSProperties), [initial, style, target])
 
   const onToggleClicked: React.MouseEventHandler<HTMLInputElement> = useCallback((e) => {
     log.d("Toggle clicked! -> ", e);
-    onClick && onClick(e);
+    onClick?.(e);
   }, [onClick])
 
   return (

@@ -3,7 +3,7 @@ import { FC, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
 import { Spinner, Card, Title } from "@Components"
 import useFirebase from '@Hooks/useFirebase';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
+import { IconMeta } from '@Constants/icons';
 
 interface AboutMeProps extends DefaultComponentProps { }
 const AboutMe: FC<AboutMeProps> = () => {
@@ -22,11 +22,11 @@ const AboutMe: FC<AboutMeProps> = () => {
           html
           title="My Journey"
           subtitle=' '
-          label='Get in touch!'
+          label='Contact me via LinkedIn'
           actions={[
             {
               type: "link",
-              icon: faLinkedinIn,
+              icon: IconMeta.faLinkedinIn,
               children: "Franco Canalejo",
               href: "https://www.linkedin.com/in/franco-canalejo"
             }

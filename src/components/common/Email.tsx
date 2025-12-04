@@ -1,13 +1,10 @@
 import '@Styles/common/Email.css';
 import { FC, useCallback, useMemo, useRef } from "react";
 import { DefaultComponentProps } from "@Types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCancel } from "@fortawesome/free-solid-svg-icons/faCancel";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import { usePopUpContext } from "@Context/PopUp/hooks";
 import { useNotificationContext } from "@Context/Notification/hooks";
 import Text from "@/components/common/Text";
+import { IconMeta } from "@Constants/icons";
 
 interface EmailProps extends DefaultComponentProps<string, HTMLAnchorElement> { }
 
@@ -31,14 +28,14 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
       label: " ",
       actions: [
         {
-          icon: faCancel,
+          icon: IconMeta.faCancel,
           singleIcon: true,
           children: "No",
           onClick: () => popup.hide(),
           hoverColor: "var(--destructive)"
         },
         {
-          icon: faCheck,
+          icon: IconMeta.faCheck,
           singleIcon: true,
           children: "Yes",
           onClick: () => {
@@ -69,7 +66,7 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
       <span>@</span>
       <span>{emailAddress[1]}</span>
       <span>
-        <FontAwesomeIcon icon={faEnvelope} />
+        <span className={IconMeta.faEnvelope.className} />
       </span>
     </a>
   );

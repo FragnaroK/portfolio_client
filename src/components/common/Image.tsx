@@ -36,6 +36,7 @@ const Image: FC<ImageProps> = ({
         {...imgProps}
         style={{ objectFit: fit ?? "contain" }}
       />
+      {imageLoaded ? null : <span className='image-spinner' />}
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import Database from "./db";
-import Icons from "./icons";
+import { IconMeta, TechIcons } from "./icons";
 
 export default {
-    Icons,
+    IconMeta,
+    TechIcons,
     Database
  }

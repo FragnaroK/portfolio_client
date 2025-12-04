@@ -1,6 +1,4 @@
 import 'normalize.css'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import '@Style'
 import '@Theme'
 import '@Window'

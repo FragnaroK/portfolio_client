@@ -1,19 +1,16 @@
 import "@Styles/common/IconButton.css";
 import { FC, MouseEventHandler, useRef } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import Logger from "node-logger-web";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
-import { faSmile } from "@fortawesome/free-solid-svg-icons/faSmile";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import { IconMeta } from "@Constants/icons";
  
 
 type ButtonType = "download" | "button" | "link";
 type ButtonTarget = "_blank" | "_parent" | "_self" | "_top"
 
 
-export interface IconButtonProps extends DefaultComponentProps<IconDefinition> {
+export interface IconButtonProps extends DefaultComponentProps<string> {
   disabled?: boolean;
   href?: string;
   type?: ButtonType;
@@ -26,7 +23,7 @@ const IconButton: FC<IconButtonProps> = ({
   className,
   style,
   onClick,
-  children = faSmile,
+  children = IconMeta.faSmile.className,
   href = "",
   alt = "",
   disabled = false,
@@ -39,7 +36,7 @@ const IconButton: FC<IconButtonProps> = ({
   const finalClassName = classNames('btn-with-icon', className);
   const defaultStyle = {
     ...style,
-    "--target-icon": `"\\${faArrowUpRightFromSquare.icon[3]}"`,
+    "--target-icon": `"\\${IconMeta.faArrowUpRightFromSquare.unicode}"`,
   } as ExtendedCSSProperties
 
   const onButtonClick: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -49,19 +46,19 @@ const IconButton: FC<IconButtonProps> = ({
 
   const renderButton = (
     <button title={`Button ${alt}`} className={classNames('btn', 'btn-icn', finalClassName)} id={id} style={defaultStyle} onClick={onButtonClick} disabled={disabled}>
-      <FontAwesomeIcon icon={children} />
+      <span className={children}></span>
     </button>
   );
 
   const renderLink = (
     <a className={classNames('btn', 'btn-icn', 'btn-link', finalClassName)} id={id} style={defaultStyle} href={href} target={target} aria-disabled={disabled} rel="noopener noreferrer" aria-label={alt}>
-      <FontAwesomeIcon icon={children} className='buttonIcon' />
+      <span className={children}></span>
     </a>
   )
 
   return (
     <div className="iconButtonWrapper" ref={buttonRef}>
-      {type !== 'button' ? renderLink : renderButton}
+      {type === 'button' ? renderButton : renderLink}
     </div>
   );
 }
