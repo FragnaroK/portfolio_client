@@ -12,21 +12,21 @@
 	gap: 15px;
 	width: 100%;
 	transform-style: preserve-3d;
+	position: sticky;
+	top: 10svh;
+	aspect-ratio: 16 / 9;
+	max-width: 1140px;
 
-	@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+	@media (width <= $mobile-breakpoint)  {
 		position: static !important;
 		display: flex;
 		flex-direction: column;
+		aspect-ratio: unset !important;
+		max-width: unset !important;
+		top: unset !important;
 		padding: 10px 0px;
 		border-radius: var(--container-radius);
 		translate: 0% 0% !important;
-	}
-
-	@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
-		position: sticky;
-		top: 10svh;
-		aspect-ratio: 16 / 9;
-		max-width: 1140px;
 	}
 
 	& > * {
@@ -85,7 +85,7 @@
 			}
 		}
 
-		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint)  {
 			height: 25%;
 
 			& > .imageWrapper {
@@ -93,6 +93,8 @@
 				width: 100%;
 				max-width: none;
 				border: 1px solid var(--border);
+				background-color: var(--background);
+
 
 				&::before {
 					content: "";
@@ -127,7 +129,7 @@
 			}
 		}
 
-		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+		@media (width <= $mobile-breakpoint)  {
 			& > .imageWrapper {
 				& img {
 					mask-image: linear-gradient(to bottom, transparent, var(--background) 33.33%);
@@ -180,11 +182,11 @@
 			border-radius: 20px;
 		}
 
-		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint)  {
 			width: var(--desktop-content-width);
 		}
 		
-		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+		@media (width <= $mobile-breakpoint)  {
 			margin-left: 0px !important;
 
 			& > .card {
@@ -198,12 +200,12 @@
 		display: flex;
 		justify-content: space-around;
 		height: 10%;
-		@media (width > $mobile-breakpoint) and (height > $mobile-breakpoint-vh) {
+		@media (width > $mobile-breakpoint)  {
 			width: var(--desktop-content-width);
 			align-items: center;
 			gap: 20px;
 		}
-		@media (width <= $mobile-breakpoint) or (height <= $mobile-breakpoint-vh) {
+		@media (width <= $mobile-breakpoint)  {
 			flex-direction: column;
 			gap: 15px;
 		}

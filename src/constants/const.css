@@ -1,4 +1,5 @@
 $tablet-breakpoint: 950px;
+$tablet-breakpoint-vh: 930px;
 $desktop-breakpoint: 1139px;
 $mobile-breakpoint: 790px;
 $mobile-breakpoint-vh: 730px;

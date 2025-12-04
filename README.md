@@ -5,7 +5,7 @@
 
 ## Introduction
 
-So here you have it... my personal website archive! This is a project that demonstrates my abilities and passion using the latest tech stack. It was to be as straightforward and effective as possible in design, with a focus on performance and ease of use.
+This is a project that demonstrates my abilities using the latest tech stack. It was to be as straightforward and effective as possible in design, with a focus on performance and ease of use.
 
 
 ### Why this tech stack?
