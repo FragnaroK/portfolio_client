@@ -4,7 +4,7 @@ import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
 import { faCircle, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import Logger from "node-logger-web";
 import { deepTrim } from "@Utils/helpers";
-import { uniqueId } from "lodash";
+import uniqueId from "lodash/uniqueId";
 import classNames from "classnames";
  
 

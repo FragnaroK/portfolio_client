@@ -1,4 +1,4 @@
-import { isNumber } from "lodash";
+import isNumber from "lodash/isNumber";
 
 const specialChars = new RegExp(/[\s\n\t'"$#*&^!%@)(+=[\];:,~`>\\</?.{}]/g);
 
@@ -8,8 +8,8 @@ export const deepTrim = (text: string, escape: boolean = true) => text.trim().re
 export const escapeSpecialChars = (text: string) => text.trim().replace(specialChars, '');
 
 export const una_forma = (t: string): string => {
-    const tp = parseInt(t[0]);
-    if (!isNumber(tp) || isNaN(tp)) return t;
+    const tp = Number.parseInt(t[0]);
+    if (!isNumber(tp) || Number.isNaN(tp)) return t;
     let d = t.slice(1);
     for (let i = 0; i < tp; i++) {
        d = atob(d);

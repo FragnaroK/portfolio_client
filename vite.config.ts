@@ -2,9 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import svgr from 'vite-plugin-svgr';
 import path from 'path'
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [tanstackRouter({
+    target: 'react',
+    autoCodeSplitting: true,
+    routesDirectory: "./src/routes",
+    generatedRouteTree: "./src/routeTree.gen.ts",
+    routeFileIgnorePrefix: "-",
+    quoteStyle: "single"
+  }), react(), svgr()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/"),

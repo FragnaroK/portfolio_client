@@ -4,7 +4,7 @@ import { DefaultComponentProps } from "@Types";
 import Const from "@/constants";
 import { deepTrim } from "@Utils/helpers";
 import { ProfilePhoto, BetterButton, Title, Text, Email, AnimatedStack, Icon } from '@Components';
-import { shuffle } from "lodash";
+import shuffle from "lodash/shuffle";
 import useFirebase from '@/hooks/useFirebase';
 import SocialMedia from '@/components/SocialMedia';
 
