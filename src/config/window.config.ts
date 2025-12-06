@@ -44,12 +44,13 @@ const colors = {
     strikethrough: isChrome ? "\x1b[9m" : '',
 }
 
-const [vite, ts, postcss, firebase, github] = [
+const [vite, ts, postcss, firebase, github, sentry] = [
     `${colors.cyan}Vite`,
     `${colors.blue}TypeScript`,
     `${colors.red}PostCSS`,
     `${colors.yellow}Firebase`,
-    `${colors.magenta}GitHub`
+    `${colors.magenta}GitHub`,
+    `${colors.red}Sentry`
 ]
 
 const deps = showDeps('Dependencies', dependencies),
@@ -64,7 +65,7 @@ const info = `
     ${colors.underline}Debug${colors.r}: ${import.meta.env.DEV ? 'enabled' : 'disabled'}
 `
 const banner = `
-                     ${vite} ${ts} ${postcss} ${firebase} ${github}${colors.red}
+                  ${vite} ${ts} ${postcss} ${firebase} ${github} ${sentry}${colors.red}
     ███████ ██████   █████   ██████  ███    ██  █████  ██████   ██████  ██   ██
     ██      ██   ██ ██   ██ ██       ████   ██ ██   ██ ██   ██ ██    ██ ██  ██ 
     █████   ██████  ███████ ██   ███ ██ ██  ██ ███████ ██████  ██    ██ █████  

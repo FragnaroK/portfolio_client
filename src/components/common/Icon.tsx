@@ -21,7 +21,7 @@ const Icon: FC<IconProps> = ({ style,  icon, label, index, inViewAnimation = fal
 
   return (
     <div className='iconWrapper' style={style} ref={iconRef}>
-      <span className={classNames(icon.className, "icon")} style={{
+      <i className={classNames(icon.className, "icon")} style={{
         ...style,
         animation: index && total && inViewAnimation? `Fade${inView ? "In" : "Out"} .8s  cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 normal both` : undefined
       }}/>

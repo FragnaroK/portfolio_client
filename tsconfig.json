@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
-      "@Sections/*": ["src/app/sections/*"],
+      "@Sections/*": ["src/portfolio/sections/*"],
       "@Component/*": ["src/components/*"],
       "@Components": ["src/components/index.ts"],
       "@Types": ["src/types/index.ts"],
@@ -26,7 +26,7 @@
       "@Utils/*": ["src/utils/*"],
       "@Database/*": ["src/database/*"],
       "@Assets/*": ["src/assets/*"],
-      "@App/*": ["src/app/*"],
+      "@App/*": ["src/portfolio/*"],
       "@Fonts/*": ["src/fonts/*"],
       "@Hooks/*": ["src/hooks/*"],
       "@Constants/*": ["src/constants/*"],
@@ -35,7 +35,7 @@
       "@Style": ["src/styles/global.css"],
       "@Theme": ["src/styles/theme.css"],
       "@Window": ["src/config/window.config.ts"],
-      "@Layout/*": ["src/app/layout/*"],
+      "@Layout/*": ["src/portfolio/layout/*"],
     },
 
     /* Linting */

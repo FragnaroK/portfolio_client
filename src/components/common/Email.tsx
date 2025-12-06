@@ -66,7 +66,7 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
       <span>@</span>
       <span>{emailAddress[1]}</span>
       <span>
-        <span className={IconMeta.faEnvelope.className} />
+        <i className={IconMeta.faEnvelope.className} />
       </span>
     </a>
   );

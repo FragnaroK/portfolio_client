@@ -42,6 +42,7 @@ export const IconMeta: { [key: string]: IconDefinition } = {
 	faCircle: { className: "fa-solid fa-circle", unicode: "f111", name: "Circle" },
 	faDownload: { className: "fa-solid fa-download", unicode: "f019", name: "Download" },
 	faAnchor: { className: "fa-solid fa-anchor", unicode: "f13d", name: "Anchor" },
+	faGift: { className: "fa-solid fa-gift", unicode: "f06b", name: "Gift" },
 
 } as const; 
 

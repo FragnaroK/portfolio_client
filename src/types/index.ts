@@ -22,3 +22,4 @@ export interface DefaultComponentProps<Children = unknown, ClickEvent = unknown>
 }
 
 export * as DatabaseStructure from './database.types';
+export * as RouteTypes from './routes.types';

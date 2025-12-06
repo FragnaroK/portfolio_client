@@ -49,9 +49,13 @@
 			scale: 1.1;
 		}
 
-		& > span {
+		& > i {
 			size: 100%;
 			&::before {
+				size: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				font-size: clamp(2rem, 5vw, 3rem) !important;
 			}
 		}

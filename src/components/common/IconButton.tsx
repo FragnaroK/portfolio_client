@@ -46,13 +46,13 @@ const IconButton: FC<IconButtonProps> = ({
 
   const renderButton = (
     <button title={`Button ${alt}`} className={classNames('btn', 'btn-icn', finalClassName)} id={id} style={defaultStyle} onClick={onButtonClick} disabled={disabled}>
-      <span className={children}></span>
+      <i className={children}></i>
     </button>
   );
 
   const renderLink = (
     <a className={classNames('btn', 'btn-icn', 'btn-link', finalClassName)} id={id} style={defaultStyle} href={href} target={target} aria-disabled={disabled} rel="noopener noreferrer" aria-label={alt}>
-      <span className={children}></span>
+      <i className={children}></i>
     </a>
   )
 
