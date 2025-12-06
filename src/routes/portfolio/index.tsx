@@ -20,7 +20,6 @@ function Portfolio() {
   useFirebase({ enableFetch: true })
 
   return (
-    <Provider>
       <article id="app">
         <main>
           <Content />
@@ -29,6 +28,5 @@ function Portfolio() {
           <BottomBar />
         </footer>
       </article>
-    </Provider>
   )
 }

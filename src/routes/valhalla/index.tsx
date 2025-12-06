@@ -4,10 +4,14 @@ import { IconMeta } from '@/constants/icons';
 import '@/styles/routes/valhalla.css';
 import { RouteTypes } from '@Types';
 import { createFileRoute, redirect } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export const Route = createFileRoute('/valhalla/')({
   component: RouteComponent,
+  onEnter: () => {
+    toast.success('QR Scanned Correctly! Welcome!');
+  },
   beforeLoad: async (context) => {
     const params = { ...context.params, ...context.search } as RouteTypes.RootRouteParams;
     if (params.source === 'qr') return {};
