@@ -46,7 +46,7 @@ const ProjectContainerHeader: FC<ProjectHeader> = ({ timestamp, title, img, tech
         </Toggle>
       </div>
       {timestamp && <small className="timestamp">{timestamp}</small>}
-      <Chips chips={tech} gap={5} label={title} />
+      <Chips chips={tech} gap={5} label={title} notranslate />
     </header>
   )
 }

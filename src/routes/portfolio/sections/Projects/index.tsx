@@ -16,7 +16,7 @@ const Projects: FC<ProjectsProps> = () => {
 
   return (
     <section id="projects" ref={sectionRef}>
-      <Title>Top Projects</Title>
+      <Title>Latest Projects</Title>
       <Flex
         fill
         flexDirection="column"

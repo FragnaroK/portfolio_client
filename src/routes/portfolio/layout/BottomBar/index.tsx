@@ -39,11 +39,11 @@ const BottomBar = () => {
             <BetterButton
                 type="download"
                 className="floatingButton"
-                icon={IconMeta.faFileWord}
+                icon={IconMeta.faFilePdf}
                 onHoverIcon={IconMeta.faFileDownload}
                 ref={downloadResumeRef}
                 onClick={onResumeDownload}
-            >Resume</BetterButton>
+            >CV</BetterButton>
             <BetterButton
                 type="anchor"
                 href="#introduction"

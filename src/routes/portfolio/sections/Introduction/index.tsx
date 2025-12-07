@@ -25,8 +25,8 @@ const generateTechRing = (size: number) => {
 };
 
 const TECH_RINGS_CONFIG = {
-  count: 3,
-  baseRadius: 200,
+  count: 4,
+  baseRadius: 170,
   radiusIncrement: 80,
   baseSpeed: 1,
   speedIncrement: 1,

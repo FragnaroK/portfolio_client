@@ -31,6 +31,9 @@ export const IconMeta: { [key: string]: IconDefinition } = {
     faCodepen: { className: "fa-brands fa-codepen", unicode: "f1cb", name: "CodePen" },
     
     // Solid Icons
+	faFile: { className: "fa-solid fa-file", unicode: "f15b", name: "File" },
+	faFilePdf: { className: "fa-solid fa-file-pdf", unicode: "f1c1", name: "File PDF" },
+	faFileWord: { className: "fa-solid fa-file-word", unicode: "f1c2", name: "File Word" },
     faArrowUpRightFromSquare: { className: "fa-solid fa-arrow-up-right-from-square", unicode: "f08e", name: "Arrow Up Right From Square" },
     faCertificate: { className: "fa-solid fa-certificate", unicode: "f0a3", name: "Certificate" },
     faEye: { className: "fa-solid fa-eye", unicode: "f06e", name: "Eye" },
