@@ -32,7 +32,7 @@ export const UtilsContextProvider: React.FC<UtilsContextProviderProps> = ({ chil
   const setSection = useCallback((section: string) => {
     if (currentSection === section) return;
     log.d(`Setting section to ${section}`)
-    setCurrentSection((prevSection) => prevSection !== section ? section : prevSection)
+    setCurrentSection((prevSection) => prevSection === section ? prevSection : section)
   }, [currentSection])
 
   useEffect(() => {

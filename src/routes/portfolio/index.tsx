@@ -1,5 +1,4 @@
 import './style.css';
-import Provider from '@/context/Provider';
 import Content from './layout/Content/index';
 import BottomBar from './layout/BottomBar/index';
 import useFirebase from '@/hooks/useFirebase';

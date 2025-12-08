@@ -33,7 +33,7 @@
         border: 1.5px solid var(--foreground-alpha-20);
         border-top: 1.5px solid var(--primary) !important;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
+        animation: spin 1.5s cubic-bezier(0.19, 1, 0.22, 1) infinite;
         z-index: var(--on-top-index);
 
         @media (max-width: $mobile-breakpoint) {

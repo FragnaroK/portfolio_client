@@ -62,7 +62,7 @@ const Introduction: FC<DefaultComponentProps> = () => {
   ).current;
 
   return (
-    <section id="introduction" ref={sectionRef}>
+    <section id="introduction" ref={sectionRef} >
       <section className="profilePhotoSection">
         <AnimatedStack
           radius={techRingsRadius}
