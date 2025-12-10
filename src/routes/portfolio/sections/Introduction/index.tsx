@@ -11,7 +11,6 @@ import SocialMedia from '@/components/SocialMedia';
 const techIconsList = Object.keys(Const.TechIcons).map((key) => Const.TechIcons[key]);
 
 const generateTechRing = (size: number) => {
-  console.log("Generating tech ring of size:", size);
   return shuffle(techIconsList).map((tech, i) => (
     <Icon
       key={`${deepTrim(tech.name)}-${size}-${i}`}
