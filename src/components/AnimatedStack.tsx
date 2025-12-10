@@ -102,7 +102,6 @@ const AnimatedStack: FC<AnimatedStackProps> = ({
       {label && <h3 className="label">{label}</h3>}
       {
         children?.map((ring, ringIndex) => {
-
           const
             finalRadius = radius[ringIndex] ?? radius[0] * ((children.length - ringIndex) / children.length),
             finalSpeed = speed[ringIndex] ?? speed[0],

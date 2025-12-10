@@ -37,8 +37,8 @@ const Title: FC<TitleProps> = ({
 
   return (
     <div className="titleWrapper" ref={titleRef}>
-      <TitleWrapper aria-label={children}>{inView ? animateText(children) : <span className="hid">{children}</span>}</TitleWrapper>
-      {subtitle ? <h2 aria-label={subtitle}>{inView ? animateText(subtitle) : <span className="hid">{subtitle}</span>}</h2> : null}
+      <TitleWrapper className='notranslate' aria-label={children}>{inView ? animateText(children) : <span className="hid">{children}</span>}</TitleWrapper>
+      {subtitle ? <h2 className='notranslate' aria-label={subtitle}>{inView ? animateText(subtitle) : <span className="hid">{subtitle}</span>}</h2> : null}
     </div>
   )
 }

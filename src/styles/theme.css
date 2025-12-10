@@ -43,7 +43,7 @@
 
 	/* Generated theme using scripts/theme_gen.js */
 
-	    --background: hsl(29.88235294117647, 100%, 0%);
+	--background: hsl(29.88235294117647, 100%, 0%);
     --background-alpha-50: hsla(29.88235294117647, 100%, 0%, 0.5);
     --foreground: hsl(0, 0%, 100%);
     --primary: hsl(29.88235294117647, 100%, 50%);
