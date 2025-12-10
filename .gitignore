@@ -254,3 +254,4 @@ env.json
 /.firebase
 # Sentry Config File
 .env.sentry-build-plugin
+.firebase
