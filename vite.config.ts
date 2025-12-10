@@ -12,7 +12,6 @@ export default defineConfig({
     autoCodeSplitting: true,
     routesDirectory: "./src/routes",
     generatedRouteTree: "./src/routeTree.gen.ts",
-    routeFileIgnorePrefix: "-",
     quoteStyle: "single"
   }), react(), svgr(), sentryVitePlugin({
     org: "valhalla",
