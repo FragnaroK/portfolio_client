@@ -10,9 +10,20 @@ import * as Sentry from "@sentry/react";
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
+  replaysSessionSampleRate: 0.2,
+  // If the entire session is not sampled, use the below sample rate to sample
+  // sessions when an error occurs.
+  replaysOnErrorSampleRate: 1.0,
+  integrations: [
+    Sentry.replayIntegration({
+      // Additional SDK configuration goes in here, for example:
+      maskAllText: false,
+      blockAllMedia: false,
+    }),
+  ],
   // Setting this option to true will send default PII data to Sentry.
   // For example, automatic IP address collection on events
-  sendDefaultPii: true
+  sendDefaultPii: true,
 });
 
 console.clean();
