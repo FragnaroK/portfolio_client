@@ -34,7 +34,7 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
     log.d(`Trap ${enable ? "enabled" : "disabled"}`);
 
     focusable.forEach((item) => {
-      if (item.getAttribute("data-aria-inmutable") === "true") return;
+      if (item.dataset.ariaInmutable === "true") return;
       item.setAttribute("aria-hidden", `${enable}`);
       item.setAttribute("tabindex", enable ? "-1" : "0");
     });
@@ -63,14 +63,12 @@ export const PopUpContextProvider: React.FC<PopUpContextProviderProps> = ({ chil
 
   useEffect(() => {
     if (!htmlElementRef?.current) return;
-    log.d(`Changing html scroll state to ${!isShowing ? "enabled" : "disabled"}`)
+    log.d(`Changing html scroll state to ${isShowing ? "disabled" : "enabled"}`)
     htmlElementRef.current.style.overflowY = isShowing ? "hidden" : "auto";
   }, [isShowing]);
 
   useEffect(() => {
-    if (!htmlElementRef.current) {
-      htmlElementRef.current = document.querySelector('html');
-    }
+    htmlElementRef.current ??= document.querySelector('html');
   }, []);
 
   return (

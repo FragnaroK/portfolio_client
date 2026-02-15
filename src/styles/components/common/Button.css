@@ -9,6 +9,7 @@
 	& > button.btn,
 	& > a.btn {
 		display: flex;
+		width: 100%;
 		justify-content: center;
 		align-items: center;
 		gap: 15px;

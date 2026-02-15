@@ -40,22 +40,22 @@ const Introduction: FC<DefaultComponentProps> = () => {
 
   const techRings = useRef(
     Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => {
-      const ringIndex = TECH_RINGS_CONFIG.count - i - 1; 
-      const scale = TECH_RINGS_CONFIG.minScale + 
-        (ringIndex / (TECH_RINGS_CONFIG.count - 1)) * 
+      const ringIndex = TECH_RINGS_CONFIG.count - i - 1;
+      const scale = TECH_RINGS_CONFIG.minScale +
+        (ringIndex / (TECH_RINGS_CONFIG.count - 1)) *
         (TECH_RINGS_CONFIG.maxScale - TECH_RINGS_CONFIG.minScale);
       return generateTechRing(scale);
     })
   ).current;
 
   const techRingsRadius = useRef(
-    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => 
+    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) =>
       TECH_RINGS_CONFIG.baseRadius + (i * TECH_RINGS_CONFIG.radiusIncrement)
     )
   ).current;
 
   const techRingsSpeed = useRef(
-    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) => 
+    Array.from({ length: TECH_RINGS_CONFIG.count }, (_, i) =>
       TECH_RINGS_CONFIG.baseSpeed + (i * TECH_RINGS_CONFIG.speedIncrement)
     )
   ).current;
@@ -64,16 +64,9 @@ const Introduction: FC<DefaultComponentProps> = () => {
     <section id="introduction" ref={sectionRef} >
       <section className="profilePhotoSection">
         <AnimatedStack
+          className='introAnimatedStack'
           radius={techRingsRadius}
           speed={techRingsSpeed}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            transform: 'translateY(-50%) scale(1.2)'
-          }}
         >
           {techRings}
         </AnimatedStack>

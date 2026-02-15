@@ -3,6 +3,7 @@ import { FC, ReactNode, useRef } from "react";
 import { DefaultComponentProps, ExtendedCSSProperties } from "@Types";
 import { m, MotionValue, useScroll, useTransform } from "framer-motion";
 import { deepTrim, isEven } from '@Utils/helpers';
+import classNames from 'classnames';
 
 type RotationDirection = "left" | "right";
 
@@ -88,17 +89,17 @@ const AnimatedStackRing: FC<AnimatedStackRingProps> = ({
 }
 
 const AnimatedStack: FC<AnimatedStackProps> = ({
-  label, children, speed = [55], radius = [250], direction = ['right'], style
+  label, children, speed = [55], radius = [250], direction = ['right'], style, className
 }) => {
 
   const
     ref = useRef<HTMLDivElement>(null),
     { scrollYProgress } = useScroll();
 
-  const height = `${radius.reduce((prev, curr) => prev < curr ? curr : prev, 0) * 3}px`;
+  const height = `${radius.reduce((prev, curr) => Math.max(prev, curr), 0) * 3}px`;
 
   return (
-    <div className="animatedStack" ref={ref} style={{ height, ...style }}>
+    <div className={classNames("animatedStack", className)} ref={ref} style={{ height, ...style }}>
       {label && <h3 className="label">{label}</h3>}
       {
         children?.map((ring, ringIndex) => {

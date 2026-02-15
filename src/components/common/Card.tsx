@@ -79,8 +79,8 @@ const CardFooter: FC<CardFooterProps> = ({ label, actions, fill = false }) => (
         {
           actions.map(
             (action) => isButton(action) ?
-              (<BetterButton {...action} key={deepTrim(`button-component-${action.type}-${action.children}`)} style={fill ? { width: '100%' } : {}} />)
-              : (<IconButton {...action} key={deepTrim(`icon-button-component-${action.type}-${action.children}`)} style={fill ? { width: '100%' } : {}} />)
+              (<BetterButton {...action} key={deepTrim(`button-component-${action.type}-${action.children}`)} style={fill ? { flex: 1, margin: '0 8px' } : {}} />)
+              : (<IconButton {...action} key={deepTrim(`icon-button-component-${action.type}-${action.children}`)} style={fill ? { flex: 1, margin: '0 8px' } : {}} />)
           )
         }
       </Flex>
