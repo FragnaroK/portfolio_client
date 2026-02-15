@@ -14,12 +14,12 @@ const Email: FC<EmailProps> = ({ children, ...props }) => {
   const popupConfirmation = useRef<boolean>(false);
   const emailAnchorRef = useRef<HTMLAnchorElement>(null);
 
-  const
-    popup = usePopUpContext(),
-    { fakeLoadingNotify } = useNotificationContext(),
-    popupContent = useMemo(() => ({
+  const popup = usePopUpContext();
+  const { fakeLoadingNotify } = useNotificationContext();
+  const popupContent = useMemo(() => ({
       title: "Send email",
       subtitle: `Mail to '${children}'`,
+      fill: true,
       children: (
         <Text>
           <p>This will open your device's email provider, are you sure you want to continue?</p>

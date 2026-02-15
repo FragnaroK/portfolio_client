@@ -31,6 +31,8 @@ export const IconMeta: { [key: string]: IconDefinition } = {
     faCodepen: { className: "fa-brands fa-codepen", unicode: "f1cb", name: "CodePen" },
     
     // Solid Icons
+	faCheck: { className: "fa-solid fa-check", unicode: "f00c", name: "Check" },
+	faCancel: { className: "fa-solid fa-xmark", unicode: "f00d", name: "Cancel" },
 	faFile: { className: "fa-solid fa-file", unicode: "f15b", name: "File" },
 	faFilePdf: { className: "fa-solid fa-file-pdf", unicode: "f1c1", name: "File PDF" },
 	faFileWord: { className: "fa-solid fa-file-word", unicode: "f1c2", name: "File Word" },
